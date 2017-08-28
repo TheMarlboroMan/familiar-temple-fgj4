@@ -1,0 +1,66 @@
+[INFO]
+15 30 120
+[NOMBRE]
+HIPOSTYLE
+[MAPA]
+ ############# 
+ #    c,b    # 
+ #         c # 
+ # xx#   #xx # 
+ # xd   3 dx # 
+ #1x       x1# 
+ # xd 3   dx # 
+ # xx#   #xx # 
+ #   1   1   # 
+ #####xxx##### 
+     #   #     
+     # e #  ###
+     #   #  # #
+######xxx#### #
+# d1        b #
+#a 1          #
+######xxx####x#
+     #  a#  # #
+  ####   #  # #
+  #dd    #  #x#
+  ####111#  # #
+     #   #  # #
+     #xxx####x#
+     #       2#
+     #        #
+ #####111#### #
+ #     3 #  # #
+ #       #  ###
+ # . #####     
+ #####         
+[DECO]
+ QQQQQQQQQQQQQ 
+ QWWWWWWWWWWWQ 
+ QWWWWWWWWWWWQ 
+ QWKKJWWWJKKWQ 
+ QWKWWWWWWWKWQ 
+ QWKWWWWWWWKWQ 
+ QWKWWWWWWWKWQ 
+ QWKKIWWWIKKWQ 
+ QWWWWWWWWWWWQ 
+ QQQQRKKKRQQQQ 
+     IOOOI     
+     IAAAI  QQQ
+     RMMMR  QTQ
+YYYYYYKKKYYRQTQ
+YTTTTTTTTTTTTTQ
+YTTTTTTTTTTTTTQ
+YYYYYYKKKZZRIKI
+     ZTTTZ  QTQ
+  RZZZTTTZ  QTQ
+  JTTTTTTJ  JKJ
+  RZZZTTTZ  QTQ
+     ZTTTZ  QTQ
+     IKKKIRQIKI
+     RTTTTTTTTR
+     ZTTTTTTTTY
+ ZZZZZTTTZZZZTY
+ ZBBBLTTTZ  ZTY
+ ZBBBLTTTZ  ZZY
+ ZBbBZZZZZ     
+ ZZZZZ         

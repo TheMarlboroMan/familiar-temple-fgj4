@@ -1,0 +1,36 @@
+[INFO]
+15 15 30
+[NOMBRE]
+DESCENDING HALL
+[MAPA]
+####       ####
+#, #       #. #
+#  #       #  #
+#  ####### #  #
+#   b x d# #  #
+#  ####### #  #
+#  #       #  #
+#  #  ######xx#
+#  #  #d 1    #
+#  #  ######  #
+#  #       #  #
+#  #########  #
+#      x      #
+#  x   1   x  #
+###############
+[DECO]
+RHHR       RJHR
+HAAH       HbAH
+HAAH       HAAH
+HAAHHHHHHR HAAH
+HAAAAAKABH HAAH
+HAARHHHHHR HAAH
+HAAH       HAAH
+HAAH  RHHIHRKKH
+HAAH  HBAAAAAAH
+HAAH  RHHHHRAAH
+HAAH       HAAH
+HAARHIHHHHHRAAH
+HAANAAAKAAALAAH
+HAAKAAAAAAAKAAH
+RHHHHHHHHHHHHHR

@@ -1,0 +1,44 @@
+[INFO]
+19 19 90
+[NOMBRE]
+INTO THE TEMPLE
+[MAPA]
+         ##########
+   ##### #      #d#
+   #c a# # ###  # #
+   # , # # 1.#    #
+   #   # # ###  # #
+   ## ## #      #2#
+    # #  ######## #
+  ### ###       # #
+  # # #2##    ### #
+  #      #####2## #
+###       1    ## #
+#1d xxx  #####x##x#
+### xbx  #   # ##2#
+  # x x  #   # ## #
+  # xxx  #   #x##x#
+###      ### #    #
+#1d #11# d1# #  e #
+###2#### ### # ##1#
+  ###  ###   ######
+[DECO]
+         QQQQQQQRQQ
+   WWWWW QAAAAAAJAQ
+   WAAAW QAWWWAARAQ
+   WAAAW QAAbWAAAAQ
+   WAAAW QAWWWAARAQ
+   WWAWW QAAAAAAJAQ
+    WAW  QQQQQQQRAR
+  WWWAWWW       WAW
+  WAWAWAWW    WWWAW
+  WAAAAAAWWWWWAWWAW
+WWWAAAAAAAAAAAAWWAW
+WAAAKKKCAWWWWWKWWKW
+WWWAKCKCAW   WOWWOW
+  WAKCKCAW   WMWWMW
+  WAKKKCAW   WKWWKW
+WWWAAAAAAWWW WAAAAW
+WAAAWAAWAAAW WAAAAW
+WWWAWWWWAWWW WAWWAW
+  WWW  WWW   WWWWWW

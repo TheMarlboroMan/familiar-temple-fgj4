@@ -1,0 +1,46 @@
+[INFO]
+20 20 120
+[NOMBRE]
+THE TEMPLE
+[MAPA]
+####################
+#3d1    131     1d3#
+#d1      1       1d#
+#1                1#
+#     c     a      #
+#      #e e#       #
+#                  #
+#      a , a       #
+#                  #
+#      #e e#       #
+#     c     a      #
+#                  #
+#1                1#
+#d1     1        1d#
+#3d1   131      1d3#
+######## ###########
+       # #          
+########x###########
+#d 3x       x3    .#
+####################
+[DECO]
+RQQQQQQQQQQRIRQQQQQR
+QPPPPPPPPPPPPPPPPPPQ
+QPPPOOOOOOOOOOOPPPPQ
+QPPPNAMMMMMMMALPPPPQ
+QPPPNLPPPPPPPNLPPPPQ
+QPPPNLPROOORPNLPPPPR
+QPPPNLPNBCBLPNLPPPPI
+RPPPNLPNACALPNLPPPPJ
+JPPPNLPNBCALPNLPPPPI
+RPPPNLPRMMMRPNLPPPPR
+QPPPNLPPPPPPPNLPPPPQ
+QPPPNAOOOOOOOALPPPPQ
+QPPPMMMMMMMMMMMPPPPQ
+QPPPPPPPPPPPPPPPPPPQ
+QPPPPPPPPPPPPPPPPPPQ
+RQQQQQQRORQQQRJIRQQR
+       QMQ          
+QRJIRQQRKRQQQQRIJRQQ
+QAALKNAAAAALKNAAAAbQ
+QQQRJRQQQQQQQRIRQQQQ

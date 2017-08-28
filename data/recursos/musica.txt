@@ -1,0 +1,3 @@
+#indice ruta
+1	data/musica/main.ogg
+

@@ -1,0 +1,9 @@
+#indice	ruta	transparencia	rtrans	gtrans	btrans
+1	data/graficos/bloques.png	1	255	255	255
+2	data/graficos/sprites.png	1	0	255	255
+3	data/graficos/hud.png	1	0	255	255
+4	data/graficos/tiles.png	1	0	255	255
+5	data/graficos/titlepic.jpg	0	0	0	0
+6	data/graficos/gameoverpic.jpg	0	0	0	0
+7	data/graficos/end1pic.jpg	0	0	0	0
+8	data/graficos/end2pic.jpg	0	0	0	0

@@ -1,0 +1,42 @@
+[INFO]
+18 18 90
+[NOMBRE]
+BURIAL CHAMBER
+[MAPA]
+##################
+#1              1#
+#      b         #
+#  #xxxxxxxxxx#  #
+#  x          x  #
+#  x e        x  #
+#  x          x  #
+#  x   xxxx   x  #
+#  x   x4 x   x  #
+#  x   x  x   x  #
+#  x   xxxx   x  #
+# bx          x  #
+#  x    c   e x  #
+#  x          x a#
+#  #xxxxxxxxxx#  #
+#       ,  c     #
+#1              1#
+##################
+[DECO]
+HRUUUUURJIRUUUUURH
+RAAAAAAAAAAAAAAAAR
+UAAMMMMMMMMMMMAAAU
+UAAaKKKKKKKKKKaAAU
+UALKOOOOOOOOOOKNAU
+UALKNAAAAAAAALKNAU
+UALKNAAMMMMAALKNAU
+RALKNALKKKKNALKNAR
+IALKNALKAAKNALKNAJ
+JALKNALKAAKNALKNAI
+RALKNALKKKKNALKNAR
+UALKNAAOOOOAALKNAU
+UALKNAAAAAAAALKNAU
+UALKAMMMMMMMMMKNAU
+UAAaKKKKKKKKKKaAAU
+UAAAOOOOOOOOOOAAAU
+RAAAAAAAAAAAAAAAAR
+HRUUUUURIJRUUUUURH

@@ -1,0 +1,17 @@
+#indice ruta
+
+#Sonidos motor... estos no debemos cambiarlos porque se usan en código!
+1	data/sonidos/defecto.ogg
+
+#Sonidos de aplicacion...
+10	data/sonidos/revolver.ogg
+11	data/sonidos/pistola.ogg
+12	data/sonidos/escopeta.ogg
+13	data/sonidos/recargar.ogg
+14	data/sonidos/disparo_enemigo.ogg
+15	data/sonidos/salto.ogg
+16	data/sonidos/perder_energia.ogg
+17	data/sonidos/arma_vacia.ogg
+18	data/sonidos/vida_extra.ogg
+19	data/sonidos/perder_vida.ogg
+20	data/sonidos/destruir_enemigo.ogg

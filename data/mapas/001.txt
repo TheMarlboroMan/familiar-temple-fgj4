@@ -1,0 +1,43 @@
+[INFO]
+25 18 30
+[NOMBRE]
+THE ENTRANCE
+[MAPA]
+    #####                
+   #     #               
+   #  ,  #               
+   #     #               
+   #     #      #########
+   #     #      #       #
+    #   #       #      .#
+    #   #       #       #
+    #   #       #  xxxxx#
+    #   #       #       #
+    #   #       #       #
+    #   #       #       #
+ ####   #########xxxxx  #
+#                       #
+# d                     #
+#         #### xx########
+ ####     #  #  d#       
+    #######  #####       
+
+[DECO]
+    GGGGG                
+   GPPPPPG               
+   GPPPPPG               
+   GPPPPPG               
+   GPPPPPG      GGGGGGGGG
+   GPPPPPG      GAAAAAAAG
+    GPPPG       GAAAAAAbG
+    GPPPG       GAAAAAAAG
+    GPPPG       HAAKKKKKG
+    GPPPG       GAAAAAAAG
+    GPPPG       GAAAAAAAG
+    GPPPG       GAAAAAAAG
+ GGGGPPPGGIRRIGGGKKKKKAAG
+GPPPPPPPPPNAALAAAAAAAAAAG
+GPPPPPPPPPNAALAAAAAAAAAAG
+GPPPPPPPPPIRRIAKKGGHGGGGG
+ GGGGPPPPPG  GAAAG       
+    GGGGGGG  GGGGG       
