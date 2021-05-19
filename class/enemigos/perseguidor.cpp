@@ -1,6 +1,5 @@
 #include "perseguidor.h"
 
-Tabla_sprites Perseguidor::TREC("data/recortes/enemigo_perseguidor.dat");
 float Perseguidor::VELOCIDAD=60.0;
 
 Perseguidor::Perseguidor()

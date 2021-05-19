@@ -1,0 +1,5 @@
+libdan2/objects/*
+objects/*
+*.out
+*.a
+data/logs/*

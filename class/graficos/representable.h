@@ -35,14 +35,14 @@ struct Bloque_transformacion_representable
 	DLibV::Representacion_bitmap_dinamica rep_bmp;
 	DLibV::Representacion_agrupada_dinamica rep_agr;
 	DLibV::Representacion * rep;
-	
+
 	///////////////////////////////////
 	// Interfaz pública
 
 	public:
 
 	Bloque_transformacion_representable()
-		:rep_bmp(), 
+		:rep_bmp(),
 		rep_agr(true),
 		rep(&rep_bmp)
 	{
@@ -55,17 +55,17 @@ struct Bloque_transformacion_representable
 		rep_agr.vaciar_grupo();
 	}
 
-	void establecer_recorte(unsigned int x, unsigned int y, unsigned int w, unsigned int h) 
+	void establecer_recorte(unsigned int x, unsigned int y, unsigned int w, unsigned int h)
 	{
-		rep->establecer_recorte(x, y, w, h);	
+		rep->establecer_recorte(x, y, w, h);
 	}
 
-	void establecer_posicion(unsigned int x, unsigned int y, unsigned int w, unsigned int h) 
+	void establecer_posicion(unsigned int x, unsigned int y, unsigned int w, unsigned int h)
 	{
 		rep->establecer_posicion(x, y, w, h);
 	}
 
-	SDL_Rect acc_posicion() const 
+	SDL_Rect acc_posicion() const
 	{
 		return rep->acc_posicion();
 	}
@@ -74,7 +74,7 @@ struct Bloque_transformacion_representable
 	{
 		switch(t)
 		{
-			case TR_BITMAP: 
+			case TR_BITMAP:
 			default:
 				rep_bmp.reiniciar_transformacion();
 				rep=&rep_bmp;
@@ -91,7 +91,7 @@ struct Bloque_transformacion_representable
 //		establecer_mod_color(255, 255, 255);
 	}
 
-	void establecer_alpha(unsigned int v) 
+	void establecer_alpha(unsigned int v)
 	{
 		if(v > 255) v=255;
 		rep->establecer_alpha(v);
@@ -114,7 +114,9 @@ struct Bloque_transformacion_representable
 
 	void establecer_recurso(unsigned int i) //Por defecto establece el recorte al tamaño del recurso.
 	{
-		if(!DLibV::Gestor_texturas::comprobar(i)) LOG<<"SOLICITADO RECURSO "<<i<<", NO EXISTENTE"<<std::endl;
+		if(!DLibV::Gestor_texturas::comprobar(i)) {
+			LOG<<"SOLICITADO RECURSO "<<i<<", NO EXISTENTE"<<std::endl;
+		}
 		else rep_bmp.establecer_textura(DLibV::Gestor_texturas::obtener(i));
 	}
 /*
@@ -124,13 +126,13 @@ struct Bloque_transformacion_representable
 		else rep_bmp.establecer_textura_sin_recortar(DLibV::Gestor_texturas::obtener(i));
 	}
 */
-	//Establece un recurso que no tiene porqué estar en el gestor.	
+	//Establece un recurso que no tiene porqué estar en el gestor.
 	void establecer_textura_manual(DLibV::Textura * r) {rep_bmp.establecer_textura(r);}
 
 	friend class Representador;
 };
 
-//La interface promete que no vas a cambiar nada cuando la representes. 
+//La interface promete que no vas a cambiar nada cuando la representes.
 //Ahora mismo que lo estoy haciendo me parece una buena idea. Ya veremos más
 //adelante...
 
@@ -149,7 +151,7 @@ class Representable
 
 class Ordenador_representables
 {
-	public: 
+	public:
 
 	bool operator()(const Representable* a, const Representable* b) const
 	{

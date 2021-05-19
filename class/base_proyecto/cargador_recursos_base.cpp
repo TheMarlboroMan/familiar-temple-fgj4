@@ -1,11 +1,11 @@
 #include "cargador_recursos_base.h"
 
-Cargador_recursos_base::Cargador_recursos_base(DLibV::Pantalla& p):pantalla(p) 
+Cargador_recursos_base::Cargador_recursos_base(DLibV::Pantalla& p):pantalla(p)
 {
 
 }
 
-Cargador_recursos_base::~Cargador_recursos_base() 
+Cargador_recursos_base::~Cargador_recursos_base()
 {
 
 }
@@ -26,11 +26,11 @@ void Cargador_recursos_base::procesar(const std::string& ruta_archivo, void (Car
 		while(true)
 		{
 			std::string linea=L.leer_linea();
-			if(!L) break;
+			if(L.is_eof()) break;
 			std::vector<std::string> valores=DLibH::Herramientas::explotar(linea, separador);
 			(this->*procesar_valores)(valores);
 		}
-	}	
+	}
 }
 
 void Cargador_recursos_base::generar_recursos_texturas()
@@ -87,8 +87,10 @@ void Cargador_recursos_base::generar_recursos_musica()
 
 void Cargador_recursos_base::procesar_entrada_textura(const std::vector<std::string>& valores)
 {
-	if(valores.size()!=6) LOG<<"ERROR: No hay 6 parametros para recursos textura, en su lugar "<<valores.size()<<std::endl;
-	else 
+	if(valores.size()!=6) {
+		LOG<<"ERROR: No hay 6 parametros para recursos textura, en su lugar "<<valores.size()<<" "<<valores[0]<<std::endl;
+	}
+	else
 	{
 		unsigned int indice=std::atoi(valores[0].c_str());
 		std::string ruta=valores[1];
@@ -110,21 +112,23 @@ void Cargador_recursos_base::procesar_entrada_textura(const std::vector<std::str
 
 				SDL_SetColorKey(superficie, SDL_TRUE, SDL_MapRGB(superficie->format, r, g, b));
 			}
-			
+
 			DLibV::Textura * t=new DLibV::Textura(pantalla.acc_renderer(), superficie);
 
 			if(DLibV::Gestor_texturas::insertar(indice, t)==-1)
 			{
 				LOG<<"ERROR: No se ha podido insertar textura "<<indice<<" en "<<ruta<<std::endl;
-			}	
+			}
 		}
-	}			
+	}
 }
 
 void Cargador_recursos_base::procesar_entrada_superficie(const std::vector<std::string>& valores)
 {
-	if(valores.size()!=6) LOG<<"ERROR: No hay 6 parametros para recursos superficie, en su lugar "<<valores.size()<<std::endl;
-	else 
+	if(valores.size()!=6) {
+		LOG<<"ERROR: No hay 6 parametros para recursos superficie, en su lugar "<<valores.size()<<std::endl;
+	}
+	else
 	{
 		unsigned int indice=std::atoi(valores[0].c_str());
 		std::string ruta=valores[1];
@@ -146,23 +150,25 @@ void Cargador_recursos_base::procesar_entrada_superficie(const std::vector<std::
 
 				SDL_SetColorKey(superficie, SDL_TRUE, SDL_MapRGB(superficie->format, r, g, b));
 			}
-			
+
 
 			DLibV::Imagen * t=new DLibV::Imagen(superficie);
 
 			if(DLibV::Gestor_superficies::insertar(indice, t)==-1)
 			{
 				LOG<<"ERROR: No se ha podido insertar superficie "<<indice<<" en "<<ruta<<std::endl;
-			}	
+			}
 		}
-	}			
+	}
 }
 
 
 void Cargador_recursos_base::procesar_entrada_audio(const std::vector<std::string>& valores)
 {
-	if(valores.size()!=2) LOG<<"ERROR: No hay 2 parametros para recursos audio, en su lugar "<<valores.size()<<std::endl;
-	else 
+	if(valores.size()!=2) {
+		LOG<<"ERROR: No hay 2 parametros para recursos audio, en su lugar "<<valores.size()<<std::endl;
+	}
+	else
 	{
 		unsigned int indice=std::atoi(valores[0].c_str());
 		std::string ruta=valores[1];
@@ -170,14 +176,16 @@ void Cargador_recursos_base::procesar_entrada_audio(const std::vector<std::strin
 		if(DLibA::Gestor_recursos_audio::insertar_sonido(indice, ruta.c_str())==-1)
 		{
 			LOG<<"ERROR: No se ha podido insertar recurso audio "<<indice<<" en "<<ruta<<std::endl;
-		}	
-	}			
+		}
+	}
 }
 
 void Cargador_recursos_base::procesar_entrada_musica(const std::vector<std::string>& valores)
 {
-	if(valores.size()!=2) LOG<<"ERROR: No hay 2 parametros para recursos musica, en su lugar "<<valores.size()<<std::endl;
-	else 
+	if(valores.size()!=2) {
+		LOG<<"ERROR: No hay 2 parametros para recursos musica, en su lugar "<<valores.size()<<std::endl;
+	}
+	else
 	{
 		unsigned int indice=std::atoi(valores[0].c_str());
 		std::string ruta=valores[1];
@@ -185,6 +193,6 @@ void Cargador_recursos_base::procesar_entrada_musica(const std::vector<std::stri
 		if(DLibA::Gestor_recursos_audio::insertar_musica(indice, ruta.c_str())==-1)
 		{
 			LOG<<"ERROR: No se ha podido insertar recurso musica "<<indice<<" en "<<ruta<<std::endl;
-		}	
-	}			
+		}
+	}
 }

@@ -44,14 +44,14 @@ OBJETOS=$(DIR_O)pantalla.o \
 	$(DIR_O)mapa_colision_bitmap.o \
 	$(DIR_O)utilidades_graficas_sdl.o
 
-all: libDanSDL2.a
+all: libDanSDL2legacy.a
 
-libDanSDL2.a: $(OBJETOS)
-	ar rcs libDanSDL2.a $(OBJETOS)
+libDanSDL2legacy.a: $(OBJETOS)
+	ar rcs libDanSDL2legacy.a $(OBJETOS)
 
 clean:
 	$(LIMPIAR)
-	
+
 ################################################################################
 # VIDEO
 
@@ -98,7 +98,7 @@ $(DIR_O)representacion_bitmap.o: \
 $(DIR_O)representacion_grafica.o \
 $(DIR_CLASS_V)representacion/representacion_grafica/representacion_bitmap/representacion_bitmap.h \
 $(DIR_CLASS_V)representacion/representacion_grafica/representacion_bitmap/representacion_bitmap.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion_grafica/representacion_bitmap/representacion_bitmap.cpp -o $(DIR_O)representacion_bitmap.o $(INCLUDES) 
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion_grafica/representacion_bitmap/representacion_bitmap.cpp -o $(DIR_O)representacion_bitmap.o $(INCLUDES)
 
 $(DIR_O)lienzo.o: \
 $(DIR_O)superficie.o \
@@ -217,7 +217,7 @@ $(DIR_CLASS_A)sonido/sonido.cpp
 	$(CC) $(CFLAGS) $(DIR_CLASS_A)sonido/sonido.cpp -o $(DIR_O)sonido.o $(INCLUDES)
 
 ################################################################################
-# INPUT 
+# INPUT
 
 $(DIR_O)controles_sdl.o: \
 $(DIR_CLASS_I)controles_sdl/controles_sdl.h \

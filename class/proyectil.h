@@ -10,7 +10,7 @@
 #ifdef WINCOMPIL
 	using namespace parche_mingw;
 #else
-	using namespace std;	
+	using namespace std;
 #endif
 
 class Proyectil: public Actor, public Borrable, public Movil, public Representable
@@ -21,6 +21,7 @@ class Proyectil: public Actor, public Borrable, public Movil, public Representab
 	public:
 
 	enum class tfaccion {JUGADOR, ENEMIGO};
+	static Tabla_sprites TREC;
 
 	private:
 
@@ -33,13 +34,12 @@ class Proyectil: public Actor, public Borrable, public Movil, public Representab
 	float velocidad;
 	unsigned int potencia;
 	tfaccion faccion;
-	float tiempo;	
+	float tiempo;
 
 	/////////////////////////
 	// Propiedades...
 
 	private:
-	static Tabla_sprites TREC;
 
 	///////////////////////////
 	// Implementando Espaciable
@@ -57,7 +57,7 @@ class Proyectil: public Actor, public Borrable, public Movil, public Representab
 
 	/////////////////////////
 	// Métodos internos.
-	
+
 	private:
 
 	////////////////////////
@@ -66,15 +66,15 @@ class Proyectil: public Actor, public Borrable, public Movil, public Representab
 	public:
 
 	Proyectil(float angulo, float velocidad, unsigned int, tfaccion);
-	~Proyectil();	
+	~Proyectil();
 
 	unsigned int acc_potencia() const {return potencia;}
 
-	void turno(float delta) 
+	void turno(float delta)
 	{
 		tiempo+=(1000.0 * delta);
 		auto v=acc_vector();
-		desplazar_caja(v.x * delta * velocidad, v.y * delta * velocidad); 
+		desplazar_caja(v.x * delta * velocidad, v.y * delta * velocidad);
 	}
 };
 

@@ -10,7 +10,7 @@
 #ifdef WINCOMPIL
 	using namespace parche_mingw;
 #else
-	using namespace std;	
+	using namespace std;
 #endif
 
 class Boss: public Enemigo_base, public Movil, public Representable
@@ -21,6 +21,7 @@ class Boss: public Enemigo_base, public Movil, public Representable
 	public:
 
 	static float VELOCIDAD;
+	static Tabla_sprites TREC;
 
 	private:
 
@@ -32,7 +33,6 @@ class Boss: public Enemigo_base, public Movil, public Representable
 
 	private:
 	static Generador_int GI;
-	static Tabla_sprites TREC;
 	float angulo;
 	float angulo_encarar;
 	float tiempo;
@@ -49,7 +49,7 @@ class Boss: public Enemigo_base, public Movil, public Representable
 
 	virtual unsigned short int obtener_profundidad_ordenacion() const {return 30;}
 	virtual void transformar_bloque(Bloque_transformacion_representable &b) const;
-	virtual std::string a_cadena() const 
+	virtual std::string a_cadena() const
 	{
 		return "BOSS EN "+to_string(acc_espaciable_x())+","+to_string(acc_espaciable_y());
 	}
@@ -66,7 +66,7 @@ class Boss: public Enemigo_base, public Movil, public Representable
 
 	/////////////////////////
 	// Métodos internos.
-	
+
 	private:
 
 	////////////////////////
@@ -75,11 +75,11 @@ class Boss: public Enemigo_base, public Movil, public Representable
 	public:
 
 	Boss();
-	~Boss();	
+	~Boss();
 
 	float acc_angulo_encarar() const {return angulo_encarar;}
 
-	void girar() 
+	void girar()
 	{
 		angulo+=90;
 		if(angulo >= 360.0) angulo=0.0;
@@ -94,7 +94,7 @@ class Boss: public Enemigo_base, public Movil, public Representable
 		angulo_encarar=DLibH::Herramientas::angulo_entre_puntos(acc_espaciable_x(), acc_espaciable_y(), e.acc_espaciable_x(), e.acc_espaciable_y());
 	}
 
-	bool debe_disparar() 
+	bool debe_disparar()
 	{
 		bool resultado=tiempo <= 0.0;
 		if(resultado) tiempo=GI();

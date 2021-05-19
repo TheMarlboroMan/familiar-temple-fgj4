@@ -71,7 +71,7 @@ LOG<<"ACTIVANDO FADE"<<std::endl;
 		{
 			alpha+=(delta * 1.000) * 255;
 			if(alpha > 255.0) alpha=255.0;
-		}		
+		}
 	};
 
 	Fade fade;
@@ -132,7 +132,7 @@ LOG<<"ACTIVANDO FADE"<<std::endl;
 
 	virtual bool loop(const Input& input, float delta);
 	virtual void dibujar(DLibV::Pantalla& pantalla);
-	
+
 	void reset();
 
 };

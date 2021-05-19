@@ -5,9 +5,6 @@
 extern DLibH::Log_base LOG;
 //TODO TODO
 
-Tabla_sprites Celda::TREC("data/recortes/bloques.dat");
-Tabla_sprites Celda_deco::TREC("data/recortes/tiles.dat");
-
 Celda::Celda(unsigned int px, unsigned int py)
 	:Representable(),
 	x(px), y(py)

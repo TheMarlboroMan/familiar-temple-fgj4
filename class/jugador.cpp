@@ -1,11 +1,12 @@
 #include "jugador.h"
+#include "env.h"
 
 const float Jugador::SEGUNDOS_INVULNERABILIDAD=2.000;
 
 Jugador::Jugador()
 	:Actor(0, 0, 0, 0), Movil(),
 	estado(new Estado_jugador_suelo()),
-	TREC("data/recortes/jugador.dat"),	
+	TREC(env::data_path+"data/recortes/jugador.dat"),
 	direccion(Espaciable::D_DERECHA),
 	energia(ENERGIA_INICIAL),
 	tiempo_invulnerable(0.0)
@@ -28,11 +29,11 @@ void Jugador::transformar_bloque(Bloque_transformacion_representable &b) const
 		const Input_usuario& input;
 
 		public:
-	
+
 		unsigned int indice_sprite;
 
 		Vis(const Input_usuario& i):input(i), indice_sprite(0) {}
-	
+
 		virtual void visitar(Estado_jugador&) {}
 		virtual void visitar(Estado_jugador_suelo&) {indice_sprite=0;}
 		virtual void visitar(Estado_jugador_aire&) {indice_sprite=10;}
@@ -88,7 +89,7 @@ void Jugador::procesar_estado(float delta)
 	establecer_vector(v.y, Movil::V_Y);
 }
 
-void Jugador::saltar() 
+void Jugador::saltar()
 {
 	cambiar_estado(new Estado_jugador_aire());
 	info_salto.vz=-70.0;
@@ -125,7 +126,7 @@ void Jugador::turno(float delta)
 //			case Estado_jugador::t_estados::AIRE: cambiar_estado(new Estado_jugador_aire()); break;
 			case Estado_jugador::t_estados::SUELO: cambiar_estado(new Estado_jugador_suelo()); break;
 //			case Estado_jugador::t_estados::RECARGAR: cambiar_estado(new Estado_jugador_recargar()); break;
-			default: 
+			default:
 				LOG<<"[WARNING]: Se recibe estado en turno jugador que no está controlado."<<std::endl;
 			break;
 		}

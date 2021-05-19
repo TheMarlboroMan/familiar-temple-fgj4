@@ -37,7 +37,7 @@ void Mapa::importar_nivel(const std::string& nombre_fichero)
 		LOG<<"ERROR: Imposible localizar nivel en fichero "<<nombre_fichero<<std::endl;
 	}
 	else
-	{	
+	{
 		const std::string TIPO_INFO="[INFO]";
 		const std::string TIPO_MAPA="[MAPA]";
 		const std::string TIPO_DECO="[DECO]";
@@ -52,24 +52,24 @@ void Mapa::importar_nivel(const std::string& nombre_fichero)
 		while(true)
 		{
 			linea=L.leer_linea();
-			if(!L) break;
+			if(L.is_eof()) break;
 
-			if(linea==TIPO_INFO) 
+			if(linea==TIPO_INFO)
 			{
 				LOG<<"INFO: Iniciando lectura de lineas INFO"<<std::endl;
 				estado=t_estados::INFO;
 			}
-			else if(linea==TIPO_MAPA) 
+			else if(linea==TIPO_MAPA)
 			{
 				LOG<<"INFO: Iniciando lectura de lineas MAPA"<<std::endl;
 				estado=t_estados::MAPA;
 			}
-			else if(linea==TIPO_NOMBRE) 
+			else if(linea==TIPO_NOMBRE)
 			{
 				LOG<<"INFO: Iniciando lectura de lineas NOMBRE"<<std::endl;
 				estado=t_estados::NOMBRE;
 			}
-			else if(linea==TIPO_DECO) 
+			else if(linea==TIPO_DECO)
 			{
 				LOG<<"INFO: Iniciando lectura de lineas DECO"<<std::endl;
 				estado=t_estados::DECO;
@@ -79,7 +79,7 @@ void Mapa::importar_nivel(const std::string& nombre_fichero)
 				switch(estado)
 				{
 					case t_estados::NADA: break;
-					case t_estados::NOMBRE: 
+					case t_estados::NOMBRE:
 						nombre=linea;
 					break;
 					case t_estados::INFO:
@@ -132,13 +132,13 @@ void Mapa::importar_nivel(const std::string& nombre_fichero)
 								}
 								break;
 
-								case '1': 
-								case '2': 
+								case '1':
+								case '2':
 								case '3':
-								case '4':  
+								case '4':
 								{
 									Enemigo_base * p=nullptr;
-	
+
 									switch(c)
 									{
 										case '1': p=new Perseguidor(); break;
@@ -147,7 +147,7 @@ void Mapa::importar_nivel(const std::string& nombre_fichero)
 										case '4': p=new Boss(); break;
 									}
 
-									if(p)	
+									if(p)
 									{
 										centrar(indice, p);
 										enemigos.push_back(std::unique_ptr<Enemigo_base>(p));
@@ -190,7 +190,7 @@ void Mapa::importar_nivel(const std::string& nombre_fichero)
 std::vector<Representable *> Mapa::obtener_actores_representables()
 {
 	class Vis:public Visitante_enemigo
-	{	
+	{
 		public:
 		std::vector<Representable *> resultado;
 

@@ -27,7 +27,7 @@ void Cargador_mapas::cargar(const std::string& ruta_listado)
 		while(true)
 		{
 			linea=L.leer_linea();
-			if(!L) break;
+			if(L.is_eof()) break;
 
 			std::vector<std::string> valores=DLibH::Herramientas::explotar(linea, separador);
 			if(valores.size()!=2)
@@ -43,7 +43,7 @@ void Cargador_mapas::cargar(const std::string& ruta_listado)
 					LOG<<"ERROR: En lista de niveles el indice "<<indice<<" aparece más de una vez."<<std::endl;
 				}
 				else
-				{							
+				{
 					niveles[indice]=valores[1];
 				}
 			}

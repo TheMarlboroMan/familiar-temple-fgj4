@@ -43,7 +43,7 @@ void Nivel::convertir_celda_a_deco(unsigned int indice, unsigned int tile)
 	}
 	else
 	{
-		insertar(indice, tile);	
+		insertar(indice, tile);
 	}
 }
 
@@ -62,7 +62,7 @@ void Nivel::actualizar_celda_por_indice(unsigned int indice, unsigned int pt)
 	}
 	else
 	{
-		insertar(indice, pt);	
+		insertar(indice, pt);
 	}
 }
 
@@ -72,7 +72,7 @@ Nivel::Coordenadas Nivel::obtener_coordenadas_inicio_en_rejilla() const
 	if(resultado!=rejilla.end())
 	{
 		return Coordenadas(resultado->second->acc_x(), resultado->second->acc_y());
-	}		
+	}
 	else
 	{
 		throw std::exception();
@@ -94,11 +94,11 @@ Nivel::Coordenadas Nivel::indice_a_coordenadas(unsigned int indice)
 Celda& Nivel::obtener_celda_en_rejilla(unsigned int px, unsigned int py)
 {
 	unsigned int indice=calcular_indice_celda(px, py);
-	if(rejilla.count(indice)) 
+	if(rejilla.count(indice))
 	{
 		return * rejilla.at(indice);
 	}
-	else 
+	else
 	{
 		celda_no_existe.mut_x(px);
 		celda_no_existe.mut_y(py);
@@ -130,7 +130,7 @@ void Nivel::obtener_celdas_representables(std::vector<Representable *>& v, const
 }
 
 /*Especificando ceil hacemos que las colisiones por abajo y por la derecha sean
-siempre muy exactas. Especificando floor conseguimos el caso contrario... El 
+siempre muy exactas. Especificando floor conseguimos el caso contrario... El
 caso que no escojamos tendremos que tratarlo...*/
 
 unsigned int Nivel::mundo_a_indice_celdas(float val) const
@@ -153,7 +153,7 @@ const std::vector<const Celda *> Nivel::celdas_para_caja(const Espaciable::t_caj
 	return resultado;
 }
 
-template<typename T> 
+template<typename T>
 std::vector<T> Nivel::celdas_en_caja(const Espaciable::t_caja& c) const
 {
 	float punto_inicio_x=c.origen.x;
@@ -186,11 +186,11 @@ std::vector<T> Nivel::celdas_en_caja(const Espaciable::t_caja& c) const
 		ini_y=mundo_a_indice_celdas(punto_inicio_y);
 		do
 		{
-			if(ini_x >= 0 && ini_y >= 0) 
-			{			
+			if(ini_x >= 0 && ini_y >= 0)
+			{
 				unsigned int indice=calcular_indice_celda(ini_x, ini_y);
 
-				if(rejilla.count(indice)) 
+				if(rejilla.count(indice))
 				{
 					resultado.push_back( ( rejilla.at(indice).get()));
 				}

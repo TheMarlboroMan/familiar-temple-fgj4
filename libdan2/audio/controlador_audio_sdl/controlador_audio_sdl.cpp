@@ -67,19 +67,19 @@ int Controlador_audio_SDL::Canal_audio_real::iniciar_reproduccion(const Estructu
 {
 	audio_reproduciendo=e.sonido;
 	repeticiones=e.repeticiones;
-	
+
 	if(e.volumen!=-1) establecer_volumen(e.volumen);
 
-//TODO: SUPERBUG????		
+//TODO: SUPERBUG????
 #ifndef WINCOMPIL
-	if(e.vol_izq!=-1 && e.vol_der!=-1) 
+	if(e.vol_izq!=-1 && e.vol_der!=-1)
 	{
 		Mix_SetPanning(indice, e.vol_izq, e.vol_der);
 	}
 #endif
 
 	reproduciendo=true;
-	
+
 	if(!e.ms_fade) return Mix_PlayChannel(indice, audio_reproduciendo->acc_datos(), repeticiones);
 	else return Mix_FadeInChannel(indice, audio_reproduciendo->acc_datos(), repeticiones, e.ms_fade);
 }
@@ -114,11 +114,11 @@ unsigned int Controlador_audio_SDL::config_canales_audio=8;
 
 Controlador_audio_SDL::Controlador_audio_SDL():
 	volumen_sonidos_general(VOLUMEN_GENERAL_INICIO),
-	ratio(config_ratio), //22050), 
-	salidas(config_salidas), 
-	buffers(config_buffers), //1024), //2048), 
-	formato(config_formato), 
-	canales_audio(config_canales_audio), 
+	ratio(config_ratio), //22050),
+	salidas(config_salidas),
+	buffers(config_buffers), //1024), //2048),
+	formato(config_formato),
+	canales_audio(config_canales_audio),
 	estado_musica(true)
 {
 	Canal_audio_real::establecer_volumen_general(volumen_sonidos_general);
@@ -134,7 +134,7 @@ Controlador_audio_SDL * Controlador_audio_SDL::obtener()
 	if(!Controlador_audio_SDL::instancia)
 	{
 		Controlador_audio_SDL::instancia=new Controlador_audio_SDL;
-	}	
+	}
 
 	return Controlador_audio_SDL::instancia;
 }
@@ -149,7 +149,7 @@ void Controlador_audio_SDL::desmontar()
 	{
 		delete Controlador_audio_SDL::instancia;
 		Controlador_audio_SDL::instancia=NULL;
-	}	
+	}
 }
 
 int Controlador_audio_SDL::reproducir_sonido(Estructura_sonido& p_estructura, int p_canal)
@@ -164,7 +164,7 @@ int Controlador_audio_SDL::reproducir_sonido(Estructura_sonido& p_estructura, in
 		{
 			resultado=canales.at(p_canal).iniciar_reproduccion(p_estructura);
 		}
-		catch (const std::out_of_range& e) 
+		catch (const std::out_of_range& e)
 		{
 			return -1;
 		}
@@ -174,7 +174,7 @@ int Controlador_audio_SDL::reproducir_sonido(Estructura_sonido& p_estructura, in
 }
 
 /*Obtiene el primer canal libre a partir del canal especificado.  Si se da
-un segundo parámetro busca hasta el canal especificado. Si no se da ninguno 
+un segundo parámetro busca hasta el canal especificado. Si no se da ninguno
 devuelve realmente el primer canal libre. Aparementemente devuelve -1 si
 no hay canales disponibles.*/
 
@@ -183,14 +183,14 @@ int Controlador_audio_SDL::obtener_indice_canal_libre(int p_desde, int p_hasta)
 	int resultado=-1;
 	unsigned int i=p_desde;
 	unsigned int l=(p_hasta==-1) ? canales.size() : p_hasta;
-	
+
 	//Un control adicional de que el segundo parámetro no sea mayor que la lista de canales disponibles.
 	if(l > canales.size()) l=canales.size();
 
 	for(;i<l;i++)
 	{
 		Canal_audio_real c=canales.at(i);
-	
+
 		if(!c.es_ocupado() && !c.es_reproduciendo())
 		{
 			resultado=i;
@@ -237,9 +237,9 @@ void Controlador_audio_SDL::detener_musica()
 }
 
 //De la documentación...
-//All channels default to a volume of 128, which is the max. 
-//Newly allocated channels will have the max volume set, 
-//so setting all channels volumes does not affect subsequent channel allocations. 
+//All channels default to a volume of 128, which is the max.
+//Newly allocated channels will have the max volume set,
+//so setting all channels volumes does not affect subsequent channel allocations.
 
 void Controlador_audio_SDL::establecer_volumen_general(int p_vol)
 {
@@ -264,7 +264,7 @@ void Controlador_audio_SDL::establecer_volumen(int p_vol, int p_canal)	//p_vol d
 		}
 		catch(const std::out_of_range& e)
 		{
-	
+
 		}
 	}
 }
@@ -278,7 +278,7 @@ void Controlador_audio_SDL::preparar_controles(unsigned int p_can)
 {
 	canales.clear();
 	unsigned int i=0;
-	
+
 	while(i < p_can)
 		canales.push_back(Canal_audio_real(i++));
 }
@@ -290,7 +290,7 @@ bool Controlador_audio_SDL::iniciar()
 	bool resultado=true;
 
 	//Comprobar que el audio está arrancado.
-	if(SDL_WasInit(SDL_INIT_AUDIO)==0) 
+	if(SDL_WasInit(SDL_INIT_AUDIO)==0)
 	{
 		if(SDL_InitSubSystem(SDL_INIT_AUDIO)==-1)
 		{
@@ -299,8 +299,8 @@ bool Controlador_audio_SDL::iniciar()
 	}
 
 	if(resultado)
-	{	
-		if(Mix_OpenAudio(this->ratio, this->formato, this->salidas, this->buffers) == -1) 
+	{
+		if(Mix_OpenAudio(this->ratio, this->formato, this->salidas, this->buffers) == -1)
 		{
 			resultado=false;
 		}
@@ -342,8 +342,8 @@ Canal_audio Controlador_audio_SDL::obtener_canal(int p_canal)// throw()
 
 Canal_audio Controlador_audio_SDL::obtener_canal_libre()// throw()
 {
-	int indice=obtener_indice_canal_libre();	
-	
+	int indice=obtener_indice_canal_libre();
+
 	if(indice==-1)
 	{
 		throw Excepcion_controlador_audio(Excepcion_controlador_audio::ERROR_RANGO, "Sin canales libres");
@@ -383,7 +383,7 @@ void DLibA::callback_fin_reproduccion(int p_canal)
 		{
 			ca->canales.at(p_canal).recibir_callback_finalizacion();
 		}
-		catch (const std::out_of_range& e) 
+		catch (const std::out_of_range& e)
 		{}
 	}
 }

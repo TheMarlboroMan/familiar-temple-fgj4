@@ -30,12 +30,12 @@ void Controlador::inicializar()
 	cargador_recursos.generar_recursos_superficies();
 	cargador_recursos.generar_recursos_audio();
 	cargador_recursos.generar_recursos_musica();
-	
+
 	//Inicializar controles.
-	input.configurar(); 
+	input.configurar();
 
 	//Inicialización controlador tiempo.
-	controlador_fps.inicializar();	
+	controlador_fps.inicializar();
 }
 
 void Controlador::inicializar_entorno_grafico(DLibV::Pantalla& pantalla, unsigned int w, unsigned int h)
@@ -71,7 +71,7 @@ LOG<<"Cambiando modo pantalla... "<<modo<<std::endl;
 void Controlador::inicializar_entorno_audio()
 {
 	Audio::inicializar_entorno_audio(
-		configuracion.acc_audio_ratio(), 
+		configuracion.acc_audio_ratio(),
 		configuracion.acc_audio_salidas(),
 		configuracion.acc_audio_buffers(),
 		configuracion.acc_audio_canales());
@@ -98,7 +98,7 @@ bool Controlador::loop(Controlador_interface& CI)
 
 		CI.preloop(input, delta);
 
-		if(! CI.loop(input, delta)) 
+		if(! CI.loop(input, delta))
 		{
 			return false;
 		}

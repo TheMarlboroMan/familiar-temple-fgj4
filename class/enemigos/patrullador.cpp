@@ -1,6 +1,5 @@
 #include "patrullador.h"
 
-Tabla_sprites Patrullador::TREC("data/recortes/enemigo_patrullador.dat");
 float Patrullador::VELOCIDAD=60.0;
 
 Patrullador::Patrullador()

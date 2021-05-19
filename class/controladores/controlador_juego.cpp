@@ -1,15 +1,16 @@
 #include "controlador_juego.h"
 #include <cassert>
+#include "../env.h"
 
 #ifdef WINCOMPIL
 	using namespace parche_mingw;
 #else
-	using namespace std;	
+	using namespace std;
 #endif
 
 Controlador_juego::Controlador_juego(const DLibH::Controlador_argumentos& CARG, Sistema_estados& s)
 	:Controlador_interface(s),
-	cargador_mapas("data/recursos/niveles.txt"),
+	cargador_mapas(env::data_path+"data/recursos/niveles.txt"),
 	nivel_actual(1), segundos_restantes(0.0)
 {
 	camara=DLibV::Camara(0, 0, 800, 600);
@@ -35,7 +36,7 @@ bool Controlador_juego::loop(const Input& input, float delta)
 		if(!fade.es_activo())
 		{
 			logica_nivel();
-			turno_nivel(delta);	
+			turno_nivel(delta);
 			procesar_input_jugador(input, delta);
 			logica_jugador(delta);
 			evaluar_eventos_juego();
@@ -43,8 +44,8 @@ bool Controlador_juego::loop(const Input& input, float delta)
 		}
 		else
 		{
-			fade.turno(delta);	
-			if(fade.es_finalizado()) 
+			fade.turno(delta);
+			if(fade.es_finalizado())
 			{
 LOG<<"INICIO PROCESO CALLBACK FADE"<<std::endl;
 				procesar_callback_fade();
@@ -102,7 +103,7 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 	//Según el estado actual y el input, ¿podemos recalcular el estado?.
 	//Tenemos este visitante aquí, que lo usaremos para que no se nos pase
 	//ni un sólo estado. Podríamos hacer un switch case, pero me gusta la
-	//idea de que si añadimos estados nuevos no se van a pasar de largo.	
+	//idea de que si añadimos estados nuevos no se van a pasar de largo.
 
 	class Vis:public Visitante_estado_jugador
 	{
@@ -115,7 +116,7 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 		bool intentar_disparar;
 		bool recargar;
 		bool saltar;
-	
+
 		public:
 
 		bool es_intentar_disparar() const {return intentar_disparar;}
@@ -123,11 +124,11 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 		bool es_saltar() const {return saltar;}
 
 		Vis(Jugador& pj, Input_usuario& pi): //, Nivel& pn):
-			jugador(pj), iu(pi), //nivel(pn), 
+			jugador(pj), iu(pi), //nivel(pn),
 			intentar_disparar(false), recargar(false), saltar(false)
 		{}
 
-		virtual void visitar(Estado_jugador_suelo& e) 
+		virtual void visitar(Estado_jugador_suelo& e)
 		{
 			if(e.es_recargar()) recargar=true;
 			else if(iu.saltar && jugador.puede_saltar()) saltar=true;
@@ -153,7 +154,7 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 	assert(jugador.obtener_estado()==copia_estado);
 #endif
 
-	if(vis.es_intentar_disparar()) 
+	if(vis.es_intentar_disparar())
 	{
 		if(control_armas.puede_disparar())
 		{
@@ -217,7 +218,7 @@ void Controlador_juego::importar_nivel(unsigned int indice_nivel)
 			camara.establecer_limites(0,0, lim_nivel_w, lim_nivel_h);
 		}
 
-	
+
 		nivel_actual=indice_nivel;
 	}
 	catch(Excepcion_cargador_mapas &e)
@@ -252,7 +253,7 @@ void Controlador_juego::reiniciar_nivel()
 {
 	LOG<<"RESTANDO VIDA"<<std::endl;
 	sistema_vidas.restar_vida();
-	cola_sonido(Recursos_audio::RS_PERDER_VIDA, 128);	
+	cola_sonido(Recursos_audio::RS_PERDER_VIDA, 128);
 
 	if(sistema_vidas.es_quedan_vidas())
 	{
@@ -286,7 +287,7 @@ Input_usuario Controlador_juego::recoger_input_usuario(const Input& input)
 	return iu;
 }
 
-/*La lógica del jugador es la que genera realmente el movimiento. Junto con 
+/*La lógica del jugador es la que genera realmente el movimiento. Junto con
 la generación del movimiento cabe el caso borderline de que se cambie también
 el estado (por ejemplo, se ha terminado el impulso).*/
 
@@ -315,7 +316,7 @@ void Controlador_juego::logica_jugador(float delta)
 	jugador.recibir_visitante_estado(vis);
 
 	//Calcular hacia dónde mira.
-	if(vis.es_cambio_direccion_permitida() && !jugador.es_apuntando()) 
+	if(vis.es_cambio_direccion_permitida() && !jugador.es_apuntando())
 	{
 		jugador.recalcular_direccion();
 	}
@@ -336,7 +337,7 @@ void Controlador_juego::logica_jugador(float delta)
 
 		//Colisión con celdas...
 
-		if(v.x) 
+		if(v.x)
 		{
 			jugador.desplazar_caja(v.x * delta, 0.0);
 			auto nuevasx=celdas_nueva_posicion(jugador.copia_caja());
@@ -349,7 +350,7 @@ void Controlador_juego::logica_jugador(float delta)
 		}
 
 		caja=jugador.copia_caja();
-		if(v.y) 
+		if(v.y)
 		{
 			jugador.desplazar_caja(0.0, v.y * delta);
 			auto nuevasy=celdas_nueva_posicion(jugador.copia_caja());
@@ -427,7 +428,7 @@ void Controlador_juego::evaluar_eventos_juego()
 
 				if(std::any_of(colisiones.begin(), colisiones.end(), [caja](const Celda * const c)
 					{
-						return c->es_letal() && 
+						return c->es_letal() &&
 						caja.es_en_colision_con(c->copia_caja());
 					} ) )
 				{
@@ -441,12 +442,12 @@ void Controlador_juego::evaluar_eventos_juego()
 
 	//Comprobar colisiones con enemigos...
 	auto& enemigos=mapa.acc_enemigos();
-	for(auto& e : enemigos) 
+	for(auto& e : enemigos)
 	{
 		if(e->en_colision_con(jugador) && !jugador.es_invulnerable())
 		{
 			if(e->es_saltable() && jugador.es_en_aire()) continue;
-			else 
+			else
 			{
 				herir_jugador();
 			}
@@ -456,7 +457,7 @@ void Controlador_juego::evaluar_eventos_juego()
 	//Y comprobarlas con proyectiles enemigos...
 	if(!jugador.es_en_aire())
 	{
-		for(auto& p : proyectiles_enemigos) 
+		for(auto& p : proyectiles_enemigos)
 		{
 			if(p->en_colision_con(jugador) && !jugador.es_invulnerable())
 			{
@@ -504,7 +505,7 @@ void Controlador_juego::evaluar_eventos_juego()
 	{
 		bool sonar=false;
 		auto& items=mapa.acc_items();
-		for(auto& e : items) 
+		for(auto& e : items)
 		{
 			if(jugador.en_colision_con(*e))
 			{
@@ -549,7 +550,7 @@ void Controlador_juego::dibujar(DLibV::Pantalla& pantalla)
 	pantalla.limpiar(0, 0, 0, 255);
 
 	evaluar_enfoque_camara();
-	
+
 	dibujar_juego(pantalla);
 	dibujar_hud(pantalla);
 
@@ -584,10 +585,10 @@ void Controlador_juego::dibujar_juego(DLibV::Pantalla& pantalla)
 	representador.generar_vista(pantalla, camara, vr);
 /*
 	SDL_Rect cp=DLibH::Herramientas_SDL::nuevo_sdl_rect(
-		jugador.acc_espaciable_x()-camara.acc_x(), 
-		jugador.acc_espaciable_y()-camara.acc_y(), 
-		jugador.acc_espaciable_w(), 
-		jugador.acc_espaciable_h()); 
+		jugador.acc_espaciable_x()-camara.acc_x(),
+		jugador.acc_espaciable_y()-camara.acc_y(),
+		jugador.acc_espaciable_w(),
+		jugador.acc_espaciable_h());
 
 	DLibV::Representacion_primitiva_caja_estatica CAJA(cp, 255, 0, 0);
 	CAJA.establecer_alpha(64);
@@ -598,8 +599,8 @@ void Controlador_juego::dibujar_juego(DLibV::Pantalla& pantalla)
 void Controlador_juego::dibujar_hud(DLibV::Pantalla& pantalla)
 {
 	std::vector<Rep_municion> municiones;
-	unsigned int i=0, 
-		max_actual=control_armas.obtener_max_actual(), 
+	unsigned int i=0,
+		max_actual=control_armas.obtener_max_actual(),
 		actual=control_armas.acc_municion_actual(),
 		offset=control_armas.offset_hoja_sprites_arma_actual();
 
@@ -635,7 +636,7 @@ void Controlador_juego::dibujar_hud(DLibV::Pantalla& pantalla)
 	//El nivel y tiempo...
 	double dummy;
 	double frac=modf(segundos_restantes,&dummy);
-    	int decimas_restantes=round(frac*pow(10, 2)); //Dos decimales.	
+    	int decimas_restantes=round(frac*pow(10, 2)); //Dos decimales.
 	representador.generar_hud_nivel(pantalla, mapa.acc_nombre(), segundos_restantes, decimas_restantes, sistema_puntuacion.acc_puntuacion());
 
 }
@@ -643,7 +644,7 @@ void Controlador_juego::dibujar_hud(DLibV::Pantalla& pantalla)
 void Controlador_juego::evaluar_enfoque_camara()
 {
 	int lim_nivel_w=mapa.acc_nivel().acc_w_en_celdas()*Celda::DIM_CELDA;
-	int lim_nivel_h=mapa.acc_nivel().acc_h_en_celdas()*Celda::DIM_CELDA;	
+	int lim_nivel_h=mapa.acc_nivel().acc_h_en_celdas()*Celda::DIM_CELDA;
 
 	if(lim_nivel_w <= camara.acc_w() && lim_nivel_h <= camara.acc_h())
 	{
@@ -668,7 +669,7 @@ void Controlador_juego::logica_nivel()
 	//Enemigos...
 
 	class Vis:public Visitante_enemigo
-	{	
+	{
 		private:
 		const Jugador& jugador;
 
@@ -699,29 +700,29 @@ void Controlador_juego::turno_nivel(float delta)
 	//Proyectiles... Moverlos y comprobar si chocan con alguna celda. O si los del jugador se salen de la cámara.
 	auto caja_camara=DLibH::Caja<float, unsigned int>{(float)camara.acc_x(), (float)camara.acc_y(), camara.acc_w(), camara.acc_h()};
 
-	for(auto& p : proyectiles) 
+	for(auto& p : proyectiles)
 	{
 		p->turno(delta);
 
-		if(!p->copia_caja().es_en_colision_con(caja_camara)) p->marcar_para_borrar(); 
-		else 
+		if(!p->copia_caja().es_en_colision_con(caja_camara)) p->marcar_para_borrar();
+		else
 		{
 			auto c=mapa.acc_nivel().celdas_para_caja(p->copia_caja());
 			if(std::any_of(c.begin(), c.end(), [](const Celda * c) {return c->es_solida();})) p->marcar_para_borrar();
 		}
-		
+
 	}
 
-	for(auto& p : proyectiles_enemigos) 
+	for(auto& p : proyectiles_enemigos)
 	{
 		p->turno(delta);
 		auto c=mapa.acc_nivel().celdas_para_caja(p->copia_caja());
 		if(std::any_of(c.begin(), c.end(), [](const Celda * c) {return c->es_solida();})) p->marcar_para_borrar();
 	}
-	
+
 	//Enemigos...
 	class Vis:public Visitante_enemigo
-	{	
+	{
 		private:
 
 		Mapa& mapa;
@@ -740,13 +741,13 @@ void Controlador_juego::turno_nivel(float delta)
 
 		virtual void visitar(Enemigo_base&) {}
 
-		virtual void visitar(Disparador& e) 
+		virtual void visitar(Disparador& e)
 		{
 			e.turno(delta);
 			if(e.debe_disparar()) enemigos_disparar.push_back(&e);
 		}
 
-		virtual void visitar(Patrullador& e) 
+		virtual void visitar(Patrullador& e)
 		{
 			auto v=e.acc_vector() * Patrullador::VELOCIDAD;
 			e.turno(delta);
@@ -755,10 +756,10 @@ void Controlador_juego::turno_nivel(float delta)
 
 			if(v.x)
 			{
-				e.desplazar_caja(v.x * delta, 0.0); 
+				e.desplazar_caja(v.x * delta, 0.0);
 				auto cx=mapa.acc_nivel().celdas_para_caja(e.copia_caja());
-				if(std::any_of(cx.begin(), cx.end(), [](const Celda * c) {return c->es_solida();})) 
-				{				
+				if(std::any_of(cx.begin(), cx.end(), [](const Celda * c) {return c->es_solida();}))
+				{
 					auto col=cx[0];
 					if(v.x > 0.0) e.ajustar_izquierda_de(*col);
 					else e.ajustar_derecha_de(*col);
@@ -769,9 +770,9 @@ void Controlador_juego::turno_nivel(float delta)
 
 			if(v.y)
 			{
-				e.desplazar_caja(0.0, v.y * delta); 
+				e.desplazar_caja(0.0, v.y * delta);
 				auto cy=mapa.acc_nivel().celdas_para_caja(e.copia_caja());
-				if(std::any_of(cy.begin(), cy.end(), [](const Celda * c) {return c->es_solida();})) 
+				if(std::any_of(cy.begin(), cy.end(), [](const Celda * c) {return c->es_solida();}))
 				{
 					auto col=cy[0];
 					if(v.y > 0.0) e.ajustar_encima_de(*col);
@@ -782,26 +783,26 @@ void Controlador_juego::turno_nivel(float delta)
 			}
 		}
 
-		virtual void visitar(Perseguidor& e) 
+		virtual void visitar(Perseguidor& e)
 		{
 			auto v=e.acc_vector() * Perseguidor::VELOCIDAD;
 			auto caja=e.copia_caja();
 
 			e.turno(delta);
 
-			e.desplazar_caja(v.x * delta, 0.0); 
+			e.desplazar_caja(v.x * delta, 0.0);
 
 			auto cx=mapa.acc_nivel().celdas_para_caja(e.copia_caja());
-			if(std::any_of(cx.begin(), cx.end(), [](const Celda * c) {return c->es_retiene_enemigo_tierra();})) 
+			if(std::any_of(cx.begin(), cx.end(), [](const Celda * c) {return c->es_retiene_enemigo_tierra();}))
 			{
 				auto col=cx[0];
 				if(v.x > 0.0) e.ajustar_izquierda_de(*col);
 				else e.ajustar_derecha_de(*col);
 			}
 
-			e.desplazar_caja(0.0, v.y * delta); 
+			e.desplazar_caja(0.0, v.y * delta);
 			auto cy=mapa.acc_nivel().celdas_para_caja(e.copia_caja());
-			if(std::any_of(cy.begin(), cy.end(), [](const Celda * c) {return c->es_retiene_enemigo_tierra();})) 
+			if(std::any_of(cy.begin(), cy.end(), [](const Celda * c) {return c->es_retiene_enemigo_tierra();}))
 			{
 				auto col=cy[0];
 				if(v.y > 0.0) e.ajustar_encima_de(*col);
@@ -810,17 +811,17 @@ void Controlador_juego::turno_nivel(float delta)
 			}
 
 			auto& enemigos=mapa.acc_enemigos();
-			for(auto& enem : enemigos) 
+			for(auto& enem : enemigos)
 			{
 				if( *(enem.get())!=e && enem->en_colision_con(e))
 				{
 					e.establecer_posicion(caja.origen.x, caja.origen.y);
-					return;					
+					return;
 				}
 			}
 		}
 
-		virtual void visitar(Boss& e) 
+		virtual void visitar(Boss& e)
 		{
 			e.turno(delta);
 			if(e.debe_disparar()) boss_disparar=&e;
@@ -830,10 +831,10 @@ void Controlador_juego::turno_nivel(float delta)
 
 			if(v.x)
 			{
-				e.desplazar_caja(v.x * delta, 0.0); 
+				e.desplazar_caja(v.x * delta, 0.0);
 				auto cx=mapa.acc_nivel().celdas_para_caja(e.copia_caja());
-				if(std::any_of(cx.begin(), cx.end(), [](const Celda * c) {return c->es_retiene_enemigo_tierra();})) 
-				{				
+				if(std::any_of(cx.begin(), cx.end(), [](const Celda * c) {return c->es_retiene_enemigo_tierra();}))
+				{
 					auto col=cx[0];
 					if(v.x > 0.0) e.ajustar_izquierda_de(*col);
 					else e.ajustar_derecha_de(*col);
@@ -844,9 +845,9 @@ void Controlador_juego::turno_nivel(float delta)
 
 			if(v.y)
 			{
-				e.desplazar_caja(0.0, v.y * delta); 
+				e.desplazar_caja(0.0, v.y * delta);
 				auto cy=mapa.acc_nivel().celdas_para_caja(e.copia_caja());
-				if(std::any_of(cy.begin(), cy.end(), [](const Celda * c) {return c->es_retiene_enemigo_tierra();})) 
+				if(std::any_of(cy.begin(), cy.end(), [](const Celda * c) {return c->es_retiene_enemigo_tierra();}))
 				{
 					auto col=cy[0];
 					if(v.y > 0.0) e.ajustar_encima_de(*col);
@@ -860,7 +861,7 @@ void Controlador_juego::turno_nivel(float delta)
 	}vis(mapa, delta);
 
 	auto& enemigos=mapa.acc_enemigos();
-	for(auto& e : enemigos) 
+	for(auto& e : enemigos)
 	{
 		e->recibir_visitante(vis);
 
@@ -868,16 +869,16 @@ void Controlador_juego::turno_nivel(float delta)
 		{
 			for(auto& p : proyectiles)
 			{
-				if(!p->es_para_borrar() && !e->es_para_borrar() && e->en_colision_con( * p ) ) 
+				if(!p->es_para_borrar() && !e->es_para_borrar() && e->en_colision_con( * p ) )
 				{
 					p->marcar_para_borrar();
 					e->restar_salud(p->acc_potencia());
-					if(e->es_sin_salud()) 
+					if(e->es_sin_salud())
 					{
 						e->marcar_para_borrar();
 						sumar_puntuacion(e->puntuacion_por_eliminar());
 
-						if(e->es_boss()) 
+						if(e->es_boss())
 						{
 							iniciar_fin_juego();
 							return; //Salimos de aquí... Se reseteará todo
@@ -885,7 +886,7 @@ void Controlador_juego::turno_nivel(float delta)
 					}
 				}
 			}
-		}		
+		}
 	}
 
 	auto& enemigos_disparar=vis.acc_enemigos_disparar();
@@ -988,18 +989,18 @@ void Controlador_juego::cola_sonido(unsigned int sonido, unsigned int vol)
 {
 	Audio::insertar_sonido(
 		DLibA::Estructura_sonido(
-		DLibA::Gestor_recursos_audio::obtener_sonido(sonido), vol));	
+		DLibA::Gestor_recursos_audio::obtener_sonido(sonido), vol));
 }
 
 void Controlador_juego::herir_jugador()
 {
 	jugador.herir();
-	if(!jugador.acc_energia()) 
+	if(!jugador.acc_energia())
 	{
 		LOG<<"Insertando evento perder vida por herida"<<std::endl;
 		cola_eventos.push(Evento_juego(Evento_juego::tipos::PERDER_VIDA_POR_ENEMIGO));
 	}
-	else 
+	else
 	{
 		cola_sonido(Recursos_audio::RS_PERDER_ENERGIA, 192);
 	}

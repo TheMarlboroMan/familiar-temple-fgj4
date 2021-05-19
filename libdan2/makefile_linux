@@ -1,4 +1,6 @@
-CFLAGS=-c -g -O3 -Wno-deprecated -Wall -ansi -pedantic -std=c++11
+DEBUG=-g
+#OPTIMIZE=-O3
+CFLAGS=-c ${DEBUG} ${OPTIMIZE} -Wno-deprecated -Wall -ansi -pedantic -std=c++11
 CC=g++
 
 include makefile_comun

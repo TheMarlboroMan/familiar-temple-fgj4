@@ -1,13 +1,15 @@
 #Definiciones.
-CFLAGS=-c -g -O3 -Wno-deprecated -Wall -ansi -pedantic -std=c++11
-CFLAGS_TARGET_FINAL=-g -O3 -Wno-deprecated -Wall -ansi -pedantic -std=c++11
+#OPTIMIZE="-O3"
+DEBUG=-g
+CFLAGS=-c ${DEBUG} ${OPTIMIZE} -Wno-deprecated -Wall -ansi -pedantic -std=c++11
+CFLAGS_TARGET_FINAL=${DEBUG} ${OPTIMIZE} -Wno-deprecated -Wall -ansi -pedantic -std=c++11
 CC=g++
 EJECUTABLE=familiar_temple.out
 LIMPIAR=rm objects/*; rm libdan2/objects/*; rm libDanSDL2.a; rm $(EJECUTABLE);
-COMANDO_MOVER=mv libdan2/libDanSDL2.a libDanSDL2.a; 
+#COMANDO_MOVER=mv libdan2/libDanSDL2.a libDanSDL2.a;
 NOMBRE_MAKE_MOTOR=makefile_linux
 
-LINKER=-L. -lDanSDL2 -lSDL2 -lSDL2_mixer -lSDL2_image
+LINKER=-L./ -lDanSDL2legacy -lSDL2 -lSDL2_mixer -lSDL2_image
 INCLUDES=
 LIBRERIAS=
 include makefile_comun

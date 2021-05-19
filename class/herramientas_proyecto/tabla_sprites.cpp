@@ -25,7 +25,7 @@ void Tabla_sprites::cargar(const std::string& ruta)
 {
 	DLibH::Lector_txt L(ruta, '#');
 
-	if(!L)	
+	if(!L)
 	{
 		LOG<<"ERROR: Para Tabla_sprites no se ha podido abrir el archivo "<<ruta<<std::endl;
 	}
@@ -33,11 +33,15 @@ void Tabla_sprites::cargar(const std::string& ruta)
 	{
 		std::string linea;
 		const char separador='\t';
-		
+
 		while(true)
 		{
 			linea=L.leer_linea();
-			if(!L) break;
+
+			if(L.is_eof()) {
+
+				break;
+			}
 
 			std::vector<std::string> valores=DLibH::Herramientas::explotar(linea, separador);
 			if(valores.size()==7)

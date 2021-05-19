@@ -13,17 +13,19 @@ class Disparador: public Enemigo_base, public Representable
 
 	public:
 
+	static Tabla_sprites TREC;
+
 	private:
 
 	static const unsigned int W=16;
 	static const unsigned int H=16;
+
 
 	/////////////////////////
 	// Propiedades...
 
 	private:
 	static Generador_int GI;
-	static Tabla_sprites TREC;
 	float angulo;
 	float tiempo_restante;
 
@@ -39,12 +41,12 @@ class Disparador: public Enemigo_base, public Representable
 
 	virtual unsigned short int obtener_profundidad_ordenacion() const {return 30;}
 	virtual void transformar_bloque(Bloque_transformacion_representable &b) const;
-	virtual std::string a_cadena() const 
+	virtual std::string a_cadena() const
 	{
 #ifdef WINCOMPIL
 	using namespace parche_mingw;
 #else
-	using namespace std;	
+	using namespace std;
 #endif
 		return "DISPARADOR EN "+to_string(acc_espaciable_x())+","+to_string(acc_espaciable_y());
 	}
@@ -60,7 +62,7 @@ class Disparador: public Enemigo_base, public Representable
 
 	/////////////////////////
 	// Métodos internos.
-	
+
 	private:
 
 	////////////////////////
@@ -69,18 +71,18 @@ class Disparador: public Enemigo_base, public Representable
 	public:
 
 	Disparador();
-	~Disparador();	
+	~Disparador();
 
 	float acc_angulo() const {return angulo;}
 
-	bool debe_disparar() 
+	bool debe_disparar()
 	{
 		bool resultado=tiempo_restante <= 0.0;
 		if(resultado) tiempo_restante=GI();
 		return resultado;
 	}
 
-	void turno(float delta) 
+	void turno(float delta)
 	{
 		tiempo_restante-=delta;
 	}

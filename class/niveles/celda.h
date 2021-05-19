@@ -9,7 +9,7 @@
 #ifdef WINCOMPIL
 	using namespace parche_mingw;
 #else
-	using namespace std;	
+	using namespace std;
 #endif
 
 class Celda:public Representable, public Espaciable
@@ -19,6 +19,7 @@ class Celda:public Representable, public Espaciable
 
 	public:
 
+	static Tabla_sprites TREC;
 	static const int DIM_CELDA=32; //Dimensiones de una celda en el mundo.
 
 	enum tipos {
@@ -31,7 +32,6 @@ class Celda:public Representable, public Espaciable
 	};
 
 	private:
-	static Tabla_sprites TREC;
 
 	//////////////
 	// Propiedades
@@ -76,17 +76,17 @@ class Celda:public Representable, public Espaciable
 
 	unsigned int acc_x() const {return x;}
 	unsigned int acc_y() const {return y;}
-	
+
 	void mut_x(unsigned int v) {x=v;}
 	void mut_y(unsigned int v) {y=v;}
-	
+
 	Celda(unsigned int x, unsigned int y);
 	Celda(const Celda&);
 	Celda& operator=(const Celda&);
 	virtual ~Celda();
 
 	virtual unsigned int acc_tipo() const=0;
-	
+
 	virtual bool es_valida() const {return true;}
 	virtual bool es_solida() const {return false;}
 	virtual bool es_letal() const {return false;}
@@ -103,24 +103,25 @@ class Celda_no_valida:public Celda
 	{}
 
 	virtual unsigned int acc_tipo() const {return T_SIN_CELDA;}
-	virtual bool es_valida() const {return false;} 
+	virtual bool es_valida() const {return false;}
 };
 
 class Celda_deco:public Celda
 {
 	private:
 
-	static Tabla_sprites TREC;
 	unsigned int tile;
 
 	public:
+
+	static Tabla_sprites TREC;
 
 	Celda_deco(unsigned int x, unsigned int y, unsigned int t)
 		:Celda(x, y), tile(t)
 	{}
 
 	virtual unsigned int acc_tipo() const {return T_CELDA_DECO;}
-	unsigned int acc_tile() const {return tile;}	
+	unsigned int acc_tile() const {return tile;}
 	virtual void transformar_bloque(Bloque_transformacion_representable &b) const;
 };
 
@@ -202,6 +203,6 @@ class Factoria_celdas
 		}
 	}
 
-	
+
 };
 #endif

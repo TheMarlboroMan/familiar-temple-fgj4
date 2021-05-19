@@ -22,16 +22,16 @@ class Control_armas
 		unsigned int max_arma;
 		unsigned int municion_actual;
 		unsigned int reserva;
-		float cooloff;	
+		float cooloff;
 		float val_cooloff;
 
 		public:
 
 		Info_municion():max_arma(0), municion_actual(0), reserva(0), cooloff(0.0), val_cooloff(0.0)
-		{}		
+		{}
 
 		Info_municion(unsigned int max, unsigned int act, unsigned int res, float vc):max_arma(max), municion_actual(act), reserva(res), cooloff(0.0), val_cooloff(vc)
-		{}		
+		{}
 
 		void reset(unsigned int max, unsigned int act, unsigned int res)
 		{
@@ -43,18 +43,18 @@ class Control_armas
 
 		bool puede_disparar() const {return municion_actual && !cooloff;}
 		bool es_arma_llena() const {return municion_actual==obtener_max_actual();}
-		void disparar() 
+		void disparar()
 		{
 			--municion_actual;
 			cooloff=val_cooloff;
 		}
-		void recargar() 
+		void recargar()
 		{
 			unsigned int vacias=max_arma - municion_actual;
 
 			if(reserva)
 			{
-				if(reserva >= vacias) 
+				if(reserva >= vacias)
 				{
 					reserva-=vacias;
 					municion_actual=obtener_max_actual();
@@ -104,7 +104,7 @@ class Control_armas
 	void iniciar();
 
 	///////////
-	// Interface pública...	
+	// Interface pública...
 	public:
 
 	Control_armas();
@@ -149,9 +149,10 @@ class Rep_municion:public Representable
 	unsigned int x;
 	unsigned int alpha;
 	unsigned int offset;
-	static Tabla_sprites TREC;
 
 	public:
+
+	static Tabla_sprites TREC;
 	virtual unsigned short int obtener_profundidad_ordenacion() const {return 999;}
 	virtual void transformar_bloque(Bloque_transformacion_representable &b) const
 	{
@@ -164,7 +165,7 @@ class Rep_municion:public Representable
 		{
 			b.establecer_recorte(f.x, f.y, f.w, f.h);
 			b.establecer_posicion(40+( (x*f.w) + 2)+f.desp_x, 16+f.desp_y, f.w, f.h);
-		}	
+		}
 	}
 	virtual std::string a_cadena() const {return "";}
 

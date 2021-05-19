@@ -1,6 +1,7 @@
 #include "boss.h"
+#include "../env.h"
 
-Tabla_sprites Boss::TREC("data/recortes/enemigo_boss.dat");
+
 Generador_int Boss::GI(1, 3);
 float Boss::VELOCIDAD=90.0;
 

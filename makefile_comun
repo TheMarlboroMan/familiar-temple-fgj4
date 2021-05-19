@@ -65,16 +65,16 @@ $(DIR_O)sistema_estados.o \
 ################################################################################
 #Definiciones de targets.
 
-all: $(EJECUTABLE) libDanSDL2.a
+all: $(EJECUTABLE) libDanSDL2legacy.a
 
 $(EJECUTABLE): $(OBJETOS) $(OBJETOS_BASE) $(OBJETOS_DERIVADA) $(HERRAMIENTAS)\
 main.cpp \
-libDanSDL2.a 
+libDanSDL2legacy.a
 	$(CC) $(CFLAGS_TARGET_FINAL) main.cpp $(OBJETOS_BASE) $(OBJETOS_DERIVADA) $(HERRAMIENTAS) $(OBJETOS) -o $(EJECUTABLE)  $(LIBRERIAS) $(LINKER)
 
 clean:
 	$(LIMPIAR)
-	
+
 ################################################################################
 #Clases de la aplicacion...
 
@@ -82,7 +82,7 @@ $(DIR_O)controlador.o: $(OBJETOS_BASE) $(OBJETOS_DERIVADA) \
 $(DIR_O)controlador_juego.o\
 $(DIR_CLASS)controlador.h \
 $(DIR_CLASS)controlador.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)controlador.cpp -o $(DIR_O)controlador.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)controlador.cpp -o $(DIR_O)controlador.o
 
 $(DIR_O)controlador_juego.o :\
 $(DIR_O)sistema_estados.o \
@@ -98,31 +98,31 @@ $(DIR_O)sistema_vidas.o \
 $(DIR_CONTROLADORES)controlador_interface.h \
 $(DIR_CONTROLADORES)controlador_juego.h \
 $(DIR_CONTROLADORES)controlador_juego.cpp
-	$(CC) $(CFLAGS) $(DIR_CONTROLADORES)controlador_juego.cpp -o $(DIR_O)controlador_juego.o 
+	$(CC) $(CFLAGS) $(DIR_CONTROLADORES)controlador_juego.cpp -o $(DIR_O)controlador_juego.o
 
 $(DIR_O)controlador_title.o :\
 $(DIR_CONTROLADORES)controlador_interface.h \
 $(DIR_CONTROLADORES)controlador_title.h \
 $(DIR_CONTROLADORES)controlador_title.cpp
-	$(CC) $(CFLAGS) $(DIR_CONTROLADORES)controlador_title.cpp -o $(DIR_O)controlador_title.o 
+	$(CC) $(CFLAGS) $(DIR_CONTROLADORES)controlador_title.cpp -o $(DIR_O)controlador_title.o
 
 $(DIR_O)controlador_game_over.o :\
 $(DIR_CONTROLADORES)controlador_interface.h \
 $(DIR_CONTROLADORES)controlador_game_over.h \
 $(DIR_CONTROLADORES)controlador_game_over.cpp
-	$(CC) $(CFLAGS) $(DIR_CONTROLADORES)controlador_game_over.cpp -o $(DIR_O)controlador_game_over.o 
+	$(CC) $(CFLAGS) $(DIR_CONTROLADORES)controlador_game_over.cpp -o $(DIR_O)controlador_game_over.o
 
 $(DIR_O)controlador_fin_1.o :\
 $(DIR_CONTROLADORES)controlador_interface.h \
 $(DIR_CONTROLADORES)controlador_fin_1.h \
 $(DIR_CONTROLADORES)controlador_fin_1.cpp
-	$(CC) $(CFLAGS) $(DIR_CONTROLADORES)controlador_fin_1.cpp -o $(DIR_O)controlador_fin_1.o 
+	$(CC) $(CFLAGS) $(DIR_CONTROLADORES)controlador_fin_1.cpp -o $(DIR_O)controlador_fin_1.o
 
 $(DIR_O)controlador_fin_2.o :\
 $(DIR_CONTROLADORES)controlador_interface.h \
 $(DIR_CONTROLADORES)controlador_fin_2.h \
 $(DIR_CONTROLADORES)controlador_fin_2.cpp
-	$(CC) $(CFLAGS) $(DIR_CONTROLADORES)controlador_fin_2.cpp -o $(DIR_O)controlador_fin_2.o 
+	$(CC) $(CFLAGS) $(DIR_CONTROLADORES)controlador_fin_2.cpp -o $(DIR_O)controlador_fin_2.o
 
 $(DIR_O)celda.o :\
 $(DIR_O)tabla_sprites.o \
@@ -131,26 +131,26 @@ $(DIR_O)espaciable.o \
 $(DIR_CLASS)recursos/recursos.h \
 $(DIR_NIVEL)celda.h \
 $(DIR_NIVEL)celda.cpp
-	$(CC) $(CFLAGS) $(DIR_NIVEL)celda.cpp -o $(DIR_O)celda.o 
+	$(CC) $(CFLAGS) $(DIR_NIVEL)celda.cpp -o $(DIR_O)celda.o
 
 $(DIR_O)cargador_mapas.o :\
 $(DIR_O)mapa.o \
 $(DIR_CARGADORES)cargador_mapas.h \
 $(DIR_CARGADORES)cargador_mapas.cpp
-	$(CC) $(CFLAGS) $(DIR_CARGADORES)cargador_mapas.cpp -o $(DIR_O)cargador_mapas.o 
+	$(CC) $(CFLAGS) $(DIR_CARGADORES)cargador_mapas.cpp -o $(DIR_O)cargador_mapas.o
 
 
 $(DIR_O)nivel.o :\
 $(DIR_O)celda.o \
 $(DIR_NIVEL)nivel.h \
 $(DIR_NIVEL)nivel.cpp
-	$(CC) $(CFLAGS) $(DIR_NIVEL)nivel.cpp -o $(DIR_O)nivel.o 
+	$(CC) $(CFLAGS) $(DIR_NIVEL)nivel.cpp -o $(DIR_O)nivel.o
 
 #$(DIR_O)conexiones.o :\
 #$(DIR_O)actor.o \
 #$(DIR_CLASS)conexiones.h \
 #$(DIR_CLASS)conexiones.cpp
-#	$(CC) $(CFLAGS) $(DIR_CLASS)conexiones.cpp -o $(DIR_O)conexiones.o 
+#	$(CC) $(CFLAGS) $(DIR_CLASS)conexiones.cpp -o $(DIR_O)conexiones.o
 
 $(DIR_O)mapa.o :\
 $(DIR_O)perseguidor.o \
@@ -165,7 +165,7 @@ $(DIR_O)item_salud.o \
 $(DIR_O)nivel.o \
 $(DIR_NIVEL)mapa.h \
 $(DIR_NIVEL)mapa.cpp
-	$(CC) $(CFLAGS) $(DIR_NIVEL)mapa.cpp -o $(DIR_O)mapa.o 
+	$(CC) $(CFLAGS) $(DIR_NIVEL)mapa.cpp -o $(DIR_O)mapa.o
 
 $(DIR_O)jugador.o :\
 $(DIR_O)tabla_sprites.o \
@@ -177,18 +177,18 @@ $(DIR_CLASS)recursos/recursos.h \
 $(DIR_CLASS)input_usuario.h \
 $(DIR_CLASS)jugador.h \
 $(DIR_CLASS)jugador.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)jugador.cpp -o $(DIR_O)jugador.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)jugador.cpp -o $(DIR_O)jugador.o
 
 $(DIR_O)jugador_estados.o :\
 $(DIR_CLASS)jugador_estados.h \
 $(DIR_CLASS)jugador_estados.cpp \
 $(DIR_CLASS)input_usuario.h
-	$(CC) $(CFLAGS) $(DIR_CLASS)jugador_estados.cpp -o $(DIR_O)jugador_estados.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)jugador_estados.cpp -o $(DIR_O)jugador_estados.o
 
 $(DIR_O)representable.o :\
 $(DIR_GRAFICOS)representable.h \
 $(DIR_GRAFICOS)representable.cpp
-	$(CC) $(CFLAGS) $(DIR_GRAFICOS)representable.cpp -o $(DIR_O)representable.o 
+	$(CC) $(CFLAGS) $(DIR_GRAFICOS)representable.cpp -o $(DIR_O)representable.o
 
 $(DIR_O)proyectil.o :\
 $(DIR_O)actor.o\
@@ -197,7 +197,7 @@ $(DIR_O)movil.o\
 $(DIR_O)representable.o\
 $(DIR_CLASS)proyectil.h \
 $(DIR_CLASS)proyectil.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)proyectil.cpp -o $(DIR_O)proyectil.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)proyectil.cpp -o $(DIR_O)proyectil.o
 
 $(DIR_O)boss.o :\
 $(DIR_O)generador_numeros.o\
@@ -206,7 +206,7 @@ $(DIR_O)representable.o\
 $(DIR_O)movil.o\
 $(DIR_CLASS)enemigos/boss.h \
 $(DIR_CLASS)enemigos/boss.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)enemigos/boss.cpp -o $(DIR_O)boss.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)enemigos/boss.cpp -o $(DIR_O)boss.o
 
 $(DIR_O)disparador.o :\
 $(DIR_O)generador_numeros.o\
@@ -214,7 +214,7 @@ $(DIR_O)enemigo_base.o\
 $(DIR_O)representable.o\
 $(DIR_CLASS)enemigos/disparador.h \
 $(DIR_CLASS)enemigos/disparador.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)enemigos/disparador.cpp -o $(DIR_O)disparador.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)enemigos/disparador.cpp -o $(DIR_O)disparador.o
 
 $(DIR_O)patrullador.o :\
 $(DIR_O)enemigo_base.o\
@@ -222,7 +222,7 @@ $(DIR_O)movil.o\
 $(DIR_O)representable.o\
 $(DIR_CLASS)enemigos/patrullador.h \
 $(DIR_CLASS)enemigos/patrullador.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)enemigos/patrullador.cpp -o $(DIR_O)patrullador.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)enemigos/patrullador.cpp -o $(DIR_O)patrullador.o
 
 $(DIR_O)perseguidor.o :\
 $(DIR_O)enemigo_base.o\
@@ -230,44 +230,44 @@ $(DIR_O)movil.o\
 $(DIR_O)representable.o\
 $(DIR_CLASS)enemigos/perseguidor.h \
 $(DIR_CLASS)enemigos/perseguidor.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)enemigos/perseguidor.cpp -o $(DIR_O)perseguidor.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)enemigos/perseguidor.cpp -o $(DIR_O)perseguidor.o
 
 $(DIR_O)enemigo_base.o :\
 $(DIR_O)actor.o\
 $(DIR_O)borrable.o\
 $(DIR_CLASS)enemigos/base.h \
 $(DIR_CLASS)enemigos/base.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)enemigos/base.cpp -o $(DIR_O)enemigo_base.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)enemigos/base.cpp -o $(DIR_O)enemigo_base.o
 
 $(DIR_O)item_salud.o :\
 $(DIR_O)item_base.o\
 $(DIR_CLASS)items/item_salud.h \
 $(DIR_CLASS)items/item_salud.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_salud.cpp -o $(DIR_O)item_salud.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_salud.cpp -o $(DIR_O)item_salud.o
 
 $(DIR_O)item_revolver.o :\
 $(DIR_O)item_base.o\
 $(DIR_CLASS)items/item_revolver.h \
 $(DIR_CLASS)items/item_revolver.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_revolver.cpp -o $(DIR_O)item_revolver.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_revolver.cpp -o $(DIR_O)item_revolver.o
 
 $(DIR_O)item_pistola.o :\
 $(DIR_O)item_base.o\
 $(DIR_CLASS)items/item_pistola.h \
 $(DIR_CLASS)items/item_pistola.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_pistola.cpp -o $(DIR_O)item_pistola.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_pistola.cpp -o $(DIR_O)item_pistola.o
 
 $(DIR_O)item_escopeta.o :\
 $(DIR_O)item_base.o\
 $(DIR_CLASS)items/item_escopeta.h \
 $(DIR_CLASS)items/item_escopeta.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_escopeta.cpp -o $(DIR_O)item_escopeta.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_escopeta.cpp -o $(DIR_O)item_escopeta.o
 
 $(DIR_O)item_ankh.o :\
 $(DIR_O)item_base.o\
 $(DIR_CLASS)items/item_ankh.h \
 $(DIR_CLASS)items/item_ankh.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_ankh.cpp -o $(DIR_O)item_ankh.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_ankh.cpp -o $(DIR_O)item_ankh.o
 
 $(DIR_O)item_base.o :\
 $(DIR_O)actor.o\
@@ -275,56 +275,56 @@ $(DIR_O)representable.o\
 $(DIR_O)borrable.o\
 $(DIR_CLASS)items/item_base.h \
 $(DIR_CLASS)items/item_base.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_base.cpp -o $(DIR_O)item_base.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_base.cpp -o $(DIR_O)item_base.o
 
 $(DIR_O)actor.o :\
 $(DIR_O)espaciable.o\
 $(DIR_CLASS)actor.h \
 $(DIR_CLASS)actor.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)actor.cpp -o $(DIR_O)actor.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)actor.cpp -o $(DIR_O)actor.o
 
 $(DIR_O)movil.o :\
 $(DIR_CLASS)movil.h \
 $(DIR_CLASS)movil.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)movil.cpp -o $(DIR_O)movil.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)movil.cpp -o $(DIR_O)movil.o
 
 $(DIR_O)borrable.o :\
 $(DIR_CLASS)borrable.h \
 $(DIR_CLASS)borrable.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)borrable.cpp -o $(DIR_O)borrable.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)borrable.cpp -o $(DIR_O)borrable.o
 
 $(DIR_O)espaciable.o :\
 $(DIR_CLASS)espaciable.h \
 $(DIR_CLASS)espaciable.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS)espaciable.cpp -o $(DIR_O)espaciable.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS)espaciable.cpp -o $(DIR_O)espaciable.o
 
 $(DIR_O)representador.o :\
 $(DIR_O)representable.o \
 $(DIR_GRAFICOS)representador.h \
 $(DIR_GRAFICOS)representador.cpp
-	$(CC) $(CFLAGS) $(DIR_GRAFICOS)representador.cpp -o $(DIR_O)representador.o 
+	$(CC) $(CFLAGS) $(DIR_GRAFICOS)representador.cpp -o $(DIR_O)representador.o
 
 $(DIR_O)control_armas.o :\
 $(DIR_O)tabla_sprites.o\
 $(DIR_O)representable.o\
 $(DIR_SISTEMAS)control_armas.h \
 $(DIR_SISTEMAS)control_armas.cpp
-	$(CC) $(CFLAGS) $(DIR_SISTEMAS)control_armas.cpp -o $(DIR_O)control_armas.o 
+	$(CC) $(CFLAGS) $(DIR_SISTEMAS)control_armas.cpp -o $(DIR_O)control_armas.o
 
 $(DIR_O)sistema_estados.o :\
 $(DIR_SISTEMAS)sistema_estados.h \
 $(DIR_SISTEMAS)sistema_estados.cpp
-	$(CC) $(CFLAGS) $(DIR_SISTEMAS)sistema_estados.cpp -o $(DIR_O)sistema_estados.o 
+	$(CC) $(CFLAGS) $(DIR_SISTEMAS)sistema_estados.cpp -o $(DIR_O)sistema_estados.o
 
 $(DIR_O)sistema_puntuacion.o :\
 $(DIR_SISTEMAS)sistema_puntuacion.h \
 $(DIR_SISTEMAS)sistema_puntuacion.cpp
-	$(CC) $(CFLAGS) $(DIR_SISTEMAS)sistema_puntuacion.cpp -o $(DIR_O)sistema_puntuacion.o 
+	$(CC) $(CFLAGS) $(DIR_SISTEMAS)sistema_puntuacion.cpp -o $(DIR_O)sistema_puntuacion.o
 
 $(DIR_O)sistema_vidas.o :\
 $(DIR_SISTEMAS)sistema_vidas.h \
 $(DIR_SISTEMAS)sistema_vidas.cpp
-	$(CC) $(CFLAGS) $(DIR_SISTEMAS)sistema_vidas.cpp -o $(DIR_O)sistema_vidas.o 
+	$(CC) $(CFLAGS) $(DIR_SISTEMAS)sistema_vidas.cpp -o $(DIR_O)sistema_vidas.o
 
 ################################################################################
 #Herramientas...
@@ -332,12 +332,12 @@ $(DIR_SISTEMAS)sistema_vidas.cpp
 $(DIR_O)generador_numeros.o :\
 $(DIR_HERRAMIENTAS)generador_numeros.h \
 $(DIR_HERRAMIENTAS)generador_numeros.cpp
-	$(CC) $(CFLAGS) $(DIR_HERRAMIENTAS)generador_numeros.cpp -o $(DIR_O)generador_numeros.o 
+	$(CC) $(CFLAGS) $(DIR_HERRAMIENTAS)generador_numeros.cpp -o $(DIR_O)generador_numeros.o
 
 $(DIR_O)tabla_sprites.o :\
 $(DIR_HERRAMIENTAS)tabla_sprites.h \
 $(DIR_HERRAMIENTAS)tabla_sprites.cpp
-	$(CC) $(CFLAGS) $(DIR_HERRAMIENTAS)tabla_sprites.cpp -o $(DIR_O)tabla_sprites.o 
+	$(CC) $(CFLAGS) $(DIR_HERRAMIENTAS)tabla_sprites.cpp -o $(DIR_O)tabla_sprites.o
 
 ################################################################################
 #Clases derivadas...
@@ -346,30 +346,30 @@ $(DIR_O)input.o :\
 $(DIR_O)input_base.o \
 $(DIR_CLASS_DERIVADA)input.h \
 $(DIR_CLASS_DERIVADA)input.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS_DERIVADA)input.cpp -o $(DIR_O)input.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS_DERIVADA)input.cpp -o $(DIR_O)input.o
 
 $(DIR_O)configuracion.o :\
 $(DIR_O)configuracion_base.o \
 $(DIR_CLASS_DERIVADA)configuracion.h \
 $(DIR_CLASS_DERIVADA)configuracion.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS_DERIVADA)configuracion.cpp -o $(DIR_O)configuracion.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS_DERIVADA)configuracion.cpp -o $(DIR_O)configuracion.o
 
 $(DIR_O)localizador.o :\
 $(DIR_CLASS_DERIVADA)localizador.h \
 $(DIR_CLASS_DERIVADA)localizador.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS_DERIVADA)localizador.cpp -o $(DIR_O)localizador.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS_DERIVADA)localizador.cpp -o $(DIR_O)localizador.o
 
 $(DIR_O)audio.o:\
 $(DIR_O)audio_base.o \
 $(DIR_CLASS_DERIVADA)audio.h\
 $(DIR_CLASS_DERIVADA)audio.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS_DERIVADA)audio.cpp -o $(DIR_O)audio.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS_DERIVADA)audio.cpp -o $(DIR_O)audio.o
 
 $(DIR_O)cargador_recursos.o:\
 $(DIR_O)cargador_recursos_base.o \
 $(DIR_CLASS_DERIVADA)cargador_recursos.h\
 $(DIR_CLASS_DERIVADA)cargador_recursos.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS_DERIVADA)cargador_recursos.cpp -o $(DIR_O)cargador_recursos.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS_DERIVADA)cargador_recursos.cpp -o $(DIR_O)cargador_recursos.o
 
 ################################################################################
 #Clases base
@@ -377,19 +377,19 @@ $(DIR_CLASS_DERIVADA)cargador_recursos.cpp
 $(DIR_O)configuracion_base.o :\
 $(DIR_CLASS_BASE)configuracion_base.h \
 $(DIR_CLASS_BASE)configuracion_base.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS_BASE)configuracion_base.cpp -o $(DIR_O)configuracion_base.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS_BASE)configuracion_base.cpp -o $(DIR_O)configuracion_base.o
 
 $(DIR_O)audio_base.o :\
 $(DIR_CLASS_BASE)audio_base.h \
 $(DIR_CLASS_BASE)audio_base.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS_BASE)audio_base.cpp -o $(DIR_O)audio_base.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS_BASE)audio_base.cpp -o $(DIR_O)audio_base.o
 
 $(DIR_O)cargador_recursos_base.o :\
 $(DIR_CLASS_BASE)cargador_recursos_base.h \
 $(DIR_CLASS_BASE)cargador_recursos_base.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS_BASE)cargador_recursos_base.cpp -o $(DIR_O)cargador_recursos_base.o 
+	$(CC) $(CFLAGS) $(DIR_CLASS_BASE)cargador_recursos_base.cpp -o $(DIR_O)cargador_recursos_base.o
 
 $(DIR_O)input_base.o :\
 $(DIR_CLASS_BASE)input_base.h \
 $(DIR_CLASS_BASE)input_base.cpp
-	$(CC) $(CFLAGS) $(DIR_CLASS_BASE)input_base.cpp -o $(DIR_O)input_base.o	
+	$(CC) $(CFLAGS) $(DIR_CLASS_BASE)input_base.cpp -o $(DIR_O)input_base.o

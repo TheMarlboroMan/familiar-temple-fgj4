@@ -32,7 +32,7 @@ class Item_base:public Actor, public Borrable, public Representable
 	/////////////////////////
 	// Propiedades...
 	private:
-	static Tabla_sprites TREC;
+
 	static const unsigned int W=16;
 	static const unsigned int H=16;
 
@@ -55,6 +55,7 @@ class Item_base:public Actor, public Borrable, public Representable
 	virtual void recibir_visitante(Visitante_item&)=0;
 	virtual unsigned int puntuacion_por_recoger() const=0;
 	const Tabla_sprites& acc_tabla_sprites() const {return TREC;}
+	static Tabla_sprites TREC;
 };
 
 #endif

@@ -14,6 +14,7 @@ class Patrullador: public Enemigo_base, public Movil, public Representable
 	public:
 
 	static float VELOCIDAD;
+	static Tabla_sprites TREC;
 
 	private:
 
@@ -24,7 +25,6 @@ class Patrullador: public Enemigo_base, public Movil, public Representable
 	// Propiedades...
 
 	private:
-	static Tabla_sprites TREC;
 	float angulo;
 	float tiempo;
 
@@ -40,13 +40,13 @@ class Patrullador: public Enemigo_base, public Movil, public Representable
 
 	virtual unsigned short int obtener_profundidad_ordenacion() const {return 30;}
 	virtual void transformar_bloque(Bloque_transformacion_representable &b) const;
-	virtual std::string a_cadena() const 
+	virtual std::string a_cadena() const
 	{
 #ifdef WINCOMPIL
 	using namespace parche_mingw;
 #else
-	using namespace std;	
-#endif		
+	using namespace std;
+#endif
 		return "PATRULLADOR EN "+to_string(acc_espaciable_x())+","+to_string(acc_espaciable_y());
 	}
 
@@ -61,7 +61,7 @@ class Patrullador: public Enemigo_base, public Movil, public Representable
 
 	/////////////////////////
 	// Métodos internos.
-	
+
 	private:
 
 	////////////////////////
@@ -70,9 +70,9 @@ class Patrullador: public Enemigo_base, public Movil, public Representable
 	public:
 
 	Patrullador();
-	~Patrullador();	
+	~Patrullador();
 
-	void girar() 
+	void girar()
 	{
 		angulo+=90;
 		if(angulo >= 360.0) angulo=0.0;

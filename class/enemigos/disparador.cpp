@@ -1,6 +1,5 @@
 #include "disparador.h"
 
-Tabla_sprites Disparador::TREC("data/recortes/enemigo_disparador.dat");
 Generador_int Disparador::GI(1, 5);
 
 Disparador::Disparador()

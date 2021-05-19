@@ -9,7 +9,7 @@
 #ifdef WINCOMPIL
 	using namespace parche_mingw;
 #else
-	using namespace std;	
+	using namespace std;
 #endif
 
 class Perseguidor: public Enemigo_base, public Movil, public Representable
@@ -20,6 +20,7 @@ class Perseguidor: public Enemigo_base, public Movil, public Representable
 	public:
 
 	static float VELOCIDAD;
+	static Tabla_sprites TREC;
 
 	private:
 
@@ -30,7 +31,6 @@ class Perseguidor: public Enemigo_base, public Movil, public Representable
 	// Propiedades...
 
 	private:
-	static Tabla_sprites TREC;
 	int salud;
 	float angulo;
 
@@ -59,7 +59,7 @@ class Perseguidor: public Enemigo_base, public Movil, public Representable
 
 	/////////////////////////
 	// Métodos internos.
-	
+
 	private:
 
 	////////////////////////
@@ -68,7 +68,7 @@ class Perseguidor: public Enemigo_base, public Movil, public Representable
 	public:
 
 	Perseguidor();
-	~Perseguidor();	
+	~Perseguidor();
 
 	void turno(float) {}
 
