@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.caballorenoir.familiar_temple</id>
+
+  <name>Familiar Temple</name>
+  <summary>Quick and easy top-down action game</summary>
+
+  <metadata_license>MIT</metadata_license>
+  <project_license>GNU General Public License</project_license>
+
+  <description>
+    <p>
+      Top-down action game, collect weapons, shoot monsters and grab treasure on your way to the final confrontation.
+    </p>
+    <p>
+      Developed for the Familiar Game Jam 4, based on the 90s "The Mummy" movie.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">familiar_temple.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>http://caballorenoir.net/hosted/games/images/familiar_temple-title.png</image>
+    </screenshot>
+    <screenshot>
+      <image>http://caballorenoir.net/hosted/games/images/familiar_temple-gameplay1.png</image>
+    </screenshot>
+    <screenshot>
+      <image>http://caballorenoir.net/hosted/games/images/familiar_temple-gameplay2.png</image>
+    </screenshot>
+  </screenshots>
+</component>

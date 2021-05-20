@@ -1,8 +1,8 @@
 #Definiciones.
 #OPTIMIZE="-O3"
 DEBUG=-g
-CFLAGS=-c ${DEBUG} ${OPTIMIZE} -Wno-deprecated -Wall -ansi -pedantic -std=c++11
-CFLAGS_TARGET_FINAL=${DEBUG} ${OPTIMIZE} -Wno-deprecated -Wall -ansi -pedantic -std=c++11
+CFLAGS=-c ${DEBUG} ${OPTIMIZE} -Wno-deprecated -Wall -ansi -pedantic -std=c++11 $(BUILDTYPEFLAGS)
+CFLAGS_TARGET_FINAL=${DEBUG} ${OPTIMIZE} -Wno-deprecated -Wall -ansi -pedantic -std=c++11 $(BUILDTYPEFLAGS)
 CC=g++
 EJECUTABLE=familiar_temple.out
 LIMPIAR=rm objects/*; rm libdan2/objects/*; rm libDanSDL2.a; rm $(EJECUTABLE);

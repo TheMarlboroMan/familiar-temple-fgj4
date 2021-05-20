@@ -24,6 +24,8 @@ void Controlador::inicializar()
 	inicializar_entorno_grafico(pantalla, 800, 600);
 	inicializar_entorno_audio();
 
+
+
 	//Inicializar recursos.
 	Cargador_recursos cargador_recursos(pantalla);
 	cargador_recursos.generar_recursos_texturas();
@@ -41,7 +43,7 @@ void Controlador::inicializar()
 void Controlador::inicializar_entorno_grafico(DLibV::Pantalla& pantalla, unsigned int w, unsigned int h)
 {
 	configurar_entorno_grafico(pantalla, w, h);
-	pantalla.establecer_titulo(" -- == FAMILIAR TEMPLE == --");
+	pantalla.establecer_titulo("FAMILIAR TEMPLE");
 	DLibV::Utilidades_graficas_SDL::mostrar_ocultar_cursor(false);
 }
 

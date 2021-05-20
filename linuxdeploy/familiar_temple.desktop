@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game;
+Icon=familiar_temple
+Name=Familiar Temple
+Type=Application
+Exec=familiar_temple.out
+
+Name[en_US]=familiar_temple.desktop

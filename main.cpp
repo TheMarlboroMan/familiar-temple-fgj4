@@ -32,6 +32,7 @@ DLibH::Log_base LOG;
 
 std::string env::data_path="";
 std::string env::usr_path="";
+
 Tabla_sprites Proyectil::TREC=Tabla_sprites();
 Tabla_sprites Boss::TREC=Tabla_sprites();
 Tabla_sprites Disparador::TREC=Tabla_sprites();
@@ -64,7 +65,7 @@ int main(int argc, char ** argv)
 
 #ifdef AS_APPIMAGE
 #pragma message ("Building as AppImage!!")
-		env::data_path=App::env::data_path+"../share/";
+		env::data_path=env::data_path+"../share/";
 #endif
 
 		struct stat st={0};
@@ -97,27 +98,27 @@ int main(int argc, char ** argv)
 		}
 	}
 
-	Proyectil::TREC.cargar(env::data_path+"data/recortes/proyectiles.dat");
-	Boss::TREC.cargar(env::data_path+"data/recortes/enemigo_boss.dat");
-	Disparador::TREC.cargar(env::data_path+"data/recortes/enemigo_disparador.dat");
-	Patrullador::TREC.cargar(env::data_path+"data/recortes/enemigo_patrullador.dat");
-	Perseguidor::TREC.cargar(env::data_path+"data/recortes/enemigo_perseguidor.dat");
-	Item_base::TREC.cargar(env::data_path+"data/recortes/items.dat");
-	Celda::TREC.cargar(env::data_path+"data/recortes/bloques.dat");
-	Celda_deco::TREC.cargar(env::data_path+"data/recortes/tiles.dat");
-	Rep_municion::TREC.cargar(env::data_path+"data/recortes/hud.dat");
-
 	if(DLibH::Herramientas_SDL::iniciar_SDL(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_JOYSTICK))
 	{
 
 		//Inicializar control de logs.
-
-		std::string info_log_path=env::usr_path+"data/logs/info.log";
+		std::string info_log_path=env::usr_path+"logs/info.log";
 		LOG.inicializar(info_log_path.c_str());
 		LOG.activar();
 
-		std::string motor_log_path=env::usr_path+"data/logs/log_motor.log";
+		std::string motor_log_path=env::usr_path+"logs/log_motor.log";
 		DLibH::Log_motor::arrancar(motor_log_path.c_str());
+
+		Proyectil::TREC.cargar(env::data_path+"data/recortes/proyectiles.dat");
+		Boss::TREC.cargar(env::data_path+"data/recortes/enemigo_boss.dat");
+		Disparador::TREC.cargar(env::data_path+"data/recortes/enemigo_disparador.dat");
+		Patrullador::TREC.cargar(env::data_path+"data/recortes/enemigo_patrullador.dat");
+		Perseguidor::TREC.cargar(env::data_path+"data/recortes/enemigo_perseguidor.dat");
+		Item_base::TREC.cargar(env::data_path+"data/recortes/items.dat");
+		Celda::TREC.cargar(env::data_path+"data/recortes/bloques.dat");
+		Celda_deco::TREC.cargar(env::data_path+"data/recortes/tiles.dat");
+		Rep_municion::TREC.cargar(env::data_path+"data/recortes/hud.dat");
+
 
 		//Inicializar control de argumentos.
 		DLibH::Controlador_argumentos CARG(argc, argv);
@@ -126,6 +127,7 @@ int main(int argc, char ** argv)
 
 		Controlador controlador(CARG);
 		controlador.inicializar();
+
 		Controlador_title CT(SES, controlador.acc_pantalla());
 		Controlador_game_over CG(SES);
 		Controlador_fin_1 F1(SES);
@@ -134,7 +136,6 @@ int main(int argc, char ** argv)
 		Controlador_interface * CINT=&CT;
 
 		controlador.iniciar_musica();
-
 		while(controlador.loop(*CINT))
 		{
 			if(SES.es_cambiar_estado())
@@ -150,7 +151,6 @@ int main(int argc, char ** argv)
 				SES.confirmar_cambio_estado();
 			}
 		};
-
 	}
 
 	DLibH::Log_motor::finalizar();
