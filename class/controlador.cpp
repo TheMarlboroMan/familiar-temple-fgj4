@@ -3,7 +3,8 @@
 Controlador::Controlador(DLibH::Controlador_argumentos& carg)
 	:controlador_argumentos(carg),
 	controlador_fps(),
-	pantalla() //
+	pantalla(),
+	input{configuracion}//
 {
 
 }

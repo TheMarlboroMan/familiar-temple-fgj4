@@ -284,6 +284,8 @@ Input_usuario Controlador_juego::recoger_input_usuario(const Input& input)
 	if(input.es_input_pulsado(Input::I_APUNTAR)) iu.apuntar=true;
 	if(input.es_input_down(Input::I_APUNTAR)) iu.keydown_apuntar=true;
 
+	if(input.es_input_down(Input::I_RECARGAR)) iu.recargar=true;
+
 	return iu;
 }
 

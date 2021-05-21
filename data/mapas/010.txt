@@ -1,7 +1,7 @@
 [INFO]
 18 18 90
 [NOMBRE]
-BURIAL CHAMBER
+LVL10: BURIAL CHAMBER
 [MAPA]
 ##################
 #1              1#

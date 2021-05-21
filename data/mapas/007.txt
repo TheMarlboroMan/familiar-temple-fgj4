@@ -1,7 +1,7 @@
 [INFO]
 30 30 150
 [NOMBRE]
-THE MAZE
+LVL7: THE MAZE
 [MAPA]
  ####################         
  #d  1   x   x   111#         

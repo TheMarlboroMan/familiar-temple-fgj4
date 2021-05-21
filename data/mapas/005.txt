@@ -1,7 +1,7 @@
 [INFO]
 40 19 120
 [NOMBRE]
-TREASURE CHAMBER
+LVL5: TREASURE CHAMBER
 [MAPA]
 #####   ##############                  
 #   #   #    x a x1 1###   ###########  

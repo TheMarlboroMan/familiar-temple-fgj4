@@ -17,6 +17,7 @@ bool hay_eventos_teclado_down();
 */
 
 #include "../base_proyecto/input_base.h"
+#include "configuracion.h"
 
 class Input:public Input_base
 {
@@ -39,13 +40,15 @@ I_RECARGAR,
 I_FULLSCREEN
 };
 
+	const Configuracion& config;
+
 	///////////////////
 	// Métodos
 
 	public:
 
-	virtual void configurar();	
-	Input():Input_base() {}
+	virtual void configurar();
+	Input(const Configuracion& _config):Input_base(), config{_config} {}
 };
 
 #endif

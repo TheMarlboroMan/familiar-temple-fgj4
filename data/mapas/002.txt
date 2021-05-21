@@ -1,7 +1,7 @@
 [INFO]
 15 15 30
 [NOMBRE]
-DESCENDING HALL
+LVL2: DESCENDING HALL
 [MAPA]
 ####       ####
 #, #       #. #

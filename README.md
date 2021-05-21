@@ -1,6 +1,12 @@
 # familiar-temple-fgj4
 Code and resources for this "oldie".
 
+## Changelog
+
+v1.0.0: March 2015, game gets done.
+v1.1.0: May 2021, building as AppImage
+v1.1.1: May 2021, gamepad support, tweaked scores, adds level number to level name
+
 ## building
 
 You will need a c++11 compliant compiler, the SDL2 development libraries, the SDL2_Image development libraries and the the SDL2_Mixer development libraries. You can find everything you need in your package manager :).

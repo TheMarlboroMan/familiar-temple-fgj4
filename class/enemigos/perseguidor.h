@@ -55,7 +55,7 @@ class Perseguidor: public Enemigo_base, public Movil, public Representable
 	virtual void recibir_visitante(Visitante_enemigo& v) {v.visitar(*this);}
 	virtual bool es_saltable() const {return true;}
 	virtual bool es_disparable() const {return true;}
-	virtual unsigned int puntuacion_por_eliminar() const {return 0;}
+	virtual unsigned int puntuacion_por_eliminar() const {return 25;}
 
 	/////////////////////////
 	// Métodos internos.

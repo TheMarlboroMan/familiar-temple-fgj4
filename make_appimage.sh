@@ -1,20 +1,50 @@
 #!/bin/bash
-
 if [[ $# -ne 1 ]]
 then
 	echo "usage: make_appimage.sh path_to_linuxdeploy"
 	exit 1
 fi;
 
-#export SIGN=1
-#export SIGN_KEY=0xLAST8CHARSOFGPGKEYID
+if [ -d AppDir ];
+then
+	rm -rf AppDir/
+fi
+
+rm *.AppImage
+rm *.out
+rm *.a
+rm -rf objects/*;
 
 if [ -f AppDir ];
 then
 	rm -rf AppDir
 fi
 
-rm *.AppImage
+cd libdan2
+if [ -d objects ];
+then
+	rm -rf objects
+fi
+
+if [ -f libDanSDL2legacy.a ];
+then
+    rm libDanSDL2legacy.a
+fi
+
+mkdir -p objects
+make -f makefile_linux -j4
+cp ./libDanSDL2legacy.a ../
+cd ..
+
+if [ -d objects ];
+then
+	rm -rf objects
+fi;
+mkdir -p objects
+make -f makefile_linux -j4 BUILDTYPEFLAGS=-DAS_APPIMAGE=1
+
+#export SIGN=1
+#export SIGN_KEY=0xLAST8CHARSOFGPGKEYID
 
 $1 --appdir AppDir
 cp -r data AppDir/usr/share

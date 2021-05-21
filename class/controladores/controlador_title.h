@@ -17,7 +17,7 @@ class Controlador_title:public Controlador_interface
 	DLibV::Representacion_texto_auto_estatica txt_creditos;
 
 	public:
-	
+
 	Controlador_title(Sistema_estados& s, DLibV::Pantalla&p);
 
 	virtual void preloop(const Input& input, float delta) {}

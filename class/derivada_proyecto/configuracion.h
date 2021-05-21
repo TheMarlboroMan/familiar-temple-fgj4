@@ -51,6 +51,14 @@ class Configuracion: public Configuracion_base
 	private:
 
 	unsigned int idioma;
+	int gamepad_up{0};
+	int gamepad_right{0};
+	int gamepad_down{0};
+	int gamepad_left{0};
+	int gamepad_jump{0};
+	int gamepad_fire{0};
+	int gamepad_strafe{0};
+	int gamepad_reload{0};
 
 	////////////////////////////////
 	// Interface pública.
@@ -58,6 +66,14 @@ class Configuracion: public Configuracion_base
 	public:
 
 	unsigned short int acc_idioma() const {return this->idioma;}
+	int get_gamepad_up() const {return gamepad_up;}
+	int get_gamepad_right() const {return gamepad_right;}
+	int get_gamepad_down() const {return gamepad_down;}
+	int get_gamepad_left() const {return gamepad_left;}
+	int get_gamepad_jump() const {return gamepad_jump;}
+	int get_gamepad_fire() const {return gamepad_fire;}
+	int get_gamepad_strafe() const {return gamepad_strafe;}
+	int get_gamepad_reload() const {return gamepad_reload;}
 	void mut_idioma(unsigned short int p_valor) {this->idioma=p_valor;}
 
 	Configuracion();

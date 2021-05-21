@@ -10,3 +10,11 @@ audio_salidas:0
 audio_buffers:1024
 audio_canales:1
 idioma:0
+gamepad_up:12
+gamepad_right:13
+gamepad_down:14
+gamepad_left:15
+gamepad_jump:2
+gamepad_fire:7
+gamepad_strafe:5
+gamepad_reload:3

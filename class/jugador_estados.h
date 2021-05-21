@@ -20,7 +20,7 @@ class Visitante_estado_jugador
 	public:
 
 	Visitante_estado_jugador() {}
-	
+
 //	virtual void visitar(Estado_jugador&)=0;
 	virtual void visitar(Estado_jugador_suelo&)=0;
 	virtual void visitar(Estado_jugador_aire&)=0;
@@ -38,14 +38,14 @@ class Estado_jugador
 		SUELO, 				//Estado normal en suelo.
 		AIRE, 				//Estado cayendo o saltando.
 		RECARGAR
-	
+
 	};
 
 	typedef DLibH::Caja<int, unsigned int> t_caja;	//La caja que usaremos para definir transformaciones entre estados.
 
 	//Todas las medidas en unidades por segundo, salvo que se diga lo contrario.
 	static const float VEL_MINIMA_SUELO;
-	static const float VEL_MAXIMA_SUELO;	
+	static const float VEL_MAXIMA_SUELO;
 	static const float VELOCIDAD_FRENO_MANUAL;
 	static const float ACELERACION_SUELO;
 	static const float DECELERACION_SUELO;
@@ -76,7 +76,7 @@ class Estado_jugador
 
 	public:
 
-	/*Este devolvería la caja que se aplica para transformar un estado en 
+	/*Este devolvería la caja que se aplica para transformar un estado en
 	otro. Todos los estados se comparan con el método "caja_original" que
 	se define aquí, que se basaría en "estar en pie.*/
 
@@ -97,7 +97,7 @@ class Estado_jugador
 		//Estado base...
 		t_caja resultado(0, 0, 16, 40);
 
-		//Salida del estado anterior... Restaremos la y y la x al 
+		//Salida del estado anterior... Restaremos la y y la x al
 		//estado base.
 		t_caja caja_anterior=anterior.obtener_caja_estado();
 		resultado.origen.x-=caja_anterior.origen.x;
@@ -113,7 +113,7 @@ class Estado_jugador
 		return resultado;
 	}
 
-	void cargar_datos(const DLibH::Vector_2d pv, const Input_usuario& piu) 
+	void cargar_datos(const DLibH::Vector_2d pv, const Input_usuario& piu)
 	{
 		v=pv;
 		iu=piu;
@@ -126,14 +126,14 @@ class Estado_jugador
 
 	void establecer_vector_x(float x) {v.x=x;}
 	void establecer_vector_y(float y) {v.y=y;}
-	void cambiar_estado(t_estados e) 
+	void cambiar_estado(t_estados e)
 	{
 		cambia_estado=true;
 		nuevo_estado=e;
 	}
 
 	Estado_jugador()
-		:cambia_estado(false), nuevo_estado(t_estados::SUELO) 
+		:cambia_estado(false), nuevo_estado(t_estados::SUELO)
 	{}
 	virtual ~Estado_jugador() {}
 };
@@ -159,14 +159,14 @@ class Estado_jugador_suelo:public Estado_jugador
 	virtual t_estados acc_estado() const {return t_estados::SUELO;}
 	virtual void recibir_visitante(Visitante_estado_jugador& v) {v.visitar(*this);}
 
-	virtual void procesar(float delta) 
+	virtual void procesar(float delta)
 	{
 		//TODO: Mover este auto a algún tipo de método externo para esta clase o namespace..
 
 		auto f=[delta](int mov, float vreal, float v)
 		{
 			if(!mov && vreal)
-			{		
+			{
 				v-=DECELERACION_SUELO * delta;
 				if(v < 0.0) v=0.0;
 				else if(v > VEL_MAXIMA_SUELO) v=VEL_MAXIMA_SUELO; //En efecto, para controlar la salida del salto largo.
@@ -207,7 +207,7 @@ class Estado_jugador_suelo:public Estado_jugador
 		establecer_vector_x( f(input.mov_horizontal, acc_vector().x, fabs(acc_vector().x)) );
 		establecer_vector_y( f(input.mov_vertical, acc_vector().y, fabs(acc_vector().y)) );
 
-		//Si esto ocurre es porque hemos intentado recargar pero el 
+		//Si esto ocurre es porque hemos intentado recargar pero el
 		//controlador no nos deja. Reiniaríamos el estado.
 		if(recargar)
 		{
@@ -221,13 +221,16 @@ class Estado_jugador_suelo:public Estado_jugador
 			if(!margen_recarga) margen_recarga=0.5;
 			else recargar=true;
 		}
-		
-		
+
+		if(input.recargar) {
+
+			recargar=true;
+		}
 	}
 
-	virtual void turno(float delta) 
+	virtual void turno(float delta)
 	{
-		reducir_valor_con_delta(margen_recarga, delta);	
+		reducir_valor_con_delta(margen_recarga, delta);
 	}
 };
 
@@ -236,7 +239,7 @@ class Estado_jugador_suelo:public Estado_jugador
 class Estado_jugador_recargar:public Estado_jugador
 {
 	private:
-	
+
 	float tiempo_recarga;
 
 	public:
@@ -249,12 +252,12 @@ class Estado_jugador_recargar:public Estado_jugador
 	virtual t_estados acc_estado() const {return t_estados::RECARGAR;}
 	virtual void recibir_visitante(Visitante_estado_jugador& v) {v.visitar(*this);}
 
-	virtual void procesar(float delta) 
+	virtual void procesar(float delta)
 	{
 		auto f=[delta](int mov, float vreal, float v)
 		{
 			if(!mov && vreal)
-			{		
+			{
 				v-=DECELERACION_SUELO * delta;
 				if(v < 0.0) v=0.0;
 				else if(v > VEL_MAXIMA_SUELO) v=VEL_MAXIMA_SUELO; //En efecto, para controlar la salida del salto largo.
@@ -296,7 +299,7 @@ class Estado_jugador_recargar:public Estado_jugador
 		establecer_vector_y( f(input.mov_vertical, acc_vector().y, fabs(acc_vector().y)) );
 	}
 
-	virtual void turno(float delta) 
+	virtual void turno(float delta)
 	{
 		reducir_valor_con_delta(tiempo_recarga, delta);
 		if(!tiempo_recarga) cambiar_estado(t_estados::SUELO);

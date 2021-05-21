@@ -6,7 +6,7 @@
 #ifdef WINCOMPIL
 	using namespace parche_mingw;
 #else
-	using namespace std;	
+	using namespace std;
 #endif
 
 Representador::Representador()
@@ -20,8 +20,8 @@ Representador::~Representador()
 }
 
 unsigned int Representador::generar_vista(
-	DLibV::Pantalla& pantalla, 
-	DLibV::Camara& camara, 
+	DLibV::Pantalla& pantalla,
+	DLibV::Camara& camara,
 	const std::vector<Representable *>& v)
 {
 	unsigned int total=0;
@@ -48,30 +48,30 @@ void Representador::generar_hud_municion(DLibV::Pantalla& pantalla, const std::v
 	{
 		r->transformar_bloque(bloque_transformacion);
 		bloque_transformacion.rep->volcar(pantalla);
-	}	
+	}
 }
 
 void Representador::generar_hud_nivel(DLibV::Pantalla& pantalla, const std::string& nombre, unsigned int segundos, unsigned int decimas, unsigned int puntuacion)
 {
 	DLibV::Representacion_primitiva_caja_estatica caja_fondo=DLibV::Representacion_primitiva_caja_estatica(
-		DLibH::Herramientas_SDL::nuevo_sdl_rect(640, 0, 160, 80), 0, 0, 0);
+		DLibH::Herramientas_SDL::nuevo_sdl_rect(600, 0, 200, 80), 0, 0, 0);
 	caja_fondo.establecer_alpha(192);
 	caja_fondo.volcar(pantalla);
 
 	DLibV::Representacion_texto_auto_estatica nombre_nivel(pantalla.acc_renderer(), DLibV::Gestor_superficies::obtener(Recursos_graficos::RS_FUENTE_BASE), nombre);
-	nombre_nivel.establecer_posicion(660, 16);
+	nombre_nivel.establecer_posicion(620, 16);
 	nombre_nivel.volcar(pantalla);
 
 	std::stringstream ss;
 	ss<<std::setw(3)<<std::setfill('0')<<segundos<<"."<<std::setw(2)<<std::setfill('0')<<decimas;
-	DLibV::Representacion_texto_auto_estatica txt_segundos(pantalla.acc_renderer(), DLibV::Gestor_superficies::obtener(Recursos_graficos::RS_FUENTE_BASE), ss.str()+"seg");
-	txt_segundos.establecer_posicion(660, 32);
+	DLibV::Representacion_texto_auto_estatica txt_segundos(pantalla.acc_renderer(), DLibV::Gestor_superficies::obtener(Recursos_graficos::RS_FUENTE_BASE), ss.str()+"sec");
+	txt_segundos.establecer_posicion(620, 32);
 	txt_segundos.volcar(pantalla);
 
-	ss.str(std::string());	
+	ss.str(std::string());
 	ss<<std::setw(6)<<std::setfill('0')<<to_string(puntuacion);
 	DLibV::Representacion_texto_auto_estatica txt_puntuacion(pantalla.acc_renderer(), DLibV::Gestor_superficies::obtener(Recursos_graficos::RS_FUENTE_BASE), "["+ss.str()+"]");
-	txt_puntuacion.establecer_posicion(660, 48);
+	txt_puntuacion.establecer_posicion(620, 48);
 	txt_puntuacion.volcar(pantalla);
 }
 
@@ -82,7 +82,7 @@ void Representador::generar_hud_vida(DLibV::Pantalla& pantalla, unsigned int ene
 	//Energía...
 	bloque_transformacion.establecer_tipo(Bloque_transformacion_representable::TR_BITMAP);
 	bloque_transformacion.establecer_alpha(192);
-	bloque_transformacion.establecer_recurso(Recursos_graficos::RT_HUD);	
+	bloque_transformacion.establecer_recurso(Recursos_graficos::RT_HUD);
 
 	while(i < energia)
 	{
@@ -93,7 +93,7 @@ void Representador::generar_hud_vida(DLibV::Pantalla& pantalla, unsigned int ene
 	}
 
 	//Vidas...
-	bloque_transformacion.establecer_recurso(Recursos_graficos::RT_HUD);	
+	bloque_transformacion.establecer_recurso(Recursos_graficos::RT_HUD);
 	bloque_transformacion.establecer_recorte(fs_vidas.x, fs_vidas.y, fs_vidas.w, fs_vidas.h);
 	bloque_transformacion.establecer_posicion(16, 32, fs_vidas.w, fs_vidas.h);
 	bloque_transformacion.rep->volcar(pantalla);
@@ -109,7 +109,7 @@ void Representador::generar_hud_ankh(DLibV::Pantalla& pantalla, unsigned int act
 
 	bloque_transformacion.establecer_tipo(Bloque_transformacion_representable::TR_BITMAP);
 	bloque_transformacion.establecer_alpha(192);
-	bloque_transformacion.establecer_recurso(Recursos_graficos::RT_HUD);	
+	bloque_transformacion.establecer_recurso(Recursos_graficos::RT_HUD);
 	bloque_transformacion.establecer_recorte(fs.x, fs.y, fs.w, fs.h);
 	bloque_transformacion.establecer_posicion(80, 32, fs.w, fs.h);
 	bloque_transformacion.rep->volcar(pantalla);

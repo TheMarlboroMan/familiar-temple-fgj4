@@ -8,8 +8,6 @@
 enum de turno se puede asignar a uno o más valores SDLK_xxx, según lo mismo
 pueda hacerse con varias teclas, joystick o no. Esta clase es la propietaria
 de la instancia de controles_SDL.
-
-//TODO TODO TODO: Ahora mismo no hay soporte de Joystick ni de ratón!!!.
 */
 
 class Input_base
@@ -19,8 +17,14 @@ class Input_base
 
 	public:
 
-	typedef std::multimap<unsigned int, unsigned int> tipo_mapa;
-	typedef std::multimap<unsigned int, unsigned int>::const_iterator tipo_iterador;
+	struct input_type {
+		int type, //0 => key, 1 => joystick.
+			device,
+			code;
+	};
+
+	typedef std::multimap<unsigned int, input_type> tipo_mapa;
+	typedef std::multimap<unsigned int, input_type>::const_iterator tipo_iterador;
 
 	private:
 
@@ -49,7 +53,7 @@ class Input_base
 
 	/* Todas estas vamos a imaginar que son finales, ok?... */
 
-	void turno(); 
+	void turno();
 
 	bool es_senal_salida() const;
 	bool es_input_down(unsigned int) const;
@@ -57,7 +61,7 @@ class Input_base
 	bool es_input_pulsado(unsigned int) const;
 
 	bool es_tecla_down(unsigned int i) const {return controles_sdl.es_tecla_down(i);}
-	bool es_tecla_up(unsigned int i) const {return controles_sdl.es_tecla_up(i);}	
+	bool es_tecla_up(unsigned int i) const {return controles_sdl.es_tecla_up(i);}
 	bool es_tecla_pulsada(unsigned int i) const {return controles_sdl.es_tecla_pulsada(i);}
 
 	bool hay_eventos_teclado_down() const {return controles_sdl.recibe_eventos_teclado_down();}

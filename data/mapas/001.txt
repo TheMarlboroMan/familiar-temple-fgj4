@@ -1,7 +1,7 @@
 [INFO]
 25 18 30
 [NOMBRE]
-THE ENTRANCE
+LVL1: THE ENTRANCE
 [MAPA]
     #####                
    #     #               
