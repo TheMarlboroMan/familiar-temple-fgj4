@@ -18,7 +18,7 @@ Controlador_title::Controlador_title(Sistema_estados& s, DLibV::Pantalla& pantal
 	txt_intro(pantalla.acc_renderer(), DLibV::Gestor_superficies::obtener(Recursos_graficos::RS_FUENTE_BASE), cadena_intro),
 	txt_controles(pantalla.acc_renderer(), DLibV::Gestor_superficies::obtener(Recursos_graficos::RS_FUENTE_BASE), cadena_controles),
 	txt_creditos(pantalla.acc_renderer(), DLibV::Gestor_superficies::obtener(Recursos_graficos::RS_FUENTE_BASE),
-		cadena_creditos+std::string{"v"}+std::to_string(env::major_version)+"."
+		cadena_creditos+std::string{"2015, v"}+std::to_string(env::major_version)+"."
 		+std::to_string(env::minor_version)+"."
 		+std::to_string(env::patch_version))
 {
