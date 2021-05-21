@@ -20,7 +20,6 @@ struct env {
 		}
 
 		std::string str=data_path+_path;
-std::cout<<str<<std::endl;
 
 		return str;
 	}
