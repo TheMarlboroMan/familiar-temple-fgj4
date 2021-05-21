@@ -8,10 +8,10 @@ class Cargador_recursos:public Cargador_recursos_base
 {
 	protected:
 
-	std::string obtener_ruta_audio() const {return env::data_path+"data/recursos/audio.txt";}
-	std::string obtener_ruta_musica() const {return env::data_path+"data/recursos/musica.txt";}
-	std::string obtener_ruta_texturas() const {return env::data_path+"data/recursos/texturas.txt";}
-	std::string obtener_ruta_superficies() const {return env::data_path+"data/recursos/superficies.txt";}
+	std::string obtener_ruta_audio() const {return env::make_data_path("data/recursos/audio.txt");}
+	std::string obtener_ruta_musica() const {return env::make_data_path("data/recursos/musica.txt");}
+	std::string obtener_ruta_texturas() const {return env::make_data_path("data/recursos/texturas.txt");}
+	std::string obtener_ruta_superficies() const {return env::make_data_path("data/recursos/superficies.txt");}
 
 	public:
 

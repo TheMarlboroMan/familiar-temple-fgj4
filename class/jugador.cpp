@@ -6,7 +6,7 @@ const float Jugador::SEGUNDOS_INVULNERABILIDAD=2.000;
 Jugador::Jugador()
 	:Actor(0, 0, 0, 0), Movil(),
 	estado(new Estado_jugador_suelo()),
-	TREC(env::data_path+"data/recortes/jugador.dat"),
+	TREC{env::make_data_path("data/recortes/jugador.dat")},
 	direccion(Espaciable::D_DERECHA),
 	energia(ENERGIA_INICIAL),
 	tiempo_invulnerable(0.0)

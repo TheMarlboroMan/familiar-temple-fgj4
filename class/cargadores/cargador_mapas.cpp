@@ -1,4 +1,5 @@
 #include "cargador_mapas.h"
+#include "../env.h"
 
 Cargador_mapas::Cargador_mapas(const std::string& ruta_listado)
 {
@@ -44,7 +45,7 @@ void Cargador_mapas::cargar(const std::string& ruta_listado)
 				}
 				else
 				{
-					niveles[indice]=valores[1];
+					niveles[indice]=env::make_data_path(valores[1]);
 				}
 			}
 		}

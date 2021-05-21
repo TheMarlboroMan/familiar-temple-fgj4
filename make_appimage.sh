@@ -41,7 +41,7 @@ then
 	rm -rf objects
 fi;
 mkdir -p objects
-make -f makefile_linux -j4 BUILDTYPEFLAGS=-DAS_APPIMAGE=1
+make -f makefile_linux -j4 BUILDTYPEFLAGS=-DAS_APPIMAGE=1l
 
 #export SIGN=1
 #export SIGN_KEY=0xLAST8CHARSOFGPGKEYID

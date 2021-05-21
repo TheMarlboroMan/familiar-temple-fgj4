@@ -10,7 +10,7 @@
 
 Controlador_juego::Controlador_juego(const DLibH::Controlador_argumentos& CARG, Sistema_estados& s)
 	:Controlador_interface(s),
-	cargador_mapas(env::data_path+"data/recursos/niveles.txt"),
+	cargador_mapas(env::make_data_path("data/recursos/niveles.txt")),
 	nivel_actual(1), segundos_restantes(0.0)
 {
 	camara=DLibV::Camara(0, 0, 800, 600);
@@ -47,7 +47,6 @@ bool Controlador_juego::loop(const Input& input, float delta)
 			fade.turno(delta);
 			if(fade.es_finalizado())
 			{
-LOG<<"INICIO PROCESO CALLBACK FADE"<<std::endl;
 				procesar_callback_fade();
 			}
 		}

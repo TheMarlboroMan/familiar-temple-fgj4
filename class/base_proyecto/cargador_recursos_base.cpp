@@ -1,4 +1,5 @@
 #include "cargador_recursos_base.h"
+#include "../env.h"
 
 Cargador_recursos_base::Cargador_recursos_base(DLibV::Pantalla& p):pantalla(p)
 {
@@ -93,7 +94,7 @@ void Cargador_recursos_base::procesar_entrada_textura(const std::vector<std::str
 	else
 	{
 		unsigned int indice=std::atoi(valores[0].c_str());
-		std::string ruta=valores[1];
+		std::string ruta=env::make_data_path(valores[1]);
 		unsigned int transparencia=std::atoi(valores[2].c_str());
 
 		SDL_Surface * superficie=DLibV::Utilidades_graficas_SDL::cargar_imagen(ruta.c_str(), pantalla.acc_ventana());
@@ -131,7 +132,7 @@ void Cargador_recursos_base::procesar_entrada_superficie(const std::vector<std::
 	else
 	{
 		unsigned int indice=std::atoi(valores[0].c_str());
-		std::string ruta=valores[1];
+		std::string ruta=env::make_data_path(valores[1]);
 		unsigned int transparencia=std::atoi(valores[2].c_str());
 
 		SDL_Surface * superficie=DLibV::Utilidades_graficas_SDL::cargar_imagen(ruta.c_str(), pantalla.acc_ventana());
@@ -171,7 +172,7 @@ void Cargador_recursos_base::procesar_entrada_audio(const std::vector<std::strin
 	else
 	{
 		unsigned int indice=std::atoi(valores[0].c_str());
-		std::string ruta=valores[1];
+		std::string ruta=env::make_data_path(valores[1]);
 
 		if(DLibA::Gestor_recursos_audio::insertar_sonido(indice, ruta.c_str())==-1)
 		{
@@ -188,7 +189,7 @@ void Cargador_recursos_base::procesar_entrada_musica(const std::vector<std::stri
 	else
 	{
 		unsigned int indice=std::atoi(valores[0].c_str());
-		std::string ruta=valores[1];
+		std::string ruta=env::make_data_path(valores[1]);
 
 		if(DLibA::Gestor_recursos_audio::insertar_musica(indice, ruta.c_str())==-1)
 		{

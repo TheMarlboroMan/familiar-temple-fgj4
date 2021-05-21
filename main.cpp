@@ -45,6 +45,8 @@ Tabla_sprites Rep_municion::TREC=Tabla_sprites();
 
 int main(int argc, char ** argv)
 {
+	try {
+
 	{
 		std::string executable_path, executable_dir;
 		std::array<char, 1024> buff;
@@ -60,12 +62,12 @@ int main(int argc, char ** argv)
 		auto last_slash=executable_path.find_last_of("/");
 		executable_dir=executable_path.substr(0, last_slash)+"/";
 
-		env::data_path=executable_dir+"/";
+		env::set_data_path(executable_dir+"/");
 		env::usr_path=std::string{getenv("HOME")}+"/.familiar_temple/";
 
 #ifdef AS_APPIMAGE
 #pragma message ("Building as AppImage!!")
-		env::data_path=env::data_path+"../share/";
+		env::set_data_path(executable_dir+"/../share/");
 #endif
 
 		struct stat st={0};
@@ -92,7 +94,7 @@ int main(int argc, char ** argv)
 			};
 
 			dump_file(
-				env::data_path+"data/config/configuracion.dat",
+				env::make_data_path("data/config/configuracion.dat"),
 				env::usr_path+"/configuracion.dat"
 			);
 		}
@@ -109,15 +111,15 @@ int main(int argc, char ** argv)
 		std::string motor_log_path=env::usr_path+"logs/log_motor.log";
 		DLibH::Log_motor::arrancar(motor_log_path.c_str());
 
-		Proyectil::TREC.cargar(env::data_path+"data/recortes/proyectiles.dat");
-		Boss::TREC.cargar(env::data_path+"data/recortes/enemigo_boss.dat");
-		Disparador::TREC.cargar(env::data_path+"data/recortes/enemigo_disparador.dat");
-		Patrullador::TREC.cargar(env::data_path+"data/recortes/enemigo_patrullador.dat");
-		Perseguidor::TREC.cargar(env::data_path+"data/recortes/enemigo_perseguidor.dat");
-		Item_base::TREC.cargar(env::data_path+"data/recortes/items.dat");
-		Celda::TREC.cargar(env::data_path+"data/recortes/bloques.dat");
-		Celda_deco::TREC.cargar(env::data_path+"data/recortes/tiles.dat");
-		Rep_municion::TREC.cargar(env::data_path+"data/recortes/hud.dat");
+		Proyectil::TREC.cargar(env::make_data_path("data/recortes/proyectiles.dat"));
+		Boss::TREC.cargar(env::make_data_path("data/recortes/enemigo_boss.dat"));
+		Disparador::TREC.cargar(env::make_data_path("data/recortes/enemigo_disparador.dat"));
+		Patrullador::TREC.cargar(env::make_data_path("data/recortes/enemigo_patrullador.dat"));
+		Perseguidor::TREC.cargar(env::make_data_path("data/recortes/enemigo_perseguidor.dat"));
+		Item_base::TREC.cargar(env::make_data_path("data/recortes/items.dat"));
+		Celda::TREC.cargar(env::make_data_path("data/recortes/bloques.dat"));
+		Celda_deco::TREC.cargar(env::make_data_path("data/recortes/tiles.dat"));
+		Rep_municion::TREC.cargar(env::make_data_path("data/recortes/hud.dat"));
 
 
 		//Inicializar control de argumentos.
@@ -157,4 +159,9 @@ int main(int argc, char ** argv)
 	DLibH::Herramientas_SDL::apagar_SDL();
 
 	return 0;
+	}
+	catch(std::exception& e) {
+
+		std::cout<<"interrupting due to exception "<<e.what()<<std::endl;
+	}
 }
