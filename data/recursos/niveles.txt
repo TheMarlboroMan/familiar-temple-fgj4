@@ -8,3 +8,5 @@
 8	data/mapas/008.txt
 9	data/mapas/009.txt
 10	data/mapas/010.txt
+11	data/mapas/011.txt
+12	data/mapas/012.txt

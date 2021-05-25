@@ -27,6 +27,8 @@ Controlador_juego::Controlador_juego(const DLibH::Controlador_argumentos& CARG, 
 
 bool Controlador_juego::loop(const Input& input, float delta)
 {
+	//DLibA::Controlador_audio_SDL::obtener()->debug_estado_canales();
+
 	if( (input.es_senal_salida() || input.es_input_down(Input::I_ESCAPE)) && !fade.es_activo())
 	{
 		fade.activar(Fade::tcallback::VOLVER_TITULO, 0, 0, 0);
@@ -112,19 +114,20 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 		Input_usuario& iu;
 //		Nivel& nivel;
 
-		bool intentar_disparar;
-		bool recargar;
-		bool saltar;
+		bool intentar_disparar{false};
+		bool intentar_disparar_auto{false};
+		bool recargar{false};
+		bool saltar{false};
 
 		public:
 
 		bool es_intentar_disparar() const {return intentar_disparar;}
+		bool es_intentar_disparar_auto() const {return intentar_disparar_auto;}
 		bool es_recargar() const {return recargar;}
 		bool es_saltar() const {return saltar;}
 
 		Vis(Jugador& pj, Input_usuario& pi): //, Nivel& pn):
-			jugador(pj), iu(pi), //nivel(pn),
-			intentar_disparar(false), recargar(false), saltar(false)
+			jugador(pj), iu(pi)
 		{}
 
 		virtual void visitar(Estado_jugador_suelo& e)
@@ -132,6 +135,7 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 			if(e.es_recargar()) recargar=true;
 			else if(iu.saltar && jugador.puede_saltar()) saltar=true;
 			else if(iu.disparar) intentar_disparar=true;
+			else if(iu.disparar_auto) intentar_disparar_auto=true;
 		}
 
 		virtual void visitar(Estado_jugador_recargar&) {}
@@ -139,30 +143,52 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 
 	}vis(jugador, iu); //, mapa.acc_nivel());
 
-	//Recibimos el visitante. Inspeccionamos si aplicamos los casos que necesitan más información,
-	//como bajar o subir de escaleras o agacharse, que no es posible si estamos cerca de una escalera.
-
 	jugador.recibir_visitante_estado(vis);
 
 	//Finalmente, según el estado final, procesar el input.
 #ifndef NDEBUG
 	Estado_jugador::t_estados copia_estado=jugador.obtener_estado();
 #endif
+
 	jugador.procesar_estado(delta);
+
 #ifndef NDEBUG
 	assert(jugador.obtener_estado()==copia_estado);
 #endif
 
-	if(vis.es_intentar_disparar())
-	{
-		if(control_armas.puede_disparar())
-		{
-			generar_disparo_jugador();
-			control_armas.disparar();
+	if(vis.es_intentar_disparar() || vis.es_intentar_disparar_auto()) {
+
+
+		if(control_armas.is_empty()) {
+
+			if(vis.es_intentar_disparar()) {
+
+				cola_sonido(Recursos_audio::RS_ARMA_VACIA, 128);
+			}
+			//machine gun hack.
+			else if(vis.es_intentar_disparar_auto() && !control_armas.has_cooled_off()) {
+
+				cola_sonido(Recursos_audio::RS_ARMA_VACIA, 128);
+			}
 		}
-		else
-		{
-			if(!control_armas.acc_municion_actual()) cola_sonido(Recursos_audio::RS_ARMA_VACIA, 128);
+		else {
+
+			bool fire{false};
+
+			if(vis.es_intentar_disparar())
+			{
+				fire=control_armas.puede_disparar();
+			}
+			else if(vis.es_intentar_disparar_auto()) {
+
+				fire=control_armas.puede_disparar_auto();
+			}
+
+			if(fire) {
+
+				generar_disparo_jugador();
+				control_armas.disparar();
+			}
 		}
 	}
 
@@ -176,7 +202,8 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 	{
 		if(!control_armas.es_arma_llena())
 		{
-			jugador.recargar();
+			//TODO: time goes here.
+			jugador.recargar(control_armas.get_reload_time());
 			control_armas.recargar();
 			cola_sonido(Recursos_audio::RS_RECARGAR, 128);
 		}
@@ -280,6 +307,8 @@ Input_usuario Controlador_juego::recoger_input_usuario(const Input& input)
 
 	if(input.es_input_down(Input::I_SALTAR)) iu.saltar=true;
 	if(input.es_input_down(Input::I_DISPARAR)) iu.disparar=true;
+	if(input.es_input_pulsado(Input::I_DISPARAR)) iu.disparar_auto=true;
+
 	if(input.es_input_pulsado(Input::I_APUNTAR)) iu.apuntar=true;
 	if(input.es_input_down(Input::I_APUNTAR)) iu.keydown_apuntar=true;
 
@@ -497,6 +526,7 @@ void Controlador_juego::evaluar_eventos_juego()
 		virtual void visitar(Item_pistola& i) {recoger_arma(Control_armas::t_armas::PISTOLA, 24);}
 		virtual void visitar(Item_revolver& i) {recoger_arma(Control_armas::t_armas::REVOLVER, 12);}
 		virtual void visitar(Item_escopeta& i) {recoger_arma(Control_armas::t_armas::ESCOPETA, 8);}
+		virtual void visitar(Item_subfusil& i) {recoger_arma(Control_armas::t_armas::SUBFUSIL, 60);}
 		virtual void visitar(Item_ankh& i) {recoge_ankh=true;}
 		virtual void visitar(Item_salud& i) {recoge_salud=true;}
 
@@ -926,34 +956,50 @@ void Controlador_juego::generar_disparo_jugador()
 	float y=jugador.acc_espaciable_y()+jugador.acc_espaciable_h()/2 - 2;
 	Generador_int GPOT(-4, 4), GVOL(-20, 10);
 
-	if(control_armas.acc_arma_actual()==Control_armas::t_armas::REVOLVER)
-	{
-		std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), 0.0), 250.0, 20+GPOT(), Proyectil::tfaccion::JUGADOR));
-		p->establecer_posicion(x, y);
-		proyectiles.push_back(std::move(p));
-		cola_sonido(Recursos_audio::RS_REVOLVER, 128+GVOL());
-	}
-	else if(control_armas.acc_arma_actual()==Control_armas::t_armas::PISTOLA)
-	{
-		std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), 0.0), 300.0, 15+GPOT(), Proyectil::tfaccion::JUGADOR));
-		p->establecer_posicion(x, y);
-		proyectiles.push_back(std::move(p));
-		cola_sonido(Recursos_audio::RS_PISTOLA, 128+GVOL());
-	}
-	else if(control_armas.acc_arma_actual()==Control_armas::t_armas::ESCOPETA)
-	{
-		Generador_int GT(3, 6), GI(-5, 5);
-		unsigned int total=GT(), i=0;
+	switch(control_armas.acc_arma_actual()) {
 
-		while(i < total)
-		{
-			std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), GI()), 220.0, 10+GPOT(), Proyectil::tfaccion::JUGADOR));
+		case Control_armas::t_armas::REVOLVER:{
+			std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), 0.0), 250.0, 21+GPOT(), Proyectil::tfaccion::JUGADOR));
 			p->establecer_posicion(x, y);
 			proyectiles.push_back(std::move(p));
-			++i;
+			cola_sonido(Recursos_audio::RS_REVOLVER, 128+GVOL());
 		}
+		break;
+		case Control_armas::t_armas::PISTOLA: {
+		    Generador_int GI(-2, 2);
+			std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), GI()), 300.0, 15+GPOT(), Proyectil::tfaccion::JUGADOR));
+			p->establecer_posicion(x, y);
+			proyectiles.push_back(std::move(p));
+			cola_sonido(Recursos_audio::RS_PISTOLA, 128+GVOL());
+		}
+		break;
+		case Control_armas::t_armas::ESCOPETA: {
+			Generador_int GT(4, 9), GI(-6, 6);
+			unsigned int total=GT(), i=0;
 
-		cola_sonido(Recursos_audio::RS_ESCOPETA, 128+GVOL());
+			while(i < total)
+			{
+				std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), GI()), 220.0, 13+GPOT(), Proyectil::tfaccion::JUGADOR));
+				p->establecer_posicion(x, y);
+				proyectiles.push_back(std::move(p));
+				++i;
+			}
+
+			cola_sonido(Recursos_audio::RS_ESCOPETA, 128+GVOL());
+		}
+		break;
+		case Control_armas::t_armas::SUBFUSIL: {
+			Generador_int GI(-4, 4);
+			std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), GI()), 280.0, 8+GPOT(), Proyectil::tfaccion::JUGADOR));
+			p->establecer_posicion(x, y);
+			proyectiles.push_back(std::move(p));
+
+			cola_sonido(Recursos_audio::RS_PISTOLA, 80+GVOL());
+		}
+		break;
+		default:
+			throw std::runtime_error("unregistered weapon in generar_disparo_jugador");
+
 	}
 }
 

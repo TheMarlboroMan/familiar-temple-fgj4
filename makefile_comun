@@ -56,6 +56,7 @@ $(DIR_O)sistema_vidas.o \
 $(DIR_O)item_base.o \
 $(DIR_O)item_revolver.o \
 $(DIR_O)item_pistola.o \
+$(DIR_O)item_subfusil.o \
 $(DIR_O)item_escopeta.o \
 $(DIR_O)item_ankh.o \
 $(DIR_O)item_salud.o \
@@ -161,6 +162,7 @@ $(DIR_O)item_revolver.o \
 $(DIR_O)item_pistola.o \
 $(DIR_O)item_escopeta.o \
 $(DIR_O)item_ankh.o \
+$(DIR_O)item_subfusil.o \
 $(DIR_O)item_salud.o \
 $(DIR_O)nivel.o \
 $(DIR_NIVEL)mapa.h \
@@ -250,6 +252,12 @@ $(DIR_O)item_base.o\
 $(DIR_CLASS)items/item_revolver.h \
 $(DIR_CLASS)items/item_revolver.cpp
 	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_revolver.cpp -o $(DIR_O)item_revolver.o
+
+$(DIR_O)item_subfusil.o :\
+$(DIR_O)item_base.o\
+$(DIR_CLASS)items/item_subfusil.h \
+$(DIR_CLASS)items/item_subfusil.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS)items/item_subfusil.cpp -o $(DIR_O)item_subfusil.o
 
 $(DIR_O)item_pistola.o :\
 $(DIR_O)item_base.o\

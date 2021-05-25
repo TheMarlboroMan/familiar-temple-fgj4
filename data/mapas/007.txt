@@ -1,68 +1,46 @@
 [INFO]
-30 30 150
+40 19 120
 [NOMBRE]
-LVL7: THE MAZE
+LVL7: TREASURE CHAMBER
 [MAPA]
- ####################         
- #d  1   x   x   111#         
- #    ###########   #  #####  
- # 3c #         # b ####   #  
- #    ###########   x  x d #  
- #d  1   x a x   1 1####2  #  
- #################x##  ##x##  
-                 #e#    # #   
-#######          # #    #e#   
-# 2   #  #####  ##x##  ##x##  
-#     ####   #  #1  ####  2#  
-#  c         #  # d x  x 3 #  
-#     ####2  #  #  2####   #  
-### ###  ##x##  #####  ##x##  
-  # #     # #           # #   
-  # #     # #           # #   
- ## ###  ##x##  #####  ##x##  
- #    #  #  a####   ####2  #  
- # xx #  # , x  x b x  x   #  
- # xx #  #   ####2  ####  1#  
- #    #  #####  #####  ## ##  
- ###3##                 # #   
-   # #   ################ ####
- ### ##  #    a              #
- #    #  #2  #     #  b     d#
- # 1 1#  #                   #
- #  1 #  ### ##### ###### ####
- #    #    #3#   #3#    # #   
- #   .#    #d#   #d#    #d#   
- ######    ###   ###    ###   
+#####   ##############                  
+#   #   #    x a x1 1###   ###########  
+#d  #   # d  x c x 1 xd#   #        .#  
+### #   ##########   ###   #         #  
+  # #            #1 1#     #  #xxx#  #  
+  # #    ###     #   #     #         #  
+  # #    #,#     # x #     #         #  
+  # # #### ####  # x ###   #    3    #  
+### ###      2####   xd#   #         #  
+#       xx xx    x   ###   #         #  
+#d  ###2      #### x #     #  #xxx#  #  
+### # #########  # x #     #         #  
+  # #            # x ###   #         #  
+  # #            #    b#   ###xxxxx###  
+  # # #########  #    d#     #     #    
+### ###2#d#2#b################     ###  
+#d2       e   x  x  x  x  x          #  
+### ### #2#d#2########################  
+  ### #########                         
 [DECO]
- QQQQQQQQRIJIRQQQQQQQ         
- QCCCCCCCKNALKCCCCCCQ         
- QCCCCUUUUUUUUUUUCCCQ  UUUUU  
- QCCCCU         UCCCRUUUPPPT  
- QCCCCUUUUUUUUUUUCCCKNLKPPPU  
- QCCCCCCCKNALKCCCCCCRUUUPPPU  
- QQQQQQQQRIJIRQQQRKRU  UUKUU  
-                 UOU    UOU   
-UUUUUUU          UMU    UMU   
-UPPPPPU  UUUUU  UUKUU  UUKUU  
-UPPPPPUUUUAAAU  UPPPUUUUAAAU  
-UPPPPPPPPNAAAU  UPPPKNLKAAAU  
-UPPPPPUUUUAAAU  UPPPUUUUAAAU  
-UUUPUUU  UUKUU  UUUUU  UUKUU  
-  UPU     UOU           UOU   
-  UPU     UMU           UMU   
- UUPUUU  UUKUU  UUUUU  UUKUU  
- UAOOAU  UPPPUUUUCCCUUUUPPPU  
- UNKKLU  UPPPKNLKCCCKNLKPPPU  
- UNKKLU  UPPPUUUUCCCUUUUPPPU  
- UAMMAU  UUUUU  UUUUU  UUOUU  
- UUUPUU                 RAR   
-   RPR   YYYYYYYYYYYYYYYYAYYYY
- YYYOYY  YAAAAAAAAAAAAAAAAAAAY
- YAAAAY  YAAAUAAAAAUAAAAAAAAAY
- YAAAAY  YAAAAAAAAAAAAAAAAAAAY
- YAAAAY  YYYAYYYYYAYYYYYYAYYYY
- YAAAAY    YAY   YAY    YAY   
- YAAAbY    YAY   YAY    YAY   
- YYYYYY    YYY   YYY    YYY   
+QQQQQ   WWWWWWWWWWWWWW                  
+QALCQ   WPPPPKPPPKPPPWWW   QQQQQQQQQQQ  
+QALCQ   WPPPPKPPPKPPPKPW   QAAAAAAAAbQ  
+QQQCQ   WWWWWWWWWWPPPWWW   QAAAMMMAAAQ  
+  QCQ            WPPPW     QAAIKKKIAAQ  
+  QCQ    QQQ     WPPPW     QAAAOOOAAAQ  
+  QCQ    QAQ     WPKPW     QAAAAAAAAAQ  
+  QCQ QQQQAQQQQ  WPKPWWW   QAAAAAAAAAQ  
+QQQCQQQAAAAAAAQQQRPPPKPW   QAAAAAAAAAQ  
+QALCNAAAKKAKKAAALKPPPWWW   QAAAMMMAAAQ  
+QALCQQQAAAAAAAQQQRPKPW     QAAIKKKIAAQ  
+QQQCQ QQQQQQQQQ  WPKPW     QAAAOOOAAAQ  
+  QCQ            WPKPWWW   QAAMMMMMAAQ  
+  QCQ            WPPPPPW   QQQKKKKKQQQ  
+  QCQ QQQQQQQQQ  WPPPPPW     ROOOOOR    
+QQQCQQQAQAQAQAQRHJHHJHHJHHJGGGAAAAAGGG  
+QALCNAAAAAAAALKNLKNLKNLKNLKNAAAAAAAAAG  
+QQQCQQQAQAQAQAQRHJHHJHHJHHJGGGGGGGGGGG  
+  QQQ QQQQQQQQQ                         
 
 <FIN>

@@ -1,46 +1,44 @@
 [INFO]
-40 19 120
+19 19 90
 [NOMBRE]
-LVL5: TREASURE CHAMBER
+LVL5: INTO THE TEMPLE
 [MAPA]
-#####   ##############                  
-#   #   #    x a x1 1###   ###########  
-#d  #   # d  x c x 1 xd#   #        .#  
-### #   ##########   ###   #         #  
-  # #            #1 1#     #  #xxx#  #  
-  # #    ###     #   #     #         #  
-  # #    #,#     # x #     #         #  
-  # # #### ####  # x ###   #    3    #  
-### ###      2####   xd#   #         #  
-#       xx xx    x   ###   #         #  
-#d  ###2      #### x #     #  #xxx#  #  
-### # #########  # x #     #         #  
-  # #            # x ###   #         #  
-  # #            #    b#   ###xxxxx###  
-  # # #########  #    d#     #     #    
-### ###2#d#2#b################     ###  
-#d2       e   x  x  x  x  x          #  
-### ### #2#d#2########################  
-  ### #########                         
+         ##########
+   ##### #      #d#
+   #c a# # ###  # #
+   # , # # 1.#    #
+   #   # # ###  # #
+   ## ## #      #2#
+    # #  ######## #
+  ### ###       # #
+  # # #2##    ### #
+  #      #####2## #
+###       1    ## #
+#1d xxx  #####x##x#
+### xbx  #   # ##2#
+  # x x  #   # ## #
+  # xxx  #   #x##x#
+###      ### #    #
+#1d #11# d1# #  e #
+###2#### ### # ##1#
+  ###  ###   ######
 [DECO]
-QQQQQ   WWWWWWWWWWWWWW                  
-QALCQ   WPPPPKPPPKPPPWWW   QQQQQQQQQQQ  
-QALCQ   WPPPPKPPPKPPPKPW   QAAAAAAAAbQ  
-QQQCQ   WWWWWWWWWWPPPWWW   QAAAMMMAAAQ  
-  QCQ            WPPPW     QAAIKKKIAAQ  
-  QCQ    QQQ     WPPPW     QAAAOOOAAAQ  
-  QCQ    QAQ     WPKPW     QAAAAAAAAAQ  
-  QCQ QQQQAQQQQ  WPKPWWW   QAAAAAAAAAQ  
-QQQCQQQAAAAAAAQQQRPPPKPW   QAAAAAAAAAQ  
-QALCNAAAKKAKKAAALKPPPWWW   QAAAMMMAAAQ  
-QALCQQQAAAAAAAQQQRPKPW     QAAIKKKIAAQ  
-QQQCQ QQQQQQQQQ  WPKPW     QAAAOOOAAAQ  
-  QCQ            WPKPWWW   QAAMMMMMAAQ  
-  QCQ            WPPPPPW   QQQKKKKKQQQ  
-  QCQ QQQQQQQQQ  WPPPPPW     ROOOOOR    
-QQQCQQQAQAQAQAQRHJHHJHHJHHJGGGAAAAAGGG  
-QALCNAAAAAAAALKNLKNLKNLKNLKNAAAAAAAAAG  
-QQQCQQQAQAQAQAQRHJHHJHHJHHJGGGGGGGGGGG  
-  QQQ QQQQQQQQQ                         
-
-<FIN>
+         QQQQQQQRQQ
+   WWWWW QAAAAAAJAQ
+   WAAAW QAWWWAARAQ
+   WAAAW QAAbWAAAAQ
+   WAAAW QAWWWAARAQ
+   WWAWW QAAAAAAJAQ
+    WAW  QQQQQQQRAR
+  WWWAWWW       WAW
+  WAWAWAWW    WWWAW
+  WAAAAAAWWWWWAWWAW
+WWWAAAAAAAAAAAAWWAW
+WAAAKKKCAWWWWWKWWKW
+WWWAKCKCAW   WOWWOW
+  WAKCKCAW   WMWWMW
+  WAKKKCAW   WKWWKW
+WWWAAAAAAWWW WAAAAW
+WAAAWAAWAAAW WAAAAW
+WWWAWWWWAWWW WAWWAW
+  WWW  WWW   WWWWWW

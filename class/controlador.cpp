@@ -73,6 +73,11 @@ LOG<<"Cambiando modo pantalla... "<<modo<<std::endl;
 
 void Controlador::inicializar_entorno_audio()
 {
+	LOG<<"starting audio with "<<configuracion.acc_audio_ratio()<<", "
+		<<configuracion.acc_audio_salidas()<<", "
+		<<configuracion.acc_audio_buffers()<<", "
+		<<configuracion.acc_audio_canales()<<std::endl;
+
 	Audio::inicializar_entorno_audio(
 		configuracion.acc_audio_ratio(),
 		configuracion.acc_audio_salidas(),

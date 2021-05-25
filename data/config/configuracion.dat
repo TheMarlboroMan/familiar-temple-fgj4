@@ -8,7 +8,7 @@ volumen_musica:64
 audio_ratio:44100
 audio_salidas:0
 audio_buffers:1024
-audio_canales:1
+audio_canales:32
 idioma:0
 gamepad_up:12
 gamepad_right:13

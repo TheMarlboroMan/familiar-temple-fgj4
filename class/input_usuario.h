@@ -8,6 +8,7 @@ struct Input_usuario
 		keyup_horizontal{0};
 	bool saltar{false},
 		disparar{false},
+		disparar_auto{false},
 		apuntar{false},
 		keydown_apuntar{false},
 		recargar{false};

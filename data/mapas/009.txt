@@ -1,107 +1,68 @@
 [INFO]
-25 49 160
+30 30 150
 [NOMBRE]
-LVL9: THE TRIALS
+LVL9: THE MAZE
 [MAPA]
-#########################
-#                       #
-#                       #
-# 2###   #######   ###  #
-#  #d               d#  #
-#  #2  1    1   1   2#  #
-#     #####   #####     #
-#   1 #d         d#     #
-#     #           #     #
-#  #  # 2### ###  #  #  #
-#  #  #  #    2#  #  #  #
-#2 # 2   #     #     #2 #
-#  #   2 #  .  #     #  #
-#  #     #     #     #  #
-#  #  #  #    2#  #  #  #
-#  #  # 2#######  #  #  #
-#     #           #     #
-#   2 #d         d#     #
-#     #####   #####     #
-#  #                 #  #
-#  #d               d#  #
-# 2###   #######   ### 2#
-#                       #
-#                       #
-###########   ###########
-          #   #          
-  #####   #   ########## 
-  # e #   #    a      3# 
-  #d d#   #          1 # 
-  # 3 #   #xxxxxxxxxx 1# 
-  #d d#   ##########x1 # 
-  #   #            #x  # 
-  #   #            #x  # 
-  #xxx#            #x  # 
-  #   ##############x  # 
-  #1 1  xxb     1xxxx  # 
-  # 1   xx   3   xx    # 
-  #  c  xx      1xx    # 
-  #   ################## 
-  #xxx#                  
-  #   #            ##### 
-  #   #            # , # 
-  #xxx#            #   # 
-  #d d#            #  a# 
-  #x x##############   # 
-  #x xxxxxxx d1  xxx   # 
-  #x3   b    xxx       # 
-  #xxxxxxxxx c1  xxx   # 
-  ###################### 
-
+ ####################         
+ #d  1   x   x   111#         
+ #    ###########   #  #####  
+ # 3c #         # b ####   #  
+ #    ###########   x  x d #  
+ #d  1   x a x   1 1####2  #  
+ #################x##  ##x##  
+                 #e#    # #   
+#######          # #    #e#   
+# 2   #  #####  ##x##  ##x##  
+#     ####   #  #1  ####  2#  
+#  c         #  # d x  x 3 #  
+#     ####2  #  #  2####   #  
+### ###  ##x##  #####  ##x##  
+  # #     # #           # #   
+  # #     # #           # #   
+ ## ###  ##x##  #####  ##x##  
+ #    #  #  a####   ####2  #  
+ # xx #  # , x  x b x  x   #  
+ # xx #  #   ####2  ####  1#  
+ #    #  #####  #####  ## ##  
+ ###3##                 # #   
+   # #   ################ ####
+ ### ##  #    a              #
+ #    #  #2  #     #  b     d#
+ # 1 1#  #                   #
+ #  1 #  ### ##### ###### ####
+ #    #    #3#   #3#    # #   
+ #   .#    #d#   #d#    #d#   
+ ######    ###   ###    ###   
 [DECO]
-XXXXXXXXXXXXXXXXXXXXXXXXX
-XPPPPPPPPPPPPPPPPPPPPPPPX
-XPPPPPPPPPPPPPPPPPPPPPPPX
-XPPUUUPPPUUUUUUUPPPUUUPPX
-XPPUPPPPPPPPPPPPPPPPPUPPX
-XPPUPPPPPPPPPPPPPPPPPUPPX
-XPPPPPaaaaaPPPaaaaaPPPPPX
-XPPPPPaPPPPPPPPPPPaPPPPPX
-XPPPPPaPPPPPPPPPPPaPPPPPX
-XPPUPPaPPHHHOHHHPPaPPUPPX
-XPPUPPaPPHAABAAHPPaPPUPPX
-XPPUPPPPPHNAAALHPPPPPUPPX
-XPPUPPPPPHNAbBLHPPPPPUPPX
-XPPUPPPPPHNABBLHPPPPPUPPX
-XPPUPPaPPHAMMMAHPPaPPUPPX
-XPPUPPaPPHHHHHHHPPaPPUPPX
-XPPPPPaPPPPPPPPPPPaPPPPPX
-XPPPPPaPPPPPPPPPPPaPPPPPX
-XPPPPPaaaaaPPPaaaaaPPPPPX
-XPPUPPPPPPPPPPPPPPPPPUPPX
-XPPUPPPPPPPPPPPPPPPPPUPPX
-XPPUUUPPPUUUUUUUPPPUUUPPX
-XPPPPPPPPPPPPPPPPPPPPPPPX
-XPPPPPPPPPPPPPPPPPPPPPPPX
-XXXXXXXXXXXOOOXXXXXXXXXXX
-          RAAAR          
-  QRIRQ   QACAQQQQQQRJRQ 
-  QAAAQ   QAAACAAAAAAAAQ 
-  QAAAQ   QMMMMMMMMMMAAQ 
-  QABAQ   QKKKKKKKKKKNBQ 
-  QAAAQ   QQQQRJIRQQKNAQ 
-  QACAQ            QKNAQ 
-  QCMMQ            QKNAQ 
-  QKKKQ            QKNCQ 
-  QOOOQQQQQQQQQQQQQQKNAQ 
-  QBAAALKKNAAAAALKKKKNAQ 
-  QAACALKKNAABAALKKNOAAQ 
-  QAAAALKKNCAAAALKKNAAAQ 
-  QMMMQQQQQRJIRQQQQQQQQQ 
-  QKKKQ                  
-  QOOOQ            QQQQQ 
-  RMCMQ            QPPPQ 
-  IKKKQ            QPPPR 
-  JPPPQ            QPPPI 
-  RKPKQQQQQRIJRQQQQQPPPR 
-  QKPKKKKKKKPPPPPKKKPPPQ 
-  QKPPPPPPPPPKKKPPPPPPPQ 
-  QKKKKKKKKKPPPPPKKKPPPQ 
-  QQQQQQQQQQQQQQQQQQQQQQ 
+ QQQQQQQQRIJIRQQQQQQQ         
+ QCCCCCCCKNALKCCCCCCQ         
+ QCCCCUUUUUUUUUUUCCCQ  UUUUU  
+ QCCCCU         UCCCRUUUPPPT  
+ QCCCCUUUUUUUUUUUCCCKNLKPPPU  
+ QCCCCCCCKNALKCCCCCCRUUUPPPU  
+ QQQQQQQQRIJIRQQQRKRU  UUKUU  
+                 UOU    UOU   
+UUUUUUU          UMU    UMU   
+UPPPPPU  UUUUU  UUKUU  UUKUU  
+UPPPPPUUUUAAAU  UPPPUUUUAAAU  
+UPPPPPPPPNAAAU  UPPPKNLKAAAU  
+UPPPPPUUUUAAAU  UPPPUUUUAAAU  
+UUUPUUU  UUKUU  UUUUU  UUKUU  
+  UPU     UOU           UOU   
+  UPU     UMU           UMU   
+ UUPUUU  UUKUU  UUUUU  UUKUU  
+ UAOOAU  UPPPUUUUCCCUUUUPPPU  
+ UNKKLU  UPPPKNLKCCCKNLKPPPU  
+ UNKKLU  UPPPUUUUCCCUUUUPPPU  
+ UAMMAU  UUUUU  UUUUU  UUOUU  
+ UUUPUU                 RAR   
+   RPR   YYYYYYYYYYYYYYYYAYYYY
+ YYYOYY  YAAAAAAAAAAAAAAAAAAAY
+ YAAAAY  YAAAUAAAAAUAAAAAAAAAY
+ YAAAAY  YAAAAAAAAAAAAAAAAAAAY
+ YAAAAY  YYYAYYYYYAYYYYYYAYYYY
+ YAAAAY    YAY   YAY    YAY   
+ YAAAbY    YAY   YAY    YAY   
+ YYYYYY    YYY   YYY    YYY   
 
-
+<FIN>

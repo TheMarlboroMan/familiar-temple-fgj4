@@ -1,42 +1,46 @@
 [INFO]
-18 18 90
+20 20 120
 [NOMBRE]
-LVL10: BURIAL CHAMBER
+LVL10: THE TEMPLE
 [MAPA]
-##################
-#1              1#
-#      b         #
-#  #xxxxxxxxxx#  #
-#  x          x  #
-#  x e        x  #
-#  x          x  #
-#  x   xxxx   x  #
-#  x   x4 x   x  #
-#  x   x  x   x  #
-#  x   xxxx   x  #
-# bx          x  #
-#  x    c   e x  #
-#  x          x a#
-#  #xxxxxxxxxx#  #
-#       ,  c     #
-#1              1#
-##################
+####################
+#3d1    131     1d3#
+#d1      1       1d#
+#1      131       1#
+#     c  1  a      #
+#      #e e#       #
+#                  #
+#c  3  a , a   3  f#
+#                  #
+#      #e e#       #
+#     f   1 a      #
+#        131       #
+#1                1#
+#d1     1        1d#
+#3d1   131      1d3#
+######## ###########
+       # #          
+########x###########
+#d 3x       x3    .#
+####################
 [DECO]
-HRUUUUURJIRUUUUURH
-RAAAAAAAAAAAAAAAAR
-UAAMMMMMMMMMMMAAAU
-UAAaKKKKKKKKKKaAAU
-UALKOOOOOOOOOOKNAU
-UALKNAAAAAAAALKNAU
-UALKNAAMMMMAALKNAU
-RALKNALKKKKNALKNAR
-IALKNALKAAKNALKNAJ
-JALKNALKAAKNALKNAI
-RALKNALKKKKNALKNAR
-UALKNAAOOOOAALKNAU
-UALKNAAAAAAAALKNAU
-UALKAMMMMMMMMMKNAU
-UAAaKKKKKKKKKKaAAU
-UAAAOOOOOOOOOOAAAU
-RAAAAAAAAAAAAAAAAR
-HRUUUUURIJRUUUUURH
+RQQQQQQQQQQRIRQQQQQR
+QPPPPPPPPPPPPPPPPPPQ
+QPPPOOOOOOOOOOOPPPPQ
+QPPPNAMMMMMMMALPPPPQ
+QPPPNLPPPPPPPNLPPPPQ
+QPPPNLPROOORPNLPPPPR
+QPPPNLPNBCBLPNLPPPPI
+RPPPNLPNACALPNLPPPPJ
+JPPPNLPNBCALPNLPPPPI
+RPPPNLPRMMMRPNLPPPPR
+QPPPNLPPPPPPPNLPPPPQ
+QPPPNAOOOOOOOALPPPPQ
+QPPPMMMMMMMMMMMPPPPQ
+QPPPPPPPPPPPPPPPPPPQ
+QPPPPPPPPPPPPPPPPPPQ
+RQQQQQQRORQQQRJIRQQR
+       QMQ          
+QRJIRQQRKRQQQQRIJRQQ
+QAALKNAAAAALKNAAAAbQ
+QQQRJRQQQQQQQRIRQQQQ

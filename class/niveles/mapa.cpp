@@ -113,6 +113,7 @@ void Mapa::importar_nivel(const std::string& nombre_fichero)
 								case 'c':
 								case 'd':
 								case 'e':
+								case 'f':
 								{
 									Item_base * i=nullptr;
 									switch(c)
@@ -122,6 +123,7 @@ void Mapa::importar_nivel(const std::string& nombre_fichero)
 										case 'c': i=new Item_escopeta(); break;
 										case 'd': i=new Item_ankh(); ++total_ankh; break;
 										case 'e': i=new Item_salud(); break;
+										case 'f': i=new Item_subfusil(); break;
 									}
 
 									if(i)

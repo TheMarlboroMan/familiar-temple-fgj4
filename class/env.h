@@ -8,8 +8,8 @@ struct env {
 	public:
 
 	static const int major_version{1};
-	static const int minor_version{1};
-	static const int patch_version{1};
+	static const int minor_version{3};
+	static const int patch_version{0};
 	static std::string usr_path;
 
 	static std::string make_data_path(const std::string _path) {

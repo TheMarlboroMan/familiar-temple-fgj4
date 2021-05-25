@@ -109,7 +109,7 @@ int Controlador_audio_SDL::config_ratio=44100;
 int Controlador_audio_SDL::config_salidas=2;
 int Controlador_audio_SDL::config_buffers=1024;
 Uint16 Controlador_audio_SDL::config_formato=AUDIO_S16SYS;
-unsigned int Controlador_audio_SDL::config_canales_audio=8;
+unsigned int Controlador_audio_SDL::config_canales_audio=32;
 
 
 Controlador_audio_SDL::Controlador_audio_SDL():
@@ -285,32 +285,25 @@ void Controlador_audio_SDL::preparar_controles(unsigned int p_can)
 
 bool Controlador_audio_SDL::iniciar()
 {
-	this->preparar_controles(this->canales_audio);
-
-	bool resultado=true;
-
 	//Comprobar que el audio está arrancado.
 	if(SDL_WasInit(SDL_INIT_AUDIO)==0)
 	{
 		if(SDL_InitSubSystem(SDL_INIT_AUDIO)==-1)
 		{
-			resultado=false;
+			return false;
 		}
 	}
 
-	if(resultado)
+	if(Mix_OpenAudio(this->ratio, this->formato, this->salidas, this->buffers) == -1)
 	{
-		if(Mix_OpenAudio(this->ratio, this->formato, this->salidas, this->buffers) == -1)
-		{
-			resultado=false;
-		}
-		else
-		{
-			Mix_ChannelFinished(callback_fin_reproduccion);
-		}
+		return false;
 	}
 
-	return resultado;
+	Mix_AllocateChannels(canales_audio);
+	Mix_ChannelFinished(callback_fin_reproduccion);
+	this->preparar_controles(this->canales_audio);
+
+	return true;
 }
 
 void Controlador_audio_SDL::debug_estado_canales()

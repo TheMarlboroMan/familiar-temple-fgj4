@@ -244,8 +244,8 @@ class Estado_jugador_recargar:public Estado_jugador
 
 	public:
 
-		//TODO: Hacer CONST.
-	Estado_jugador_recargar(): tiempo_recarga(1.5)
+	//TODO: Different weapons, different times.
+	Estado_jugador_recargar(float _t): tiempo_recarga(_t)
 	{}
 
 	virtual t_caja obtener_caja_estado() const {return t_caja(0, 0, 16, 16);}

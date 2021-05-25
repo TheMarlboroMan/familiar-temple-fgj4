@@ -10,6 +10,7 @@ class Item_base;
 class Item_pistola;
 class Item_revolver;
 class Item_escopeta;
+class Item_subfusil;
 class Item_ankh;
 class Item_salud;
 
@@ -23,6 +24,7 @@ class Visitante_item
 	virtual void visitar(Item_pistola&)=0;
 	virtual void visitar(Item_revolver&)=0;
 	virtual void visitar(Item_escopeta&)=0;
+	virtual void visitar(Item_subfusil&)=0;
 	virtual void visitar(Item_ankh&)=0;
 	virtual void visitar(Item_salud&)=0;
 };

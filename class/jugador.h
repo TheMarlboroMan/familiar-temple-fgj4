@@ -12,7 +12,7 @@
 #ifdef WINCOMPIL
 	using namespace parche_mingw;
 #else
-	using namespace std;	
+	using namespace std;
 #endif
 
 class Jugador:public Actor, public Movil, public Representable
@@ -73,7 +73,7 @@ class Jugador:public Actor, public Movil, public Representable
 
 	/////////////////////////
 	// Métodos internos.
-	
+
 	private:
 
 	void cambiar_estado(Estado_jugador * e);
@@ -99,7 +99,7 @@ class Jugador:public Actor, public Movil, public Representable
 	void chocar_desde_arriba_con(const Espaciable::t_caja& c);
 	void chocar_desde_abajo_con(const Espaciable::t_caja& c);
 	void saltar();
-	void recargar() {cambiar_estado(new Estado_jugador_recargar());}
+	void recargar(float _t) {cambiar_estado(new Estado_jugador_recargar(_t));}
 
 	Estado_jugador::t_estados obtener_estado() const {return estado->acc_estado();}
 	void recibir_visitante_estado(Visitante_estado_jugador& v) {estado->recibir_visitante(v);}

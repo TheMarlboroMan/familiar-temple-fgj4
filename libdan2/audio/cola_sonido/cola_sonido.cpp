@@ -2,7 +2,7 @@
 
 using namespace DLibA;
 
-/* TODO: 
+/* TODO:
 Lo ideal es que esto no sea sólo una cola de sonidos sino una cola de bloques
 de sonido que incluyan cosas como el canal, el volumen o lo que sea. De momento
 lo podemos dejar así pero me gustaría estudiarlo en el futuro.
@@ -19,7 +19,7 @@ Cola_sonido::~Cola_sonido()
 }
 
 /*
-OJO: El mero de hecho de llamar a este método (que se hace sólo nada más 
+OJO: El mero de hecho de llamar a este método (que se hace sólo nada más
 construir un objeto de esta clase) implica que se inicializará el controlador
 de audio sdl.
 */
@@ -46,7 +46,7 @@ void Cola_sonido::insertar(const Estructura_sonido& p_e)
 	//this->cola.push(p_e);
 	this->cola.push_back(p_e);
 }
-	
+
 Estructura_sonido Cola_sonido::obtener_primero()
 {
 	return this->cola.front();
@@ -63,18 +63,18 @@ void Cola_sonido::procesar_cola(bool descartar)
 	if(this->controlador)
 	{
 		//Los sonidos que NO se pueden reproducir se descartan o se
-		//insertan en la parte trasera de la cola de nuevo. 
-		//Simplemente hacemos un bucle por los sonidos que había al 
+		//insertan en la parte trasera de la cola de nuevo.
+		//Simplemente hacemos un bucle por los sonidos que había al
 		//principio y lo iteramos una vez.
 
 /*		Estructura_sonido actual=NULL;
-		unsigned int t=this->cola.size(), i=0;		
-		
+		unsigned int t=this->cola.size(), i=0;
+
 		for(; i<t; i++)
 		{
 			actual=this->cola.front();
 			this->cola.pop();
-  
+
 			if(this->controlador->reproducir_sonido(actual) == -1 && !descartar)
 			{
 				this->cola.push(actual);
@@ -88,11 +88,12 @@ void Cola_sonido::procesar_cola(bool descartar)
 		{
 			for(auto& c : cola)
 			{
-				if(controlador->reproducir_sonido(c) == -1 && !descartar)
+				if(controlador->reproducir_sonido(c) == -1) // && !descartar)
 				{
+
 //			this->cola.push(actual);
 				}
-				
+
 			}
 			cola.clear();
 		}

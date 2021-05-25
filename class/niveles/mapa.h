@@ -16,6 +16,7 @@
 #include "../items/item_escopeta.h"
 #include "../items/item_ankh.h"
 #include "../items/item_salud.h"
+#include "../items/item_subfusil.h"
 
 /*La clase mapa es el conglomerado de la geometría del nivel y cualquier
 otra cosa que pueda contener. El cargador de mapas crearía un mapa (aunque
@@ -68,7 +69,7 @@ class Mapa
 	~Mapa();
 
 
-	Nivel::Coordenadas obtener_coordenadas_inicio_en_rejilla() const 
+	Nivel::Coordenadas obtener_coordenadas_inicio_en_rejilla() const
 	{
 		try
 		{
@@ -89,8 +90,8 @@ class Mapa
 	std::vector<std::unique_ptr<Item_base>>& acc_items() {return items;}
 	const std::string& acc_nombre() const {return nombre;}
 	unsigned int acc_segundos_finalizar() const {return segundos_finalizar;}
-	unsigned int acc_ankh_nivel() const {return total_ankh;}	
-	
+	unsigned int acc_ankh_nivel() const {return total_ankh;}
+
 	///////////////
 	// Propiedades
 

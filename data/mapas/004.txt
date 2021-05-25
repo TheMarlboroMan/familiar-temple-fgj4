@@ -1,44 +1,46 @@
 [INFO]
-19 19 90
+20 20 90
 [NOMBRE]
-LVL4: INTO THE TEMPLE
+LVL4: TRAP CHAMBER
 [MAPA]
-         ##########
-   ##### #      #d#
-   #c a# # ###  # #
-   # , # # 1.#    #
-   #   # # ###  # #
-   ## ## #      #2#
-    # #  ######## #
-  ### ###       # #
-  # # #2##    ### #
-  #      #####2## #
-###       1    ## #
-#1d xxx  #####x##x#
-### xbx  #   # ##2#
-  # x x  #   # ## #
-  # xxx  #   #x##x#
-###      ### #    #
-#1d #11# d1# #  e #
-###2#### ### # ##1#
-  ###  ###   ######
+###########         
+#      xx # ########
+#.  1  x  # #     c#
+#      xx # # xxx  #
+######### # # xdx  #
+######### # # xxx  #
+# x    1x # #      #
+#x######### ######1#
+# #              #x#
+# #              # #
+# # ###     ###  # #
+# # #d#     #d#  # #
+#x### ####### ####x#
+# 1      e       1 #
+#                  #
+#x### ### ### ######
+# # #2# # # #2#     
+# # ### # # ###     
+#d#     #,#         
+###     ###         
 [DECO]
-         QQQQQQQRQQ
-   WWWWW QAAAAAAJAQ
-   WAAAW QAWWWAARAQ
-   WAAAW QAAbWAAAAQ
-   WAAAW QAWWWAARAQ
-   WWAWW QAAAAAAJAQ
-    WAW  QQQQQQQRAR
-  WWWAWWW       WAW
-  WAWAWAWW    WWWAW
-  WAAAAAAWWWWWAWWAW
-WWWAAAAAAAAAAAAWWAW
-WAAAKKKCAWWWWWKWWKW
-WWWAKCKCAW   WOWWOW
-  WAKCKCAW   WMWWMW
-  WAKKKCAW   WKWWKW
-WWWAAAAAAWWW WAAAAW
-WAAAWAAWAAAW WAAAAW
-WWWAWWWWAWWW WAWWAW
-  WWW  WWW   WWWWWW
+WWWWWWWWWWW         
+WAALBBBKKBW WWWWWWWW
+WbALBBBKBBW WBBBBBBW
+WAALBBBKKBW WBKKKBBW
+WXXXXXXXXBW WBKBKBBW
+WXXXXXXXXBW WBKKKBBW
+WBKBBBBBKBW WBBBBBBW
+WKWWWWWWWWW WWWWWWBW
+WBW              WKW
+WBW              WBW
+WBW WWW     WWW  WBW
+WBW WBW     WBW  WBW
+WKWWWBWWWWWWWBWWWWKW
+WBBBBBBBBBBBBBBBBBBW
+WBBBBBBBBBBBBBBBBBBW
+WKWWWBWWWBWWWBWWWWWW
+WBW WBW WBW WBW     
+WBW WWW WBW WWW     
+WBW     WBW         
+WWW     WWW         

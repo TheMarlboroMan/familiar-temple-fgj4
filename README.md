@@ -1,4 +1,5 @@
 # familiar-temple-fgj4
+
 Code and resources for this "oldie".
 
 ## Changelog
@@ -6,6 +7,85 @@ Code and resources for this "oldie".
 v1.0.0: March 2015, game gets done.
 v1.1.0: May 2021, building as AppImage
 v1.1.1: May 2021, gamepad support, tweaked scores, adds level number to level name
+v1.3: May 2021, found out an old version was 1.2, so I slapped in a new weapon and maps, named it v1.3 and called it a day.
+
+## Level format and mod support
+
+### mod support
+
+If you are willing to build the game or use the non AppImage format, you can hack the data/recursos/niveles.txt to add or remove levels. This file looks like this:
+
+[1-starting index] + [tab] + [level location]
+
+Bear in mind that the game ends when the boss is killed, nevermind if there are still levels left. Attempting to exit a level past the level list will log an error and exit the game.
+
+### level format
+
+Levels are plain text files. Spacing (even right spacing) is significant.
+
+Text files are divided into four parts. Each part starts with a label and ends with the next label or the end of the file. Labels are expressed as square-bracket-encased strings like [LABEL]. Labels must be followed by a new line. Parts are:
+
+### info
+
+Label [INFO], in the next line there are three integers separated by a space. These are width (in tiles), height (in tiles) and seconds to finish the map.
+
+### name
+
+Label [NOMBRE], in the next line there is a string with the map name.
+
+### logic
+
+Label [MAPA], the next lines are a grid of map_width x map_height that should contain exactly width x height printable characters (thus, spacing IS significant). Each character represents a different gameplay component:
+
+space -> nothing
+hash symbol # -> wall
+x -> kill floor
+, -> start
+. -> end
+a -> pistol
+b -> handgun
+c -> shotgun
+d -> ankh
+e -> health
+f -> submachine gun
+1 -> scarab
+2 -> wall crawler
+3 -> mummy
+4 -> boss
+
+#### Decorations
+
+Label [DECO], another grid with the visible map tiles, as follows:
+
+space -> nothing, great void.
+A -> yellow tile
+B -> yellow slightly broken tile
+C -> yellow broken tile
+D -> yellow hieroglyph tile
+E -> yellow eye tile
+F -> brown tile
+G -> brown slightly broken tile
+H -> brown broken tile
+I -> brown Hieroglyph wall
+J -> brown eye wall
+K -> kill floor
+L -> right blue trim yellow tile
+M -> bottom blue trim yellow tile
+N -> left blue trim yellow tile
+O -> top blue trim yellow tile
+P -> sand
+Q -> broken brown tile
+R -> broken in 4 brown tile
+S -> grey tile
+T -> grey slightly broken tile
+U -> grey broken tile
+V -> green tile
+W -> green slightly broken tile
+X -> green broken tile
+Y -> purple tile
+Z -> purple slightly broken tile
+a -> purple broken tile
+b -> exit
 
 ## building
 

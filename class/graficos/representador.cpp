@@ -39,10 +39,9 @@ unsigned int Representador::generar_vista(
 void Representador::generar_hud_municion(DLibV::Pantalla& pantalla, const std::vector<Representable *>& v)
 {
 	DLibV::Representacion_primitiva_caja_estatica caja_fondo=DLibV::Representacion_primitiva_caja_estatica(
-		DLibH::Herramientas_SDL::nuevo_sdl_rect(0, 0, 200, 72), 0, 0, 0);
+		DLibH::Herramientas_SDL::nuevo_sdl_rect(0, 0, 240, 72), 0, 0, 0);
 	caja_fondo.establecer_alpha(192);
 	caja_fondo.volcar(pantalla);
-
 
 	for(Representable * r : v)
 	{

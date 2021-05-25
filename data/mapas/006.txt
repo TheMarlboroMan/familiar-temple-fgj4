@@ -1,66 +1,46 @@
 [INFO]
-15 30 120
+15 20 80
 [NOMBRE]
-LVL6: HIPOSTYLE
+LVL6: THE WELL
 [MAPA]
- ############# 
- #    c,b    # 
- #         c # 
- # xx#   #xx # 
- # xd   3 dx # 
- #1x       x1# 
- # xd 3   dx # 
- # xx#   #xx # 
- #   1   1   # 
- #####xxx##### 
-     #   #     
-     # e #  ###
-     #   #  # #
-######xxx#### #
-# d1        b #
-#a 1          #
-######xxx####x#
-     #  a#  # #
-  ####   #  # #
-  #dd    #  #x#
-  ####111#  # #
-     #   #  # #
-     #xxx####x#
-     #       2#
-     #        #
- #####111#### #
- #     3 #  # #
- #       #  ###
- # . #####     
- #####         
+####### #######
+#xxxxx# #xxxxx#
+#x    ###    x#
+#x d   3   d x#
+#xa   # #    x#
+### ### ### ###
+  # #xx xx# #  
+  # #x111x# #  
+  # 3 1.1 3 #  
+  # #x1 1x# #  
+  # #xxdxx# #  
+### ####### ###
+#x 3   f   3 x#
+#x           x#
+#x           x#
+#x           x#
+#x    xxx    x#
+#xe   x,x   dx#
+#xxxxxxxxxxxxx#
+###############
 [DECO]
- QQQQQQQQQQQQQ 
- QWWWWWWWWWWWQ 
- QWWWWWWWWWWWQ 
- QWKKJWWWJKKWQ 
- QWKWWWWWWWKWQ 
- QWKWWWWWWWKWQ 
- QWKWWWWWWWKWQ 
- QWKKIWWWIKKWQ 
- QWWWWWWWWWWWQ 
- QQQQRKKKRQQQQ 
-     IOOOI     
-     IAAAI  QQQ
-     RMMMR  QTQ
-YYYYYYKKKYYRQTQ
-YTTTTTTTTTTTTTQ
-YTTTTTTTTTTTTTQ
-YYYYYYKKKZZRIKI
-     ZTTTZ  QTQ
-  RZZZTTTZ  QTQ
-  JTTTTTTJ  JKJ
-  RZZZTTTZ  QTQ
-     ZTTTZ  QTQ
-     IKKKIRQIKI
-     RTTTTTTTTR
-     ZTTTTTTTTY
- ZZZZZTTTZZZZTY
- ZBBBLTTTZ  ZTY
- ZBBBLTTTZ  ZZY
- ZBbBZZZZZ     
- ZZZZZ         
+SSSSSSS SSSSSSS
+SKKKKKS SKKKKKS
+SKPPPPSSSPPPPKS
+SKPPPPPPPPPPPKS
+SKPPPPSOSPPPPKS
+SSSOSSSASSSOSSS
+  SASKKAKKSAS  
+  SASKAAAKSAS  
+  SALAAbAANAS  
+  SASKAAAKSAS  
+  SASKKAKKSAS  
+SSSMSSSSSSSMSSS
+SKNAPPPPPPPPLKS
+SKNPPPPPPPPPLKS
+SKNPPPPPPPPPLKS
+SKNPPMMMMMPPLKS
+SKNPPLKKKNPPLKS
+SKMMMMKCKMMMMKS
+SKKKKKKKKKKKKKS
+SSSSSSSSSSSSSSS

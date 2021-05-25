@@ -12,8 +12,8 @@ class Control_armas
 	//Definiciones
 	public:
 
-	enum class t_armas {REVOLVER=10, ESCOPETA=20, PISTOLA=30};
-	static const int MAX_ARMAS=3;
+	enum class t_armas {REVOLVER=10, ESCOPETA=20, PISTOLA=30, SUBFUSIL=40};
+	static const int MAX_ARMAS=4;
 
 	class Info_municion
 	{
@@ -24,13 +24,15 @@ class Control_armas
 		unsigned int reserva;
 		float cooloff;
 		float val_cooloff;
+		float reload_time;
+		bool automatic;
 
 		public:
 
-		Info_municion():max_arma(0), municion_actual(0), reserva(0), cooloff(0.0), val_cooloff(0.0)
+		Info_municion():max_arma(0), municion_actual(0), reserva(0), cooloff(0.0), val_cooloff(0.0), reload_time(0.0), automatic{false}
 		{}
 
-		Info_municion(unsigned int max, unsigned int act, unsigned int res, float vc):max_arma(max), municion_actual(act), reserva(res), cooloff(0.0), val_cooloff(vc)
+		Info_municion(unsigned int max, unsigned int act, unsigned int res, float vc, float rt, bool _auto):max_arma(max), municion_actual(act), reserva(res), cooloff(0.0), val_cooloff(vc), reload_time(rt), automatic{_auto}
 		{}
 
 		void reset(unsigned int max, unsigned int act, unsigned int res)
@@ -41,7 +43,11 @@ class Control_armas
 			cooloff=0.0;
 		}
 
+		float get_reload_time() const {return reload_time;}
+		bool is_empty() const {return !municion_actual;}
 		bool puede_disparar() const {return municion_actual && !cooloff;}
+		bool has_cooled_off() const {return 0.0==cooloff;}
+		bool puede_disparar_auto() const {return automatic && municion_actual && !cooloff;}
 		bool es_arma_llena() const {return municion_actual==obtener_max_actual();}
 		void disparar()
 		{
@@ -124,10 +130,14 @@ class Control_armas
 	unsigned int acc_max_arma() {return info_armas[arma_actual].acc_max_arma();}
 	unsigned int obtener_max_actual() {return info_armas[arma_actual].obtener_max_actual();}
 	bool puede_disparar() {return info_armas[arma_actual].puede_disparar();}
+	bool puede_disparar_auto() {return info_armas[arma_actual].puede_disparar_auto();}
 	bool es_arma_llena() {return info_armas[arma_actual].es_arma_llena();}
+	bool is_empty() {return info_armas[arma_actual].is_empty();}
+	bool has_cooled_off() {return info_armas[arma_actual].has_cooled_off();}
 	void recargar() {info_armas[arma_actual].recargar();}
 	void rellenar() {info_armas[arma_actual].rellenar();}
 	void turno(float delta) {info_armas[arma_actual].turno(delta);}
+	float get_reload_time() const {return info_armas.at(arma_actual).get_reload_time();}
 	unsigned int offset_hoja_sprites_arma_actual() const
 	{
 		switch(arma_actual)
@@ -135,6 +145,7 @@ class Control_armas
 			case t_armas::REVOLVER: return 10; break;
 			case t_armas::ESCOPETA: return 20; break;
 			case t_armas::PISTOLA: return 30; break;
+			case t_armas::SUBFUSIL: return 40; break;
 			default: return 0; break;
 		}
 	}
