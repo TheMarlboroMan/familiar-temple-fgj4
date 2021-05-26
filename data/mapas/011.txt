@@ -1,107 +1,58 @@
 [INFO]
-25 49 160
+23 24 160
 [NOMBRE]
-LVL11: THE TRIALS
+LVL11: OVER THE VOID
 [MAPA]
-#########################
-#                       #
-#                       #
-# 2###   #######   ###  #
-#  #d               d#  #
-#  #2  1    1   1   2#  #
-#     #####   #####     #
-#   1 #d         d#     #
-#     #           #     #
-#  #  # 2### ###  #  #  #
-#  #  #  #    2#  #  #  #
-#2 # 2   #     #     #2 #
-#  #   2 #  .  #     #  #
-#  #     #     #     #  #
-#  #  #  #    2#  #  #  #
-#  #  # 2#######  #  #  #
-#     #           #     #
-#   2 #d         d#     #
-#     #####   #####     #
-#  #                 #  #
-#  #d               d#  #
-# 2###   #######   ### 2#
-#                       #
-#                       #
-###########   ###########
-          #   #          
-  #####   #   ########## 
-  # e #   #    a      3# 
-  #d d#   #          1 # 
-  # 3 #   #xxxxxxxxxx 1# 
-  #d d#   ##########x1 # 
-  #   #            #x  # 
-  #   #            #x  # 
-  #xxx#            #x  # 
-  #   ##############x  # 
-  #1 1  xxb     1xxxx  # 
-  # 1   xx   3   xx    # 
-  #  c  xx      1xx    # 
-  #   ################## 
-  #xxx#                  
-  #   #            ##### 
-  #   #            # , # 
-  #xxx#            #   # 
-  #d d#            #  a# 
-  #x x##############   # 
-  #x xxxxxxx d1  xxx   # 
-  #x3   b    xxx       # 
-  #xxxxxxxxx c1  xxx   # 
-  ###################### 
-
+#######################
+# #2#2#xxxe#cexxxx3xxx#
+# 3    xx  #xxxxxxxxxx#
+# # # #xxx #xxxxxxxxxx#
+# #####xxxx# dxxxxxxxx#
+# .#xxxxxxx#1 xxxxxxxx#
+#xxxxxxxx  #xxxxxxxxxx#
+#xxxxxxd 3##xxxxx   xx#
+#xxxxxx    #   xx , xx#
+#xxxxxxx  c# 1 xx   xx#
+#xxxx xx  ## xxxxxxxxx#
+#xxxx xxxxxxxxxxxxxxxx#
+#xxxxxxxxxxx xxxxxxxxx#
+#xxxxxxxxxxxxxxxxxxxxx#
+#xxxx1##xxxx xxxxx#3e #
+#xxx 31#xxxx xxxxx# f #
+#xxx   #xxxxxxxxxx# d #
+#xxx   bxxxxxxxxxx### #
+#xxx     xxx1xxxxxxxx #
+#xxxd    xx1 dxx x  x #
+#xxxxxxxxxxxxxxxxxxxx #
+#xxxxxxxxxxxxxxxxxxxxx#
+#xxxxxxxxxxxxxxxxxxxxx#
+#xxxxxxxxxxxxxxxxxxxxx#
+#xxxxxxxxxxxxxxxxxxxxx#
+#######################
 [DECO]
-XXXXXXXXXXXXXXXXXXXXXXXXX
-XPPPPPPPPPPPPPPPPPPPPPPPX
-XPPPPPPPPPPPPPPPPPPPPPPPX
-XPPUUUPPPUUUUUUUPPPUUUPPX
-XPPUPPPPPPPPPPPPPPPPPUPPX
-XPPUPPPPPPPPPPPPPPPPPUPPX
-XPPPPPaaaaaPPPaaaaaPPPPPX
-XPPPPPaPPPPPPPPPPPaPPPPPX
-XPPPPPaPPPPPPPPPPPaPPPPPX
-XPPUPPaPPHHHOHHHPPaPPUPPX
-XPPUPPaPPHAABAAHPPaPPUPPX
-XPPUPPPPPHNAAALHPPPPPUPPX
-XPPUPPPPPHNAbBLHPPPPPUPPX
-XPPUPPPPPHNABBLHPPPPPUPPX
-XPPUPPaPPHAMMMAHPPaPPUPPX
-XPPUPPaPPHHHHHHHPPaPPUPPX
-XPPPPPaPPPPPPPPPPPaPPPPPX
-XPPPPPaPPPPPPPPPPPaPPPPPX
-XPPPPPaaaaaPPPaaaaaPPPPPX
-XPPUPPPPPPPPPPPPPPPPPUPPX
-XPPUPPPPPPPPPPPPPPPPPUPPX
-XPPUUUPPPUUUUUUUPPPUUUPPX
-XPPPPPPPPPPPPPPPPPPPPPPPX
-XPPPPPPPPPPPPPPPPPPPPPPPX
-XXXXXXXXXXXOOOXXXXXXXXXXX
-          RAAAR          
-  QRIRQ   QACAQQQQQQRJRQ 
-  QAAAQ   QAAACAAAAAAAAQ 
-  QAAAQ   QMMMMMMMMMMAAQ 
-  QABAQ   QKKKKKKKKKKNBQ 
-  QAAAQ   QQQQRJIRQQKNAQ 
-  QACAQ            QKNAQ 
-  QCMMQ            QKNAQ 
-  QKKKQ            QKNCQ 
-  QOOOQQQQQQQQQQQQQQKNAQ 
-  QBAAALKKNAAAAALKKKKNAQ 
-  QAACALKKNAABAALKKNOAAQ 
-  QAAAALKKNCAAAALKKNAAAQ 
-  QMMMQQQQQRJIRQQQQQQQQQ 
-  QKKKQ                  
-  QOOOQ            QQQQQ 
-  RMCMQ            QPPPQ 
-  IKKKQ            QPPPR 
-  JPPPQ            QPPPI 
-  RKPKQQQQQRIJRQQQQQPPPR 
-  QKPKKKKKKKPPPPPKKKPPPQ 
-  QKPPPPPPPPPKKKPPPPPPPQ 
-  QKKKKKKKKKPPPPPKKKPPPQ 
-  QQQQQQQQQQQQQQQQQQQQQQ 
-
-
+WWWWWWWWWWWWWWWWWWWWWWW
+WAWAWAW   AWAA    A   W
+WAAAAAA  AAW          W
+WAWAWAW   AW          W
+WAWWWWW    WAA        W
+WAbW       WAA        W
+W        AAW          W
+W      AAAWW     AAA  W
+W      AAAAWAAA  AAA  W
+W       AAAWAAA  AAA  W
+W    A  AAWWA         W
+W    A                W
+W           A         W
+W                     W
+W    AWW    A     WAAAW
+W   AAAW    A     WAAAW
+W   AAAW          WAAAW
+W   AAAA          WWWAW
+W   AAAAA   A        AW
+W   AAAAA  AAA  A AA AW
+W                    AW
+W                     W
+W                     W
+W                     W
+W                     W
+WWWWWWWWWWWWWWWWWWWWWWW

@@ -979,7 +979,7 @@ void Controlador_juego::generar_disparo_jugador()
 
 			while(i < total)
 			{
-				std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), GI()), 220.0, 13+GPOT(), Proyectil::tfaccion::JUGADOR));
+				std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), GI()), 220.0, 10+GPOT(), Proyectil::tfaccion::JUGADOR));
 				p->establecer_posicion(x, y);
 				proyectiles.push_back(std::move(p));
 				++i;

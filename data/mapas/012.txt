@@ -1,42 +1,107 @@
 [INFO]
-18 18 90
+25 49 160
 [NOMBRE]
-LVL12: BURIAL CHAMBER
+LVL12: THE TRIALS
 [MAPA]
-##################
-#1              1#
-#      b         #
-#  #xxxxxxxxxx#  #
-#  x          x  #
-#  x e        x  #
-#  x          x  #
-#  x   xxxx   x  #
-#  x   x4 x   x  #
-#  x   x  x   x  #
-#  x   xxxx   x  #
-# bx          x  #
-#  x    c   e x  #
-#  x          x a#
-#  #xxxxxxxxxx#  #
-#       ,  c     #
-#1              1#
-##################
+#########################
+#                       #
+#                       #
+# 2###   #######   ###  #
+#  #d               d#  #
+#  #2  1    1   1   2#  #
+#     #####   #####     #
+#   1 #d         d#     #
+#     #           #     #
+#  #  # 2### ###  #  #  #
+#  #  #  #    2#  #  #  #
+#2 # 2   #     #     #2 #
+#  #   2 #  .  #     #  #
+#  #     #     #     #  #
+#  #  #  #    2#  #  #  #
+#  #  # 2#######  #  #  #
+#     #           #     #
+#   2 #d         d#     #
+#     #####   #####     #
+#  #                 #  #
+#  #d               d#  #
+# 2###   #######   ### 2#
+#                       #
+#                       #
+###########   ###########
+          #   #          
+  #####   #   ########## 
+  # e #   #    a      3# 
+  #d d#   #          1 # 
+  # 3 #   #xxxxxxxxxx 1# 
+  #d d#   ##########x1 # 
+  #   #            #x  # 
+  #   #            #x  # 
+  #xxx#            #x  # 
+  #   ##############x  # 
+  #1 1  xxb     1xxxx  # 
+  # 1   xx   3   xx    # 
+  #  c  xx      1xx    # 
+  #   ################## 
+  #xxx#                  
+  #   #            ##### 
+  #   #            # , # 
+  #xxx#            #   # 
+  #d d#            #  a# 
+  #x x##############   # 
+  #x xxxxxxx d1  xxx   # 
+  #x3   b    xxx       # 
+  #xxxxxxxxx c1  xxx   # 
+  ###################### 
+
 [DECO]
-HRUUUUURJIRUUUUURH
-RAAAAAAAAAAAAAAAAR
-UAAMMMMMMMMMMMAAAU
-UAAaKKKKKKKKKKaAAU
-UALKOOOOOOOOOOKNAU
-UALKNAAAAAAAALKNAU
-UALKNAAMMMMAALKNAU
-RALKNALKKKKNALKNAR
-IALKNALKAAKNALKNAJ
-JALKNALKAAKNALKNAI
-RALKNALKKKKNALKNAR
-UALKNAAOOOOAALKNAU
-UALKNAAAAAAAALKNAU
-UALKAMMMMMMMMMKNAU
-UAAaKKKKKKKKKKaAAU
-UAAAOOOOOOOOOOAAAU
-RAAAAAAAAAAAAAAAAR
-HRUUUUURIJRUUUUURH
+XXXXXXXXXXXXXXXXXXXXXXXXX
+XPPPPPPPPPPPPPPPPPPPPPPPX
+XPPPPPPPPPPPPPPPPPPPPPPPX
+XPPUUUPPPUUUUUUUPPPUUUPPX
+XPPUPPPPPPPPPPPPPPPPPUPPX
+XPPUPPPPPPPPPPPPPPPPPUPPX
+XPPPPPaaaaaPPPaaaaaPPPPPX
+XPPPPPaPPPPPPPPPPPaPPPPPX
+XPPPPPaPPPPPPPPPPPaPPPPPX
+XPPUPPaPPHHHOHHHPPaPPUPPX
+XPPUPPaPPHAABAAHPPaPPUPPX
+XPPUPPPPPHNAAALHPPPPPUPPX
+XPPUPPPPPHNAbBLHPPPPPUPPX
+XPPUPPPPPHNABBLHPPPPPUPPX
+XPPUPPaPPHAMMMAHPPaPPUPPX
+XPPUPPaPPHHHHHHHPPaPPUPPX
+XPPPPPaPPPPPPPPPPPaPPPPPX
+XPPPPPaPPPPPPPPPPPaPPPPPX
+XPPPPPaaaaaPPPaaaaaPPPPPX
+XPPUPPPPPPPPPPPPPPPPPUPPX
+XPPUPPPPPPPPPPPPPPPPPUPPX
+XPPUUUPPPUUUUUUUPPPUUUPPX
+XPPPPPPPPPPPPPPPPPPPPPPPX
+XPPPPPPPPPPPPPPPPPPPPPPPX
+XXXXXXXXXXXOOOXXXXXXXXXXX
+          RAAAR          
+  QRIRQ   QACAQQQQQQRJRQ 
+  QAAAQ   QAAACAAAAAAAAQ 
+  QAAAQ   QMMMMMMMMMMAAQ 
+  QABAQ   QKKKKKKKKKKNBQ 
+  QAAAQ   QQQQRJIRQQKNAQ 
+  QACAQ            QKNAQ 
+  QCMMQ            QKNAQ 
+  QKKKQ            QKNCQ 
+  QOOOQQQQQQQQQQQQQQKNAQ 
+  QBAAALKKNAAAAALKKKKNAQ 
+  QAACALKKNAABAALKKNOAAQ 
+  QAAAALKKNCAAAALKKNAAAQ 
+  QMMMQQQQQRJIRQQQQQQQQQ 
+  QKKKQ                  
+  QOOOQ            QQQQQ 
+  RMCMQ            QPPPQ 
+  IKKKQ            QPPPR 
+  JPPPQ            QPPPI 
+  RKPKQQQQQRIJRQQQQQPPPR 
+  QKPKKKKKKKPPPPPKKKPPPQ 
+  QKPPPPPPPPPKKKPPPPPPPQ 
+  QKKKKKKKKKPPPPPKKKPPPQ 
+  QQQQQQQQQQQQQQQQQQQQQQ 
+
+
