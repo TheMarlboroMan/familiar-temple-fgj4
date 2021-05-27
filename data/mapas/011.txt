@@ -1,7 +1,7 @@
 [INFO]
 23 24 160
 [NOMBRE]
-LVL11: OVER THE VOID
+LVL11: THE CHASM
 [MAPA]
 #######################
 # #2#2#xxxe#cexxxx3xxx#
@@ -22,7 +22,7 @@ LVL11: OVER THE VOID
 #xxx   #xxxxxxxxxx# d #
 #xxx   bxxxxxxxxxx### #
 #xxx     xxx1xxxxxxxx #
-#xxxd    xx1 dxx x  x #
+#xxxd    xx1dxx  x  x #
 #xxxxxxxxxxxxxxxxxxxx #
 #xxxxxxxxxxxxxxxxxxxxx#
 #xxxxxxxxxxxxxxxxxxxxx#
@@ -30,29 +30,29 @@ LVL11: OVER THE VOID
 #xxxxxxxxxxxxxxxxxxxxx#
 #######################
 [DECO]
-WWWWWWWWWWWWWWWWWWWWWWW
-WAWAWAW   AWAA    A   W
-WAAAAAA  AAW          W
-WAWAWAW   AW          W
-WAWWWWW    WAA        W
-WAbW       WAA        W
-W        AAW          W
-W      AAAWW     AAA  W
-W      AAAAWAAA  AAA  W
-W       AAAWAAA  AAA  W
-W    A  AAWWA         W
+VVWXWWXWXWXWWWWWWWWWWWW
+WAWAWAW   BWBA    C   W
+VAACAAB  BAV          W
+VAWAWAW   CX          V
+WBWWWWW    XAA        X
+WBbW       VAA        V
+V        ACV          W
+X      ACBWW     ACA  W
+X      ABAAWAAB  ABB  V
+V       AAAWACA  BAC  W
+V    A  AAWWA         W
 W    A                W
 W           A         W
+V                     X
+X    AWv    A     WCBBV
+V   AACX    A     XBBAW
+X   ACBW          VCAAW
+X   ABAA          VXWAW
+W   AABAA   A        AW
+W   ACCAA  BC  BA AB AW
+W                    BV
+W                     X
 W                     W
-W    AWW    A     WAAAW
-W   AAAW    A     WAAAW
-W   AAAW          WAAAW
-W   AAAA          WWWAW
-W   AAAAA   A        AW
-W   AAAAA  AAA  A AA AW
-W                    AW
 W                     W
-W                     W
-W                     W
-W                     W
-WWWWWWWWWWWWWWWWWWWWWWW
+W                     V
+WWWWWVVWWWWWWWVXVWWWWXX
