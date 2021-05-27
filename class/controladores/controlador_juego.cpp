@@ -974,7 +974,7 @@ void Controlador_juego::generar_disparo_jugador()
 		}
 		break;
 		case Control_armas::t_armas::ESCOPETA: {
-			Generador_int GT(4, 9), GI(-6, 6);
+			Generador_int GT(4, 9), GI(-8, 8);
 			unsigned int total=GT(), i=0;
 
 			while(i < total)
