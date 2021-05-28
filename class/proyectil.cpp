@@ -3,9 +3,9 @@
 
 //TODO: Very bad, undefined loading order. Should be some pointer so we could start it!!
 
-Proyectil::Proyectil(float angulo, float v, unsigned int pot, tfaccion fac)
+Proyectil::Proyectil(float angulo, float v, unsigned int pot, tfaccion fac, int mult)
 	:Actor(0.0, 0.0, 0.0, 0.0), Movil(),
-	velocidad(v), potencia(pot), faccion(fac)
+	velocidad(v), potencia(pot), multiplier{mult}, faccion(fac)
 {
 	establecer_vector(DLibH::Vector_2d::vector_unidad_para_angulo(angulo));
 	establecer_vector(-acc_vector().y, V_Y);	//Darle la vuelta de cartesiano a SDL.
@@ -35,7 +35,9 @@ void Proyectil::transformar_bloque(Bloque_transformacion_representable &b) const
 	b.establecer_recurso(Recursos_graficos::RT_SPRITES);
 
 	if(faccion==tfaccion::ENEMIGO) b.rotar( fmod(tiempo, 360.0) );
-	unsigned int indice=faccion==tfaccion::ENEMIGO ? 1 : 0;
+	unsigned int indice=faccion==tfaccion::ENEMIGO 
+		? 1 
+		: (multiplier==1 ? 0 : 2);
 
 	Frame_sprites f=TREC.obtener(indice);
 	if(f)

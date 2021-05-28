@@ -9,6 +9,16 @@ v1.1.0: May 2021, building as AppImage
 v1.1.1: May 2021, gamepad support, tweaked scores, adds level number to level name
 v1.3: May 2021, found out an old version was 1.2, so I slapped in a new weapon and maps, named it v1.3 and called it a day.
 
+## Ideas:
+
+- Discard current weapon for previous (perhaps with an ammo penalty)
+- Power effects (coloured overlay???)
+- New hud.
+- Adjust extra life score (first 1500, then 5000, then 10000, then each 10000?)
+- Add a few more textures to make the levels just a bit less ugly (all borders types, more types of sand, better kill floors, spruce up the levels)
+- Difficulty levels????
+- Store hi-scores
+
 ## Level format and mod support
 
 ### mod support

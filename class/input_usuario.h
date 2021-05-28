@@ -11,7 +11,8 @@ struct Input_usuario
 		disparar_auto{false},
 		apuntar{false},
 		keydown_apuntar{false},
-		recargar{false};
+		recargar{false},
+		focus{false};
 };
 
 #endif

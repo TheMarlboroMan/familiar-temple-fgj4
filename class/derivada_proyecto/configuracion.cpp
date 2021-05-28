@@ -73,6 +73,12 @@ void Configuracion::procesar_clave_y_valor(const std::string& clave, const std::
 		return;
 	}
 
+	if(clave.compare("gamepad_focus")==0) {
+
+		gamepad_focus=std::atoi(valor.c_str());
+		return;
+	}
+
 }
 
 void Configuracion::asignar_valores_por_defecto()

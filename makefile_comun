@@ -53,6 +53,7 @@ $(DIR_O)enemigo_base.o \
 $(DIR_O)control_armas.o \
 $(DIR_O)sistema_puntuacion.o \
 $(DIR_O)sistema_vidas.o \
+$(DIR_O)powers.o \
 $(DIR_O)item_base.o \
 $(DIR_O)item_revolver.o \
 $(DIR_O)item_pistola.o \
@@ -61,7 +62,6 @@ $(DIR_O)item_escopeta.o \
 $(DIR_O)item_ankh.o \
 $(DIR_O)item_salud.o \
 $(DIR_O)sistema_estados.o \
-
 
 ################################################################################
 #Definiciones de targets.
@@ -328,6 +328,11 @@ $(DIR_O)sistema_puntuacion.o :\
 $(DIR_SISTEMAS)sistema_puntuacion.h \
 $(DIR_SISTEMAS)sistema_puntuacion.cpp
 	$(CC) $(CFLAGS) $(DIR_SISTEMAS)sistema_puntuacion.cpp -o $(DIR_O)sistema_puntuacion.o
+
+$(DIR_O)powers.o :\
+$(DIR_SISTEMAS)powers.h \
+$(DIR_SISTEMAS)powers.cpp
+	$(CC) $(CFLAGS) $(DIR_SISTEMAS)powers.cpp -o $(DIR_O)powers.o
 
 $(DIR_O)sistema_vidas.o :\
 $(DIR_SISTEMAS)sistema_vidas.h \

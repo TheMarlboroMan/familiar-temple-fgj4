@@ -4,22 +4,22 @@
 LVL15: BURIAL CHAMBER
 [MAPA]
 ##################
-#1              1#
-#      b         #
+#31            13#
+#      b 1       #
 #  #xxxxxxxxxx#  #
-#  x          x  #
+#  x3        3x  #
 #  x e        x  #
 #  x          x  #
 #  x   xxxx   x  #
-#  x   x4 x   x  #
+# 1x   x4 x   x1 #
 #  x   x  x   x  #
-#  x   xxxx   x  #
+#  x f xxxx   x  #
 # bx          x  #
 #  x    c   e x  #
-#  x          x a#
+#  x3        3x a#
 #  #xxxxxxxxxx#  #
 #       ,  c     #
-#1              1#
+#31            13#
 ##################
 [DECO]
 HRUUUUURJIRUUUUURH

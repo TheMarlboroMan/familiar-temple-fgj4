@@ -118,3 +118,25 @@ void Representador::generar_hud_ankh(DLibV::Pantalla& pantalla, unsigned int act
 	txt_ankh.volcar(pantalla);
 }
 
+void Representador::focus_hud(
+	DLibV::Pantalla& _screen, 
+	unsigned int _focus_meter, 
+	powers::power_type _current_power
+) {
+
+	std::stringstream ss{};
+
+	switch(_current_power) {
+
+		case powers::power_type::time: ss<<"time "; break;
+		case powers::power_type::fire: ss<<"fire "; break;
+		case powers::power_type::ammo: ss<<"ammo "; break;
+	}
+
+	ss<<_focus_meter;
+
+	DLibV::Representacion_texto_auto_estatica txt(_screen.acc_renderer(), DLibV::Gestor_superficies::obtener(Recursos_graficos::RS_FUENTE_BASE), ss.str());
+	txt.establecer_posicion(620, 58);
+	txt.volcar(_screen);
+
+}

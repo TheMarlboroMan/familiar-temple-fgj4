@@ -10,6 +10,7 @@
 #include "../sistemas/control_armas.h"
 #include "../sistemas/sistema_puntuacion.h"
 #include "../sistemas/sistema_vidas.h"
+#include "../sistemas/powers.h"
 
 #include <fstream>
 #include <queue>
@@ -78,6 +79,7 @@ LOG<<"ACTIVANDO FADE"<<std::endl;
 	Sistema_puntuacion sistema_puntuacion;
 	Sistema_vidas sistema_vidas;
 	Control_armas control_armas;
+	powers         focus_control;
 	Cargador_mapas cargador_mapas;
 	Mapa mapa;
 	DLibV::Camara camara;
@@ -100,6 +102,7 @@ LOG<<"ACTIVANDO FADE"<<std::endl;
 	void reiniciar_nivel();
 
 	void sumar_puntuacion(unsigned int);
+	void add_focus(int);
 
 	void procesar_cola_eventos_juego();
 	void evaluar_eventos_juego();

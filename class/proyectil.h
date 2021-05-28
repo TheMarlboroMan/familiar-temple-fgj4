@@ -32,7 +32,8 @@ class Proyectil: public Actor, public Borrable, public Movil, public Representab
 	static const unsigned int H_ENEMIGO=8;
 
 	float velocidad;
-	unsigned int potencia;
+	unsigned int potencia,
+				multiplier;
 	tfaccion faccion;
 	float tiempo;
 
@@ -65,10 +66,10 @@ class Proyectil: public Actor, public Borrable, public Movil, public Representab
 
 	public:
 
-	Proyectil(float angulo, float velocidad, unsigned int, tfaccion);
+	Proyectil(float angulo, float velocidad, unsigned int, tfaccion, int _multiplier=1);
 	~Proyectil();
 
-	unsigned int acc_potencia() const {return potencia;}
+	unsigned int acc_potencia() const {return potencia * multiplier;}
 
 	void turno(float delta)
 	{

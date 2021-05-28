@@ -38,12 +38,20 @@ bool Controlador_juego::loop(const Input& input, float delta)
 		if(!fade.es_activo())
 		{
 			logica_nivel();
+
+			float delta_world=delta,
+				  delta_player=delta;
+
+			if(focus_control.is_active() && focus_control.get_current()==powers::power_type::time) {
+
+				delta_world*=0.4;
+				delta_player*=0.75;
+			}
+
 			//TODO: here we could inject the slow down thing.
-			turno_nivel(delta);			
-			//TODO: here we could inject the slow down thing.
-			procesar_input_jugador(input, delta);
-			//TODO: here we could inject the slow down thing.
-			logica_jugador(delta);
+			turno_nivel(delta_world);
+			procesar_input_jugador(input, delta_player);
+			logica_jugador(delta_player);
 			evaluar_eventos_juego();
 			procesar_cola_eventos_juego();
 		}
@@ -121,6 +129,7 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 		bool intentar_disparar_auto{false};
 		bool recargar{false};
 		bool saltar{false};
+		bool focus{false};
 
 		public:
 
@@ -128,6 +137,7 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 		bool es_intentar_disparar_auto() const {return intentar_disparar_auto;}
 		bool es_recargar() const {return recargar;}
 		bool es_saltar() const {return saltar;}
+		bool is_focus() const {return focus;}
 
 		Vis(Jugador& pj, Input_usuario& pi): //, Nivel& pn):
 			jugador(pj), iu(pi)
@@ -135,6 +145,10 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 
 		virtual void visitar(Estado_jugador_suelo& e)
 		{
+			if(iu.focus) {
+				focus=true;
+			}
+
 			if(e.es_recargar()) recargar=true;
 			else if(iu.saltar && jugador.puede_saltar()) saltar=true;
 			else if(iu.disparar) intentar_disparar=true;
@@ -158,6 +172,30 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 #ifndef NDEBUG
 	assert(jugador.obtener_estado()==copia_estado);
 #endif
+
+	if(vis.is_focus() && focus_control.can_be_activated()) {
+
+		focus_control.activate();
+		//automatically refill weapon
+		control_armas.rellenar();
+		cola_sonido(Recursos_audio::RS_PERDER_VIDA, 128);
+		if(focus_control.get_current() == powers::power_type::ammo) {
+
+			int ammo_to_add=0;
+			switch(control_armas.acc_arma_actual()) {
+
+				case Control_armas::t_armas::PISTOLA: ammo_to_add=24; break;
+				case Control_armas::t_armas::REVOLVER: ammo_to_add=12; break;
+				case Control_armas::t_armas::ESCOPETA: ammo_to_add=8; break;
+				case Control_armas::t_armas::SUBFUSIL: ammo_to_add=60; break;
+			}
+
+			control_armas.sumar_reserva(
+				control_armas.acc_arma_actual(),
+				ammo_to_add
+			);
+		}
+	}
 
 	if(vis.es_intentar_disparar() || vis.es_intentar_disparar_auto()) {
 
@@ -205,7 +243,6 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 	{
 		if(!control_armas.es_arma_llena())
 		{
-			//TODO: time goes here.
 			jugador.recargar(control_armas.get_reload_time());
 			control_armas.recargar();
 			cola_sonido(Recursos_audio::RS_RECARGAR, 128);
@@ -271,6 +308,7 @@ void Controlador_juego::reset()
 	sistema_vidas.reset();
 	sistema_puntuacion.reset();
 	control_armas.reset();
+	focus_control.reset();
 
 	proyectiles.clear();
 	proyectiles_enemigos.clear();
@@ -316,6 +354,7 @@ Input_usuario Controlador_juego::recoger_input_usuario(const Input& input)
 	if(input.es_input_down(Input::I_APUNTAR)) iu.keydown_apuntar=true;
 
 	if(input.es_input_down(Input::I_RECARGAR)) iu.recargar=true;
+	if(input.es_input_down(Input::I_FOCUS)) iu.focus=true;
 
 	return iu;
 }
@@ -346,6 +385,7 @@ void Controlador_juego::logica_jugador(float delta)
 		virtual void visitar(Estado_jugador_recargar&)			{flags=MOVIMIENTO_PERMITIDO | CAMBIO_DIRECCION_PERMITIDA;;}
 	}vis;
 
+	focus_control.step(delta);
 	control_armas.turno(delta);
 	jugador.recibir_visitante_estado(vis);
 
@@ -550,8 +590,13 @@ void Controlador_juego::evaluar_eventos_juego()
 				e->recibir_visitante(vis);
 
 				sumar_puntuacion(e->puntuacion_por_recoger());
+				add_focus(2);
 
-				if(vis.es_recoge_ankh()) sistema_puntuacion.recoger_ankh();
+				if(vis.es_recoge_ankh()) {
+					sistema_puntuacion.recoger_ankh();
+					add_focus(3); //extra focus 
+				}
+
 				if(vis.es_recoge_salud()) jugador.recuperar_energia();
 			}
 		}
@@ -612,23 +657,11 @@ void Controlador_juego::dibujar_juego(DLibV::Pantalla& pantalla)
 	for(auto& p : proyectiles) vr.push_back(p.get());
 	for(auto& p : proyectiles_enemigos) vr.push_back(p.get());
 
-
 	vr.push_back(&jugador);
 
 	Ordenador_representables ordenador;
 	std::sort(vr.begin(), vr.end(), ordenador);
 	representador.generar_vista(pantalla, camara, vr);
-/*
-	SDL_Rect cp=DLibH::Herramientas_SDL::nuevo_sdl_rect(
-		jugador.acc_espaciable_x()-camara.acc_x(),
-		jugador.acc_espaciable_y()-camara.acc_y(),
-		jugador.acc_espaciable_w(),
-		jugador.acc_espaciable_h());
-
-	DLibV::Representacion_primitiva_caja_estatica CAJA(cp, 255, 0, 0);
-	CAJA.establecer_alpha(64);
-	CAJA.volcar(pantalla);
-*/
 }
 
 void Controlador_juego::dibujar_hud(DLibV::Pantalla& pantalla)
@@ -668,10 +701,12 @@ void Controlador_juego::dibujar_hud(DLibV::Pantalla& pantalla)
 	Frame_sprites fs_ankh=Rep_municion::obtener_frame_hud(3);
 	representador.generar_hud_ankh(pantalla, sistema_puntuacion.acc_ankh_nivel(), mapa.acc_ankh_nivel(), sistema_puntuacion.acc_todos_ankh(), fs_ankh);
 
+	representador.focus_hud(pantalla, focus_control.get_focus(), focus_control.get_current());
+
 	//El nivel y tiempo...
 	double dummy;
 	double frac=modf(segundos_restantes,&dummy);
-    	int decimas_restantes=round(frac*pow(10, 2)); //Dos decimales.
+	int decimas_restantes=round(frac*pow(10, 2)); //Dos decimales.
 	representador.generar_hud_nivel(pantalla, mapa.acc_nombre(), segundos_restantes, decimas_restantes, sistema_puntuacion.acc_puntuacion());
 
 }
@@ -906,6 +941,7 @@ void Controlador_juego::turno_nivel(float delta)
 				{
 					p->marcar_para_borrar();
 					e->restar_salud(p->acc_potencia());
+					add_focus(1); //focus per hit 
 					if(e->es_sin_salud())
 					{
 						e->marcar_para_borrar();
@@ -926,6 +962,11 @@ void Controlador_juego::turno_nivel(float delta)
 	for(auto& e: enemigos_disparar) generar_disparo_enemigo(*e);
 
 	if(vis.acc_boss_disparar()) generar_disparo_boss(*vis.acc_boss_disparar());
+}
+
+void Controlador_juego::add_focus(int _quantity) {
+
+	focus_control.add_focus(_quantity);
 }
 
 void Controlador_juego::sumar_puntuacion(unsigned int p)
@@ -956,12 +997,17 @@ void Controlador_juego::generar_disparo_jugador()
 
 	float x=jugador.acc_espaciable_x()+jugador.acc_espaciable_w()/2 - 2;	//-2 por el ancho y alto del proyectil.
 	float y=jugador.acc_espaciable_y()+jugador.acc_espaciable_h()/2 - 2;
+
+	
+	int multiplicador=focus_control.is_active() && focus_control.get_current()==powers::power_type::fire
+		? 2
+		: 1;
 	Generador_int GPOT(-4, 4), GVOL(-20, 10);
 
 	switch(control_armas.acc_arma_actual()) {
 
 		case Control_armas::t_armas::REVOLVER:{
-			std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), 0.0), 250.0, 21+GPOT(), Proyectil::tfaccion::JUGADOR));
+			std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), 0.0), 250.0, 21+GPOT(), Proyectil::tfaccion::JUGADOR, multiplicador));
 			p->establecer_posicion(x, y);
 			proyectiles.push_back(std::move(p));
 			cola_sonido(Recursos_audio::RS_REVOLVER, 128+GVOL());
@@ -969,7 +1015,7 @@ void Controlador_juego::generar_disparo_jugador()
 		break;
 		case Control_armas::t_armas::PISTOLA: {
 		    Generador_int GI(-2, 2);
-			std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), GI()), 300.0, 15+GPOT(), Proyectil::tfaccion::JUGADOR));
+			std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), GI()), 300.0, 15+GPOT(), Proyectil::tfaccion::JUGADOR, multiplicador));
 			p->establecer_posicion(x, y);
 			proyectiles.push_back(std::move(p));
 			cola_sonido(Recursos_audio::RS_PISTOLA, 128+GVOL());
@@ -981,7 +1027,7 @@ void Controlador_juego::generar_disparo_jugador()
 
 			while(i < total)
 			{
-				std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), GI()), 220.0, 10+GPOT(), Proyectil::tfaccion::JUGADOR));
+				std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), GI()), 220.0, 10+GPOT(), Proyectil::tfaccion::JUGADOR, multiplicador));
 				p->establecer_posicion(x, y);
 				proyectiles.push_back(std::move(p));
 				++i;
@@ -992,7 +1038,7 @@ void Controlador_juego::generar_disparo_jugador()
 		break;
 		case Control_armas::t_armas::SUBFUSIL: {
 			Generador_int GI(-4, 4);
-			std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), GI()), 280.0, 8+GPOT(), Proyectil::tfaccion::JUGADOR));
+			std::unique_ptr<Proyectil> p(new Proyectil(generar_angulo(jugador.acc_direccion(), GI()), 280.0, 8+GPOT(), Proyectil::tfaccion::JUGADOR, multiplicador));
 			p->establecer_posicion(x, y);
 			proyectiles.push_back(std::move(p));
 
@@ -1051,6 +1097,7 @@ void Controlador_juego::herir_jugador()
 	}
 	else
 	{
+		add_focus(3);
 		cola_sonido(Recursos_audio::RS_PERDER_ENERGIA, 192);
 	}
 }

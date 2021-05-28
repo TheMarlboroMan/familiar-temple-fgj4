@@ -3,6 +3,7 @@
 
 #include "representable.h"
 #include "../herramientas_proyecto/tabla_sprites.h"
+#include "../sistemas/powers.h"
 
 /*El representador funciona de la siguiente forma: desde el controlador 
 generamos un array de punteros a "Representables". Se le pasa el array al 
@@ -37,6 +38,7 @@ class Representador
 	void generar_hud_nivel(DLibV::Pantalla&, const std::string& nombre, unsigned int segundos, unsigned int decimas, unsigned int puntuacion);
 	void generar_hud_vida(DLibV::Pantalla& pantalla, unsigned int energia, unsigned int vidas, const Frame_sprites& fs_energia, const Frame_sprites& fs_vidas);
 	void generar_hud_ankh(DLibV::Pantalla& pantalla, unsigned int actuales, unsigned int en_nivel, unsigned int total, const Frame_sprites& fs);
+	void focus_hud(DLibV::Pantalla& pantalla, unsigned int current, powers::power_type);
 
 	unsigned int generar_vista(DLibV::Pantalla&, DLibV::Camara&, const std::vector<Representable *>&);
 
