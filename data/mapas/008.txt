@@ -1,66 +1,46 @@
 [INFO]
-15 30 120
+40 19 120
 [NOMBRE]
-LVL8: HIPOSTYLE
+LVL8: TREASURE CHAMBER
 [MAPA]
- ############# 
- #    c,b    # 
- #         c # 
- # xx#   #xx # 
- # xd   3 dx # 
- #1x       x1# 
- # xd 3   dx # 
- # xx#   #xx # 
- #   1   1   # 
- #####xxx##### 
-     #   #     
-     # e #  ###
-     #   #  # #
-######xxx#### #
-# d1        b #
-#a 1          #
-######xxx####x#
-     #  a#  # #
-  ####   #  # #
-  #dd    #  #x#
-  ####111#  # #
-     #   #  # #
-     #xxx####x#
-     #       2#
-     #        #
- #####111#### #
- #     3 #  #f#
- #       #  ###
- # . #####     
- #####         
+#####   ##############                  
+#   #   #    x a x1 1###   ###########  
+#d  #   # d  x c x 1 xd#   #        .#  
+### #   ##########   ###   #         #  
+  # #            #1 1#     #  #xxx#  #  
+  # #    ###     #   #     #         #  
+  # #    #,#     # x #     #         #  
+  # # #### ####  # x ###   #    3    #  
+### ###      2####   xd#   #         #  
+#       xx xx    x   ###   #         #  
+#d  ###2      #### x #     #  #xxx#  #  
+### # #########  # x #     #         #  
+  # #            # x ###   #         #  
+  # #            #    b#   ###xxxxx###  
+  # # #########  #    d#     #     #    
+### ###2#d#2#b################     ###  
+#d2       e   x  x  x  x  x          #  
+### ### #2#d#2########################  
+  ### #########                         
 [DECO]
- QQQQQQQQQQQQQ 
- QWWWWWWWWWWWQ 
- QWWWWWWWWWWWQ 
- QWKKJWWWJKKWQ 
- QWKWWWWWWWKWQ 
- QWKWWWWWWWKWQ 
- QWKWWWWWWWKWQ 
- QWKKIWWWIKKWQ 
- QWWWWWWWWWWWQ 
- QQQQRKKKRQQQQ 
-     IOOOI     
-     IAAAI  QQQ
-     RMMMR  QTQ
-YYYYYYKKKYYRQTQ
-YTTTTTTTTTTTTTQ
-YTTTTTTTTTTTTTQ
-YYYYYYKKKZZRIKI
-     ZTTTZ  QTQ
-  RZZZTTTZ  QTQ
-  JTTTTTTJ  JKJ
-  RZZZTTTZ  QTQ
-     ZTTTZ  QTQ
-     IKKKIRQIKI
-     RTTTTTTTTR
-     ZTTTTTTTTY
- ZZZZZTTTZZZZTY
- ZBBBLTTTZ  ZTY
- ZBBBLTTTZ  ZZY
- ZBbBZZZZZ     
- ZZZZZ         
+QQQQQ   WWWWWWWWWWWWWW                  
+QALCQ   WPPPPKPPPKPPPWWW   QQQQQQQQQQQ  
+QALCQ   WPPPPKPPPKPPPKPW   QAAAAAAAAbQ  
+QQQCQ   WWWWWWWWWWPPPWWW   QAAAMMMAAAQ  
+  QCQ            WPPPW     QAAIKKKIAAQ  
+  QCQ    QQQ     WPPPW     QAAAOOOAAAQ  
+  QCQ    QAQ     WPKPW     QAAAAAAAAAQ  
+  QCQ QQQQAQQQQ  WPKPWWW   QAAAAAAAAAQ  
+QQQCQQQAAAAAAAQQQRPPPKPW   QAAAAAAAAAQ  
+QALCNAAAKKAKKAAALKPPPWWW   QAAAMMMAAAQ  
+QALCQQQAAAAAAAQQQRPKPW     QAAIKKKIAAQ  
+QQQCQ QQQQQQQQQ  WPKPW     QAAAOOOAAAQ  
+  QCQ            WPKPWWW   QAAMMMMMAAQ  
+  QCQ            WPPPPPW   QQQKKKKKQQQ  
+  QCQ QQQQQQQQQ  WPPPPPW     ROOOOOR    
+QQQCQQQAQAQAQAQRHJHHJHHJHHJGGGAAAAAGGG  
+QALCNAAAAAAAALKNLKNLKNLKNLKNAAAAAAAAAG  
+QQQCQQQAQAQAQAQRHJHHJHHJHHJGGGGGGGGGGG  
+  QQQ QQQQQQQQQ                         
+
+<FIN>

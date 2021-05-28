@@ -1,46 +1,46 @@
 [INFO]
-40 19 120
+15 20 80
 [NOMBRE]
-LVL7: TREASURE CHAMBER
+LVL7: THE WELL
 [MAPA]
-#####   ##############                  
-#   #   #    x a x1 1###   ###########  
-#d  #   # d  x c x 1 xd#   #        .#  
-### #   ##########   ###   #         #  
-  # #            #1 1#     #  #xxx#  #  
-  # #    ###     #   #     #         #  
-  # #    #,#     # x #     #         #  
-  # # #### ####  # x ###   #    3    #  
-### ###      2####   xd#   #         #  
-#       xx xx    x   ###   #         #  
-#d  ###2      #### x #     #  #xxx#  #  
-### # #########  # x #     #         #  
-  # #            # x ###   #         #  
-  # #            #    b#   ###xxxxx###  
-  # # #########  #    d#     #     #    
-### ###2#d#2#b################     ###  
-#d2       e   x  x  x  x  x          #  
-### ### #2#d#2########################  
-  ### #########                         
+####### #######
+#xxxxx# #xxxxx#
+#x    ###    x#
+#x d   3   d x#
+#xa   # #    x#
+### ### ### ###
+  # #xx xx# #  
+  # #x111x# #  
+  # 3 1.1 3 #  
+  # #x1 1x# #  
+  # #xxdxx# #  
+### ####### ###
+#x 3   f   3 x#
+#x           x#
+#x           x#
+#x           x#
+#x    xxx    x#
+#xe   x,x   dx#
+#xxxxxxxxxxxxx#
+###############
 [DECO]
-QQQQQ   WWWWWWWWWWWWWW                  
-QALCQ   WPPPPKPPPKPPPWWW   QQQQQQQQQQQ  
-QALCQ   WPPPPKPPPKPPPKPW   QAAAAAAAAbQ  
-QQQCQ   WWWWWWWWWWPPPWWW   QAAAMMMAAAQ  
-  QCQ            WPPPW     QAAIKKKIAAQ  
-  QCQ    QQQ     WPPPW     QAAAOOOAAAQ  
-  QCQ    QAQ     WPKPW     QAAAAAAAAAQ  
-  QCQ QQQQAQQQQ  WPKPWWW   QAAAAAAAAAQ  
-QQQCQQQAAAAAAAQQQRPPPKPW   QAAAAAAAAAQ  
-QALCNAAAKKAKKAAALKPPPWWW   QAAAMMMAAAQ  
-QALCQQQAAAAAAAQQQRPKPW     QAAIKKKIAAQ  
-QQQCQ QQQQQQQQQ  WPKPW     QAAAOOOAAAQ  
-  QCQ            WPKPWWW   QAAMMMMMAAQ  
-  QCQ            WPPPPPW   QQQKKKKKQQQ  
-  QCQ QQQQQQQQQ  WPPPPPW     ROOOOOR    
-QQQCQQQAQAQAQAQRHJHHJHHJHHJGGGAAAAAGGG  
-QALCNAAAAAAAALKNLKNLKNLKNLKNAAAAAAAAAG  
-QQQCQQQAQAQAQAQRHJHHJHHJHHJGGGGGGGGGGG  
-  QQQ QQQQQQQQQ                         
-
-<FIN>
+SSSSSSS SSSSSSS
+SKKKKKS SKKKKKS
+SKPPPPSSSPPPPKS
+SKPPPPPPPPPPPKS
+SKPPPPSOSPPPPKS
+SSSOSSSASSSOSSS
+  SASKKAKKSAS  
+  SASKAAAKSAS  
+  SALAAbAANAS  
+  SASKAAAKSAS  
+  SASKKAKKSAS  
+SSSMSSSSSSSMSSS
+SKNAPPPPPPPPLKS
+SKNPPPPPPPPPLKS
+SKNPPPPPPPPPLKS
+SKNPPMMMMMPPLKS
+SKNPPLKKKNPPLKS
+SKMMMMKCKMMMMKS
+SKKKKKKKKKKKKKS
+SSSSSSSSSSSSSSS

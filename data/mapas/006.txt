@@ -1,46 +1,44 @@
 [INFO]
-15 20 80
+19 19 90
 [NOMBRE]
-LVL6: THE WELL
+LVL6: INTO THE TEMPLE
 [MAPA]
-####### #######
-#xxxxx# #xxxxx#
-#x    ###    x#
-#x d   3   d x#
-#xa   # #    x#
-### ### ### ###
-  # #xx xx# #  
-  # #x111x# #  
-  # 3 1.1 3 #  
-  # #x1 1x# #  
-  # #xxdxx# #  
-### ####### ###
-#x 3   f   3 x#
-#x           x#
-#x           x#
-#x           x#
-#x    xxx    x#
-#xe   x,x   dx#
-#xxxxxxxxxxxxx#
-###############
+         ##########
+   ##### #      #d#
+   #c a# # ###  # #
+   # , # # 1.#    #
+   #   # # ###  # #
+   ## ## #      #2#
+    # #  ######## #
+  ### ###       # #
+  # # #2##    ### #
+  #      #####2## #
+###       1    ## #
+#1d xxx  #####x##x#
+### xbx  #   # ##2#
+  # x x  #   # ## #
+  # xxx  #   #x##x#
+###      ### #    #
+#1d #11# d1# #  e #
+###2#### ### # ##1#
+  ###  ###   ######
 [DECO]
-SSSSSSS SSSSSSS
-SKKKKKS SKKKKKS
-SKPPPPSSSPPPPKS
-SKPPPPPPPPPPPKS
-SKPPPPSOSPPPPKS
-SSSOSSSASSSOSSS
-  SASKKAKKSAS  
-  SASKAAAKSAS  
-  SALAAbAANAS  
-  SASKAAAKSAS  
-  SASKKAKKSAS  
-SSSMSSSSSSSMSSS
-SKNAPPPPPPPPLKS
-SKNPPPPPPPPPLKS
-SKNPPPPPPPPPLKS
-SKNPPMMMMMPPLKS
-SKNPPLKKKNPPLKS
-SKMMMMKCKMMMMKS
-SKKKKKKKKKKKKKS
-SSSSSSSSSSSSSSS
+         QQQQQQQRQQ
+   WWWWW QAAAAAAJAQ
+   WAAAW QAWWWAARAQ
+   WAAAW QAAbWAAAAQ
+   WAAAW QAWWWAARAQ
+   WWAWW QAAAAAAJAQ
+    WAW  QQQQQQQRAR
+  WWWAWWW       WAW
+  WAWAWAWW    WWWAW
+  WAAAAAAWWWWWAWWAW
+WWWAAAAAAAAAAAAWWAW
+WAAAKKKCAWWWWWKWWKW
+WWWAKCKCAW   WOWWOW
+  WAKCKCAW   WMWWMW
+  WAKKKCAW   WKWWKW
+WWWAAAAAAWWW WAAAAW
+WAAAWAAWAAAW WAAAAW
+WWWAWWWWAWWW WAWWAW
+  WWW  WWW   WWWWWW

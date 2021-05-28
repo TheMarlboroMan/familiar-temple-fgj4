@@ -1,42 +1,58 @@
 [INFO]
-18 18 90
+23 24 160
 [NOMBRE]
-LVL13: BURIAL CHAMBER
+LVL13: THE CHASM
 [MAPA]
-##################
-#1              1#
-#      b         #
-#  #xxxxxxxxxx#  #
-#  x          x  #
-#  x e        x  #
-#  x          x  #
-#  x   xxxx   x  #
-#  x   x4 x   x  #
-#  x   x  x   x  #
-#  x   xxxx   x  #
-# bx          x  #
-#  x    c   e x  #
-#  x          x a#
-#  #xxxxxxxxxx#  #
-#       ,  c     #
-#1              1#
-##################
+#######################
+# #2#2#xxxe#cexxxx3xxx#
+# 3    xx  #xxxxxxxxxx#
+# # # #xxx #xxxxxxxxxx#
+# #####xxxx# dxxxxxxxx#
+# .#xxxxxxx#1 xxxxxxxx#
+#xxxxxxxx  #xxxxxxxxxx#
+#xxxxxxd 3##xxxxx   xx#
+#xxxxxx    #   xx , xx#
+#xxxxxxx  c# 1 xx   xx#
+#xxxx xx  ## xxxxxxxxx#
+#xxxx xxxxxxxxxxxxxxxx#
+#xxxxxxxxxxx xxxxxxxxx#
+#xxxxxxxxxxxxxxxxxxxxx#
+#xxxx1##xxxx xxxxx#3e #
+#xxx 31#xxxx xxxxx# f #
+#xxx   #xxxxxxxxxx# d #
+#xxx   bxxxxxxxxxx### #
+#xxx     xxx1xxxxxxxx #
+#xxxd    xx1dxx  x  x #
+#xxxxxxxxxxxxxxxxxxxx #
+#xxxxxxxxxxxxxxxxxxxxx#
+#xxxxxxxxxxxxxxxxxxxxx#
+#xxxxxxxxxxxxxxxxxxxxx#
+#xxxxxxxxxxxxxxxxxxxxx#
+#######################
 [DECO]
-HRUUUUURJIRUUUUURH
-RAAAAAAAAAAAAAAAAR
-UAAMMMMMMMMMMMAAAU
-UAAaKKKKKKKKKKaAAU
-UALKOOOOOOOOOOKNAU
-UALKNAAAAAAAALKNAU
-UALKNAAMMMMAALKNAU
-RALKNALKKKKNALKNAR
-IALKNALKAAKNALKNAJ
-JALKNALKAAKNALKNAI
-RALKNALKKKKNALKNAR
-UALKNAAOOOOAALKNAU
-UALKNAAAAAAAALKNAU
-UALKAMMMMMMMMMKNAU
-UAAaKKKKKKKKKKaAAU
-UAAAOOOOOOOOOOAAAU
-RAAAAAAAAAAAAAAAAR
-HRUUUUURIJRUUUUURH
+VVWXWWXWXWXWWWWWWWWWWWW
+WAWAWAW   BWBA    C   W
+VAACAAB  BAV          W
+VAWAWAW   CX          V
+WBWWWWW    XAA        X
+WBbW       VAA        V
+V        ACV          W
+X      ACBWW     ACA  W
+X      ABAAWAAB  ABB  V
+V       AAAWACA  BAC  W
+V    A  AAWWA         W
+W    A                W
+W           A         W
+V                     X
+X    AWv    A     WCBBV
+V   AACX    A     XBBAW
+X   ACBW          VCAAW
+X   ABAA          VXWAW
+W   AABAA   A        AW
+W   ACCAA  BC  BA AB AW
+W                    BV
+W                     X
+W                     W
+W                     W
+W                     V
+WWWWWVVWWWWWWWVXVWWWWXX

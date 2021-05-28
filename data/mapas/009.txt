@@ -1,68 +1,48 @@
 [INFO]
-30 30 150
+20 21 120
 [NOMBRE]
-LVL9: THE MAZE
+LVL9: RELENTLESS
 [MAPA]
- ####################         
- #d  1   x   x   111#         
- #    ###########   #  #####  
- # 3c #         # b ####   #  
- #    ###########   x  x d #  
- #d  1   x a x   1 1####2  #  
- #################x##  ##x##  
-                 #e#    # #   
-#######          # #    #e#   
-# 2   #  #####  ##x##  ##x##  
-#     ####   #  #1  ####  2#  
-#  c         #  # d x  x 3 #  
-#     ####2  #  #  2####   #  
-### ###  ##x##  #####  ##x##  
-  # #     # #           # #   
-  # #     # #           # #   
- ## ###  ##x##  #####  ##x##  
- #    #  #  a####   ####2  #  
- # xx #  # , x  x b x  x   #  
- # xx #  #   ####2  ####  1#  
- #    #  #####  #####  ## ##  
- ###3##                 # #   
-   # #   ################ ####
- ### ##  #    a              #
- #    #  #2  #     #  b     d#
- # 1 1#  #                   #
- #  1 #  ### ##### ###### ####
- #    #    #3#   #3#    # #   
- #   .#    #d#   #d#    #d#   
- ######    ###   ###    ###   
+         #####      
+         #   #      
+         # . #      
+         #   #      
+         ##x##      
+        ###3##      
+     ####111D#      
+     #df#1111#      
+     #33#   A#      
+######xx#    #######
+#1    3   c     113#
+#1  f   e   ,   11d#
+#1    3   b  f  11e#
+#1  c           113#
+#####    ###########
+  # x    xe#        
+  #3x    x3#        
+  ###c  b###        
+    ##xx##          
+     #d3#           
+     ####           
 [DECO]
- QQQQQQQQRIJIRQQQQQQQ         
- QCCCCCCCKNALKCCCCCCQ         
- QCCCCUUUUUUUUUUUCCCQ  UUUUU  
- QCCCCU         UCCCRUUUPPPT  
- QCCCCUUUUUUUUUUUCCCKNLKPPPU  
- QCCCCCCCKNALKCCCCCCRUUUPPPU  
- QQQQQQQQRIJIRQQQRKRU  UUKUU  
-                 UOU    UOU   
-UUUUUUU          UMU    UMU   
-UPPPPPU  UUUUU  UUKUU  UUKUU  
-UPPPPPUUUUAAAU  UPPPUUUUAAAU  
-UPPPPPPPPNAAAU  UPPPKNLKAAAU  
-UPPPPPUUUUAAAU  UPPPUUUUAAAU  
-UUUPUUU  UUKUU  UUUUU  UUKUU  
-  UPU     UOU           UOU   
-  UPU     UMU           UMU   
- UUPUUU  UUKUU  UUUUU  UUKUU  
- UAOOAU  UPPPUUUUCCCUUUUPPPU  
- UNKKLU  UPPPKNLKCCCKNLKPPPU  
- UNKKLU  UPPPUUUUCCCUUUUPPPU  
- UAMMAU  UUUUU  UUUUU  UUOUU  
- UUUPUU                 RAR   
-   RPR   YYYYYYYYYYYYYYYYAYYYY
- YYYOYY  YAAAAAAAAAAAAAAAAAAAY
- YAAAAY  YAAAUAAAAAUAAAAAAAAAY
- YAAAAY  YAAAAAAAAAAAAAAAAAAAY
- YAAAAY  YYYAYYYYYAYYYYYYAYYYY
- YAAAAY    YAY   YAY    YAY   
- YAAAbY    YAY   YAY    YAY   
- YYYYYY    YYY   YYY    YYY   
-
-<FIN>
+         YYaaY      
+         ZABAY      
+         ZAbAZ      
+         YMMMY      
+         YZKaY      
+        YYYOYY      
+     aZYYAAAAY      
+     YAAYAAAAZ      
+     aMMYAAAAY      
+YZaYYYKKYAAAAYYZYYZY
+ZAAAAAOOAAAAAAAAAAAZ
+ZAAAAAAAAAAAAAAAAAAZ
+ZAAAAAAAAAAAAAAAAAAY
+YAAAAAAAAAAAAAAAAAAY
+aYYZaAAAAYYYZYYZZaZY
+  YLKAAAAKNa        
+  YLKAAAAKNY        
+  aaYMMMMZaY        
+    YYKKYa          
+     YOOY           
+     ZZaY           

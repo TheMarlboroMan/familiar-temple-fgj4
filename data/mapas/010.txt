@@ -1,46 +1,66 @@
 [INFO]
-20 20 120
+15 30 120
 [NOMBRE]
-LVL10: THE TEMPLE
+LVL10: HIPOSTYLE
 [MAPA]
-####################
-#3d1    131     1d3#
-#d1      1       1d#
-#1      131       1#
-#     c  1  a      #
-#      #e e#       #
-#                  #
-#c  3  a , a   3  f#
-#                  #
-#      #e e#       #
-#     f   1 a      #
-#        131       #
-#1                1#
-#d1     1        1d#
-#3d1   131      1d3#
-######## ###########
-       # #          
-########x###########
-#d 3x       x3    .#
-####################
+ ############# 
+ #    c,b    # 
+ #         c # 
+ # xx#   #xx # 
+ # xd   3 dx # 
+ #1x       x1# 
+ # xd 3   dx # 
+ # xx#   #xx # 
+ #   1   1   # 
+ #####xxx##### 
+     #   #     
+     # e #  ###
+     #   #  # #
+######xxx#### #
+# d1        b #
+#a 1          #
+######xxx####x#
+     #  a#  # #
+  ####   #  # #
+  #dd    #  #x#
+  ####111#  # #
+     #   #  # #
+     #xxx####x#
+     #       2#
+     #        #
+ #####111#### #
+ #     3 #  #f#
+ #       #  ###
+ # . #####     
+ #####         
 [DECO]
-RQQQQQQQQQQRIRQQQQQR
-QPPPPPPPPPPPPPPPPPPQ
-QPPPOOOOOOOOOOOPPPPQ
-QPPPNAMMMMMMMALPPPPQ
-QPPPNLPPPPPPPNLPPPPQ
-QPPPNLPROOORPNLPPPPR
-QPPPNLPNBCBLPNLPPPPI
-RPPPNLPNACALPNLPPPPJ
-JPPPNLPNBCALPNLPPPPI
-RPPPNLPRMMMRPNLPPPPR
-QPPPNLPPPPPPPNLPPPPQ
-QPPPNAOOOOOOOALPPPPQ
-QPPPMMMMMMMMMMMPPPPQ
-QPPPPPPPPPPPPPPPPPPQ
-QPPPPPPPPPPPPPPPPPPQ
-RQQQQQQRORQQQRJIRQQR
-       QMQ          
-QRJIRQQRKRQQQQRIJRQQ
-QAALKNAAAAALKNAAAAbQ
-QQQRJRQQQQQQQRIRQQQQ
+ QQQQQQQQQQQQQ 
+ QWWWWWWWWWWWQ 
+ QWWWWWWWWWWWQ 
+ QWKKJWWWJKKWQ 
+ QWKWWWWWWWKWQ 
+ QWKWWWWWWWKWQ 
+ QWKWWWWWWWKWQ 
+ QWKKIWWWIKKWQ 
+ QWWWWWWWWWWWQ 
+ QQQQRKKKRQQQQ 
+     IOOOI     
+     IAAAI  QQQ
+     RMMMR  QTQ
+YYYYYYKKKYYRQTQ
+YTTTTTTTTTTTTTQ
+YTTTTTTTTTTTTTQ
+YYYYYYKKKZZRIKI
+     ZTTTZ  QTQ
+  RZZZTTTZ  QTQ
+  JTTTTTTJ  JKJ
+  RZZZTTTZ  QTQ
+     ZTTTZ  QTQ
+     IKKKIRQIKI
+     RTTTTTTTTR
+     ZTTTTTTTTY
+ ZZZZZTTTZZZZTY
+ ZBBBLTTTZ  ZTY
+ ZBBBLTTTZ  ZZY
+ ZBbBZZZZZ     
+ ZZZZZ         

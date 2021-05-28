@@ -1,58 +1,68 @@
 [INFO]
-23 24 160
+30 30 150
 [NOMBRE]
-LVL11: THE CHASM
+LVL11: THE MAZE
 [MAPA]
-#######################
-# #2#2#xxxe#cexxxx3xxx#
-# 3    xx  #xxxxxxxxxx#
-# # # #xxx #xxxxxxxxxx#
-# #####xxxx# dxxxxxxxx#
-# .#xxxxxxx#1 xxxxxxxx#
-#xxxxxxxx  #xxxxxxxxxx#
-#xxxxxxd 3##xxxxx   xx#
-#xxxxxx    #   xx , xx#
-#xxxxxxx  c# 1 xx   xx#
-#xxxx xx  ## xxxxxxxxx#
-#xxxx xxxxxxxxxxxxxxxx#
-#xxxxxxxxxxx xxxxxxxxx#
-#xxxxxxxxxxxxxxxxxxxxx#
-#xxxx1##xxxx xxxxx#3e #
-#xxx 31#xxxx xxxxx# f #
-#xxx   #xxxxxxxxxx# d #
-#xxx   bxxxxxxxxxx### #
-#xxx     xxx1xxxxxxxx #
-#xxxd    xx1dxx  x  x #
-#xxxxxxxxxxxxxxxxxxxx #
-#xxxxxxxxxxxxxxxxxxxxx#
-#xxxxxxxxxxxxxxxxxxxxx#
-#xxxxxxxxxxxxxxxxxxxxx#
-#xxxxxxxxxxxxxxxxxxxxx#
-#######################
+ ####################         
+ #d  1   x   x   111#         
+ #    ###########   #  #####  
+ # 3c #         # b ####   #  
+ #    ###########   x  x d #  
+ #d  1   x a x   1 1####2  #  
+ #################x##  ##x##  
+                 #e#    # #   
+#######          # #    #e#   
+# 2   #  #####  ##x##  ##x##  
+#     ####   #  #1  ####  2#  
+#  c         #  # d x  x 3 #  
+#     ####2  #  #  2####   #  
+### ###  ##x##  #####  ##x##  
+  # #     # #           # #   
+  # #     # #           # #   
+ ## ###  ##x##  #####  ##x##  
+ #    #  #  a####   ####2  #  
+ # xx #  # , x  x b x  x   #  
+ # xx #  #   ####2  ####  1#  
+ #    #  #####  #####  ## ##  
+ ###3##                 # #   
+   # #   ################ ####
+ ### ##  #    a              #
+ #    #  #2  #     #  b     d#
+ # 1 1#  #                   #
+ #  1 #  ### ##### ###### ####
+ #    #    #3#   #3#    # #   
+ #   .#    #d#   #d#    #d#   
+ ######    ###   ###    ###   
 [DECO]
-VVWXWWXWXWXWWWWWWWWWWWW
-WAWAWAW   BWBA    C   W
-VAACAAB  BAV          W
-VAWAWAW   CX          V
-WBWWWWW    XAA        X
-WBbW       VAA        V
-V        ACV          W
-X      ACBWW     ACA  W
-X      ABAAWAAB  ABB  V
-V       AAAWACA  BAC  W
-V    A  AAWWA         W
-W    A                W
-W           A         W
-V                     X
-X    AWv    A     WCBBV
-V   AACX    A     XBBAW
-X   ACBW          VCAAW
-X   ABAA          VXWAW
-W   AABAA   A        AW
-W   ACCAA  BC  BA AB AW
-W                    BV
-W                     X
-W                     W
-W                     W
-W                     V
-WWWWWVVWWWWWWWVXVWWWWXX
+ QQQQQQQQRIJIRQQQQQQQ         
+ QCCCCCCCKNALKCCCCCCQ         
+ QCCCCUUUUUUUUUUUCCCQ  UUUUU  
+ QCCCCU         UCCCRUUUPPPT  
+ QCCCCUUUUUUUUUUUCCCKNLKPPPU  
+ QCCCCCCCKNALKCCCCCCRUUUPPPU  
+ QQQQQQQQRIJIRQQQRKRU  UUKUU  
+                 UOU    UOU   
+UUUUUUU          UMU    UMU   
+UPPPPPU  UUUUU  UUKUU  UUKUU  
+UPPPPPUUUUAAAU  UPPPUUUUAAAU  
+UPPPPPPPPNAAAU  UPPPKNLKAAAU  
+UPPPPPUUUUAAAU  UPPPUUUUAAAU  
+UUUPUUU  UUKUU  UUUUU  UUKUU  
+  UPU     UOU           UOU   
+  UPU     UMU           UMU   
+ UUPUUU  UUKUU  UUUUU  UUKUU  
+ UAOOAU  UPPPUUUUCCCUUUUPPPU  
+ UNKKLU  UPPPKNLKCCCKNLKPPPU  
+ UNKKLU  UPPPUUUUCCCUUUUPPPU  
+ UAMMAU  UUUUU  UUUUU  UUOUU  
+ UUUPUU                 RAR   
+   RPR   YYYYYYYYYYYYYYYYAYYYY
+ YYYOYY  YAAAAAAAAAAAAAAAAAAAY
+ YAAAAY  YAAAUAAAAAUAAAAAAAAAY
+ YAAAAY  YAAAAAAAAAAAAAAAAAAAY
+ YAAAAY  YYYAYYYYYAYYYYYYAYYYY
+ YAAAAY    YAY   YAY    YAY   
+ YAAAbY    YAY   YAY    YAY   
+ YYYYYY    YYY   YYY    YYY   
+
+<FIN>

@@ -11,3 +11,5 @@
 11	data/mapas/011.txt
 12	data/mapas/012.txt
 13	data/mapas/013.txt
+14	data/mapas/014.txt
+15	data/mapas/015.txt
