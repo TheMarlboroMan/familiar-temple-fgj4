@@ -38,8 +38,11 @@ bool Controlador_juego::loop(const Input& input, float delta)
 		if(!fade.es_activo())
 		{
 			logica_nivel();
-			turno_nivel(delta);
+			//TODO: here we could inject the slow down thing.
+			turno_nivel(delta);			
+			//TODO: here we could inject the slow down thing.
 			procesar_input_jugador(input, delta);
+			//TODO: here we could inject the slow down thing.
 			logica_jugador(delta);
 			evaluar_eventos_juego();
 			procesar_cola_eventos_juego();
@@ -343,6 +346,7 @@ void Controlador_juego::logica_jugador(float delta)
 		virtual void visitar(Estado_jugador_recargar&)			{flags=MOVIMIENTO_PERMITIDO | CAMBIO_DIRECCION_PERMITIDA;;}
 	}vis;
 
+	control_armas.turno(delta);
 	jugador.recibir_visitante_estado(vis);
 
 	//Calcular hacia dónde mira.
@@ -725,8 +729,6 @@ void Controlador_juego::turno_nivel(float delta)
 {
 
 	segundos_restantes-=delta;
-
-	control_armas.turno(delta);
 
 	//Proyectiles... Moverlos y comprobar si chocan con alguna celda. O si los del jugador se salen de la cámara.
 	auto caja_camara=DLibH::Caja<float, unsigned int>{(float)camara.acc_x(), (float)camara.acc_y(), camara.acc_w(), camara.acc_h()};
