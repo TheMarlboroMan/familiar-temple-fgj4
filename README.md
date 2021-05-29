@@ -18,6 +18,9 @@ v1.3: May 2021, found out an old version was 1.2, so I slapped in a new weapon a
 - Add a few more textures to make the levels just a bit less ugly (all borders types, more types of sand, better kill floors, spruce up the levels)
 - Difficulty levels????
 - Store hi-scores
+- Health focus power
+- Increase duration of supershot power
+
 
 ## Level format and mod support
 
