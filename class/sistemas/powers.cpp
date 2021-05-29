@@ -62,9 +62,9 @@ void powers::step(float _delta) {
 	}
 
 	cycle_time+=_delta;
-	if(cycle_time >= 10.f) {
+	if(cycle_time >= 5.f) {
 
-		cycle_time-=10.f;
+		cycle_time-=5.f;
 		cycle();
 	}
 }

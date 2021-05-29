@@ -7,7 +7,7 @@ Code and resources for this "oldie".
 v1.0.0: March 2015, game gets done.
 v1.1.0: May 2021, building as AppImage
 v1.1.1: May 2021, gamepad support, tweaked scores, adds level number to level name
-v1.3: May 2021, found out an old version was 1.2, so I slapped in a new weapon and maps, named it v1.3 and called it a day.
+v1.3: May 2021, found out an old version was 1.2, so I slapped in a new weapon, maps and gameplay systems, named it v1.3 and called it a day.
 
 ## Ideas:
 
