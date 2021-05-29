@@ -1,6 +1,11 @@
 #ifndef SISTEMA_PUNTUACION_H
 #define SISTEMA_PUNTUACION_H
 
+#include <iostream>
+#include "../../libdan2/libDan2.h"
+
+extern DLibH::Log_base LOG;
+
 class Sistema_puntuacion
 {
 	private:
@@ -13,6 +18,7 @@ class Sistema_puntuacion
 	bool reclamar_vida;
 
 	static const unsigned int PUNTOS_PARA_VIDA=1500;
+	int next_life_multiplier{1};
 
 	public:
 
@@ -23,9 +29,20 @@ class Sistema_puntuacion
 	void sumar_puntuacion(unsigned int p)
 	{
 		puntuacion+=p;
-		if(puntuacion >= siguiente_vida)
-		{
-			siguiente_vida+=PUNTOS_PARA_VIDA;
+		if(puntuacion >= siguiente_vida) {
+
+
+			if(next_life_multiplier <= 4) {
+				++next_life_multiplier;
+				siguiente_vida+=next_life_multiplier*PUNTOS_PARA_VIDA;
+				LOG<<"next life with multiplier at "<<siguiente_vida<<std::endl;
+			}
+			else {
+
+				siguiente_vida+=(PUNTOS_PARA_VIDA*5);
+				LOG<<"next life static at "<<siguiente_vida<<std::endl;
+			}
+
 			reclamar_vida=true;
 		}
 	}
@@ -46,6 +63,7 @@ class Sistema_puntuacion
 		ankh_nivel=0;
 		puntuacion=0;
 		siguiente_vida=PUNTOS_PARA_VIDA;
+		next_life_multiplier=1;
 	}
 };
 

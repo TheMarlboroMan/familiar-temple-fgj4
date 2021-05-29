@@ -4,7 +4,7 @@
 class Sistema_estados
 {
 	public:
-	enum class estados {E_JUEGO, E_TITLE, E_GAME_OVER, E_FIN_1, E_FIN_2};
+	enum class estados {E_JUEGO, E_TITLE, E_GAME_OVER, E_FIN_1, E_FIN_2, E_HELP};
 
 	private:
 	estados estado;

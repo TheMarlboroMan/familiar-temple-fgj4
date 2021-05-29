@@ -5,6 +5,11 @@ bool powers::can_be_activated() const {
 	return focus==max_focus;
 }
 
+void powers::force_stop() {
+
+	remaining_time=0.f;
+}
+
 bool powers::is_active() const {
 
 	return remaining_time > 0.f;
@@ -34,9 +39,10 @@ void powers::activate() {
 			remaining_time=5.;
 		break;
 		case power_type::fire:
-			remaining_time=5.;
+			remaining_time=10.;
 		break;
 		case power_type::ammo:
+		case power_type::health:
 			remaining_time=0.;
 		break;
 	}
@@ -69,7 +75,8 @@ void powers::cycle() {
 
 		case power_type::time: current=power_type::fire; break;
 		case power_type::fire: current=power_type::ammo; break;
-		case power_type::ammo: current=power_type::time; break;
+		case power_type::ammo: current=power_type::health; break;
+		case power_type::health: current=power_type::time; break;
 	}
 }
 

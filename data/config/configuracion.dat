@@ -19,3 +19,4 @@ gamepad_fire:7
 gamepad_strafe:5
 gamepad_reload:3
 gamepad_focus:4
+gamepad_discard_weapon:6

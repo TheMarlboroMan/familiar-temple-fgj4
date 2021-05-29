@@ -16,7 +16,10 @@ void Input::configurar()
 	mapa.insert(std::make_pair(I_APUNTAR, input_type{0, 0, SDL_SCANCODE_LSHIFT}));
 	mapa.insert(std::make_pair(I_RECARGAR, input_type{0, 0, SDL_SCANCODE_Z}));
 	mapa.insert(std::make_pair(I_FOCUS, input_type{0, 0, SDL_SCANCODE_X}));
+	mapa.insert(std::make_pair(I_DISCARD_WEAPON, input_type{0, 0, SDL_SCANCODE_A}));
 	mapa.insert(std::make_pair(I_FULLSCREEN, input_type{0, 0, SDL_SCANCODE_F}));
+	mapa.insert(std::make_pair(I_HELP, input_type{0, 0, SDL_SCANCODE_F1}));
+
 
 	mapa.insert(std::make_pair(I_IZQUIERDA, input_type{1, 0, config.get_gamepad_left()}));
 	mapa.insert(std::make_pair(I_DERECHA, input_type{1, 0, config.get_gamepad_right()}));
@@ -26,5 +29,6 @@ void Input::configurar()
 	mapa.insert(std::make_pair(I_DISPARAR, input_type{1, 0, config.get_gamepad_fire()}));
 	mapa.insert(std::make_pair(I_APUNTAR, input_type{1, 0, config.get_gamepad_strafe()}));
 	mapa.insert(std::make_pair(I_FOCUS, input_type{1, 0, config.get_gamepad_focus()}));
+	mapa.insert(std::make_pair(I_DISCARD_WEAPON, input_type{1, 0, config.get_gamepad_discard_weapon()}));
 	mapa.insert(std::make_pair(I_RECARGAR, input_type{1, 0, config.get_gamepad_reload()}));
 }

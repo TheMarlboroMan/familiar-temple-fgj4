@@ -29,6 +29,7 @@ $(DIR_O)generador_numeros.o \
 OBJETOS=$(DIR_O)controlador.o \
 $(DIR_O)controlador_juego.o \
 $(DIR_O)controlador_title.o \
+$(DIR_O)help.o \
 $(DIR_O)controlador_game_over.o \
 $(DIR_O)controlador_fin_1.o \
 $(DIR_O)controlador_fin_2.o \
@@ -106,6 +107,12 @@ $(DIR_CONTROLADORES)controlador_interface.h \
 $(DIR_CONTROLADORES)controlador_title.h \
 $(DIR_CONTROLADORES)controlador_title.cpp
 	$(CC) $(CFLAGS) $(DIR_CONTROLADORES)controlador_title.cpp -o $(DIR_O)controlador_title.o
+
+$(DIR_O)help.o :\
+$(DIR_CONTROLADORES)controlador_interface.h \
+$(DIR_CONTROLADORES)help.h \
+$(DIR_CONTROLADORES)help.cpp
+	$(CC) $(CFLAGS) $(DIR_CONTROLADORES)help.cpp -o $(DIR_O)help.o
 
 $(DIR_O)controlador_game_over.o :\
 $(DIR_CONTROLADORES)controlador_interface.h \

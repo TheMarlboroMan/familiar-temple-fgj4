@@ -131,6 +131,7 @@ void Representador::focus_hud(
 		case powers::power_type::time: ss<<"time "; break;
 		case powers::power_type::fire: ss<<"fire "; break;
 		case powers::power_type::ammo: ss<<"ammo "; break;
+		case powers::power_type::health: ss<<"health "; break;
 	}
 
 	ss<<_focus_meter;

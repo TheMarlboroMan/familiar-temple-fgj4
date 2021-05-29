@@ -5,7 +5,7 @@ class powers {
 	public:
 
 	enum class power_type {
-		time, fire, ammo
+		time, fire, ammo, health
 	};
 
 	bool               can_be_activated() const;
@@ -16,6 +16,7 @@ class powers {
 	void               activate();
 	void               step(float);
 	void               reset();
+	void               force_stop();
 	power_type         get_current() const {return current;}
 
 	private:

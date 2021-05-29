@@ -12,7 +12,7 @@ class Control_armas
 	//Definiciones
 	public:
 
-	enum class t_armas {REVOLVER=10, ESCOPETA=20, PISTOLA=30, SUBFUSIL=40};
+	enum class t_armas {NONE=0, REVOLVER=10, ESCOPETA=20, PISTOLA=30, SUBFUSIL=40};
 	static const int MAX_ARMAS=4;
 
 	class Info_municion
@@ -101,7 +101,8 @@ class Control_armas
 	private:
 
 	std::map<t_armas, Info_municion> info_armas;
-	t_armas arma_actual;
+	t_armas arma_actual,
+		previous_weapon{t_armas::NONE};
 
 	////////////
 	//Métodos internos.
@@ -119,7 +120,17 @@ class Control_armas
 	void reset();
 
 	t_armas acc_arma_actual() {return arma_actual;}
-	void mut_arma_actual(t_armas arma) {arma_actual=arma;}
+	void mut_arma_actual(t_armas arma) {
+
+		if(arma_actual!=previous_weapon) {
+
+			previous_weapon=arma_actual;
+		}
+		arma_actual=arma;
+	}
+
+	void discard_current();
+	bool can_discard_current() const;
 
 		//Proxies.
 	void sumar_reserva(t_armas arma, unsigned int cantidad) {info_armas[arma].sumar_reserva(cantidad);}

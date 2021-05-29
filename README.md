@@ -11,16 +11,10 @@ v1.3: May 2021, found out an old version was 1.2, so I slapped in a new weapon a
 
 ## Ideas:
 
-- Discard current weapon for previous (perhaps with an ammo penalty)
 - Power effects (coloured overlay???)
 - New hud.
-- Adjust extra life score (first 1500, then 5000, then 10000, then each 10000?)
 - Add a few more textures to make the levels just a bit less ugly (all borders types, more types of sand, better kill floors, spruce up the levels)
-- Difficulty levels????
-- Store hi-scores
-- Health focus power
-- Increase duration of supershot power
-
+- Store hi-scores in some file, display them in the title screen.
 
 ## Level format and mod support
 

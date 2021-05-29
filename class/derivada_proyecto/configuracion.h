@@ -60,6 +60,7 @@ class Configuracion: public Configuracion_base
 	int gamepad_strafe{0};
 	int gamepad_reload{0};
 	int gamepad_focus{0};
+	int gamepad_discard_weapon{0};
 
 	////////////////////////////////
 	// Interface pública.
@@ -76,6 +77,7 @@ class Configuracion: public Configuracion_base
 	int get_gamepad_strafe() const {return gamepad_strafe;}
 	int get_gamepad_reload() const {return gamepad_reload;}
 	int get_gamepad_focus() const {return gamepad_focus;}
+	int get_gamepad_discard_weapon() const {return gamepad_discard_weapon;}
 	void mut_idioma(unsigned short int p_valor) {this->idioma=p_valor;}
 
 	Configuracion();

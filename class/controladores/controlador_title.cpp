@@ -3,13 +3,7 @@
 
 const std::string Controlador_title::cadena_intro="F A M I L I A R    T E M P L E\n\n\n\n"
 "The evil priest Nebneteru has returned to Earth once more.\n\nVenture inside the evil temple and defeat him before he regains his power!.";
-const std::string Controlador_title::cadena_controles="Use ARROW KEYS to move.\n\n"
-"SPACE / BUTTON 3 to jump.\n\n"
-"LEFT CONTROL / RIGHT TRIGGER to fire.\n\n"
-"LEFT SHIFT / RIGHT BUMPER to strafe.\n\n"
-"Z / BUTTON 4 / Double tap strafe to reload.\n\n"
-"F to cycle between the 3 screen modes (you may not notice the difference).\n\n"
-"Find the exit in each level and vanquish the priest in the end.\n\nCollect bonus for extra points.\n\nGet an extra life each 1500 points.\n\nJump over deadly floors and projectiles.\n\n\n\nPress JUMP or FIRE to play.";
+const std::string Controlador_title::cadena_controles="Press F1 for help\n\nPress JUMP or FIRE to play.";
 const std::string Controlador_title::cadena_creditos="A \"game\" by The Marlboro Man.\n\nMusic: \"temple of the mystics\" by jdagenet.\n\nTileset: \"hieroglyph sprites\" by Andor Salga.\n\nSound effects by Diode111 and Kayden Riggs.\n\nMade for the 4th Familiar Game Jam.\n\n\n";
 
 
@@ -33,14 +27,18 @@ bool Controlador_title::loop(const Input& input, float delta)
 	{
 		return false;
 	}
-	else
-	{
-		if(input.es_input_down(Input::I_DISPARAR) || input.es_input_down(Input::I_SALTAR))
-		{
-			solicitar_cambio_estado(Sistema_estados::estados::E_JUEGO);
-		}
-		return true;
+
+	if(input.es_input_down(Input::I_HELP)) {
+
+		solicitar_cambio_estado(Sistema_estados::estados::E_HELP);
 	}
+
+	if(input.es_input_down(Input::I_DISPARAR) || input.es_input_down(Input::I_SALTAR))
+	{
+		solicitar_cambio_estado(Sistema_estados::estados::E_JUEGO);
+	}
+
+	return true;
 }
 
 void Controlador_title::dibujar(DLibV::Pantalla& pantalla)

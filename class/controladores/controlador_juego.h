@@ -103,6 +103,7 @@ LOG<<"ACTIVANDO FADE"<<std::endl;
 
 	void sumar_puntuacion(unsigned int);
 	void add_focus(int);
+	void activate_focus();
 
 	void procesar_cola_eventos_juego();
 	void evaluar_eventos_juego();

@@ -23,8 +23,28 @@ void Control_armas::iniciar()
 void Control_armas::reset()
 {
 	arma_actual=t_armas::REVOLVER;
+	previous_weapon=t_armas::NONE;
 	info_armas[t_armas::REVOLVER].reset(6, 6, 18);
 	info_armas[t_armas::ESCOPETA].reset(8, 0, 0);
 	info_armas[t_armas::PISTOLA].reset(12, 0, 0);
 	info_armas[t_armas::SUBFUSIL].reset(30, 0, 0);
 }
+
+
+void Control_armas::discard_current() {
+
+	if(previous_weapon==t_armas::NONE) {
+
+		return;
+	}
+
+	arma_actual=previous_weapon;
+	previous_weapon=t_armas::NONE;
+}
+
+bool Control_armas::can_discard_current() const {
+
+	return previous_weapon!=t_armas::NONE;
+}
+
+

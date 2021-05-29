@@ -125,11 +125,12 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 		Input_usuario& iu;
 //		Nivel& nivel;
 
-		bool intentar_disparar{false};
-		bool intentar_disparar_auto{false};
-		bool recargar{false};
-		bool saltar{false};
-		bool focus{false};
+		bool intentar_disparar{false},
+			intentar_disparar_auto{false},
+			recargar{false},
+			saltar{false},
+			focus{false},
+			discard{false};
 
 		public:
 
@@ -138,6 +139,7 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 		bool es_recargar() const {return recargar;}
 		bool es_saltar() const {return saltar;}
 		bool is_focus() const {return focus;}
+		bool is_discard() const {return discard;}
 
 		Vis(Jugador& pj, Input_usuario& pi): //, Nivel& pn):
 			jugador(pj), iu(pi)
@@ -150,6 +152,7 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 			}
 
 			if(e.es_recargar()) recargar=true;
+			else if(iu.discard_weapon) discard=true;
 			else if(iu.saltar && jugador.puede_saltar()) saltar=true;
 			else if(iu.disparar) intentar_disparar=true;
 			else if(iu.disparar_auto) intentar_disparar_auto=true;
@@ -175,26 +178,13 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 
 	if(vis.is_focus() && focus_control.can_be_activated()) {
 
-		focus_control.activate();
-		//automatically refill weapon
-		control_armas.rellenar();
-		cola_sonido(Recursos_audio::RS_PERDER_VIDA, 128);
-		if(focus_control.get_current() == powers::power_type::ammo) {
+		activate_focus();
+	}
 
-			int ammo_to_add=0;
-			switch(control_armas.acc_arma_actual()) {
+	if(vis.is_discard() && control_armas.can_discard_current()) {
 
-				case Control_armas::t_armas::PISTOLA: ammo_to_add=24; break;
-				case Control_armas::t_armas::REVOLVER: ammo_to_add=12; break;
-				case Control_armas::t_armas::ESCOPETA: ammo_to_add=8; break;
-				case Control_armas::t_armas::SUBFUSIL: ammo_to_add=60; break;
-			}
-
-			control_armas.sumar_reserva(
-				control_armas.acc_arma_actual(),
-				ammo_to_add
-			);
-		}
+		control_armas.discard_current();
+		cola_sonido(Recursos_audio::RS_RECARGAR, 128);
 	}
 
 	if(vis.es_intentar_disparar() || vis.es_intentar_disparar_auto()) {
@@ -320,6 +310,7 @@ void Controlador_juego::reiniciar_nivel()
 {
 	LOG<<"RESTANDO VIDA"<<std::endl;
 	sistema_vidas.restar_vida();
+	focus_control.force_stop();
 	cola_sonido(Recursos_audio::RS_PERDER_VIDA, 128);
 
 	if(sistema_vidas.es_quedan_vidas())
@@ -355,6 +346,7 @@ Input_usuario Controlador_juego::recoger_input_usuario(const Input& input)
 
 	if(input.es_input_down(Input::I_RECARGAR)) iu.recargar=true;
 	if(input.es_input_down(Input::I_FOCUS)) iu.focus=true;
+	if(input.es_input_down(Input::I_DISCARD_WEAPON)) iu.discard_weapon=true;
 
 	return iu;
 }
@@ -594,7 +586,9 @@ void Controlador_juego::evaluar_eventos_juego()
 
 				if(vis.es_recoge_ankh()) {
 					sistema_puntuacion.recoger_ankh();
-					add_focus(3); //extra focus 
+					//TODO: Erase this.
+					sumar_puntuacion(200);
+					add_focus(6); //extra focus 
 				}
 
 				if(vis.es_recoge_salud()) jugador.recuperar_energia();
@@ -1111,5 +1105,43 @@ void Controlador_juego::iniciar_fin_juego()
 	else
 	{
 		fade.activar(Fade::tcallback::FIN_2, 128, 128, 128);
+	}
+}
+
+void Controlador_juego::activate_focus() {
+
+	focus_control.activate();
+	//automatically refill weapon
+	control_armas.rellenar();
+	cola_sonido(Recursos_audio::RS_PERDER_VIDA, 128);
+
+	switch(focus_control.get_current()) {
+
+		case powers::power_type::ammo: {
+
+			int ammo_to_add=0;
+			switch(control_armas.acc_arma_actual()) {
+
+				case Control_armas::t_armas::PISTOLA: ammo_to_add=24; break;
+				case Control_armas::t_armas::REVOLVER: ammo_to_add=12; break;
+				case Control_armas::t_armas::ESCOPETA: ammo_to_add=8; break;
+				case Control_armas::t_armas::SUBFUSIL: ammo_to_add=60; break;
+				case Control_armas::t_armas::NONE: 
+					throw std::runtime_error("This cannot happen");
+				break;
+			}
+
+			control_armas.sumar_reserva(
+				control_armas.acc_arma_actual(),
+				ammo_to_add
+			);
+		}
+		break;
+		case powers::power_type::health:
+			jugador.recuperar_energia();
+		break;
+		case powers::power_type::fire:
+		case powers::power_type::time:
+		break;
 	}
 }

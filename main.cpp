@@ -24,6 +24,7 @@
 #include "class/controladores/controlador_game_over.h"
 #include "class/controladores/controlador_fin_1.h"
 #include "class/controladores/controlador_fin_2.h"
+#include "class/controladores/help.h"
 
 #include "class/sistemas/sistema_estados.h"
 
@@ -131,6 +132,7 @@ int main(int argc, char ** argv)
 		controlador.inicializar();
 
 		Controlador_title CT(SES, controlador.acc_pantalla());
+		help CH(SES, controlador.acc_pantalla());
 		Controlador_game_over CG(SES);
 		Controlador_fin_1 F1(SES);
 		Controlador_fin_2 F2(SES);
@@ -149,6 +151,7 @@ int main(int argc, char ** argv)
 					case Sistema_estados::estados::E_GAME_OVER: CINT=&CG; break;
 					case Sistema_estados::estados::E_FIN_1: CINT=&F1; break;
 					case Sistema_estados::estados::E_FIN_2: CINT=&F2; break;
+					case Sistema_estados::estados::E_HELP: CINT=&CH; break;
 				}
 				SES.confirmar_cambio_estado();
 			}

@@ -79,6 +79,11 @@ void Configuracion::procesar_clave_y_valor(const std::string& clave, const std::
 		return;
 	}
 
+	if(clave.compare("gamepad_discard_weapon")==0) {
+
+		gamepad_discard_weapon=std::atoi(valor.c_str());
+		return;
+	}
 }
 
 void Configuracion::asignar_valores_por_defecto()
