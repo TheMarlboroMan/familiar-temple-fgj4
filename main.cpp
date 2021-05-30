@@ -27,6 +27,7 @@
 #include "class/controladores/help.h"
 
 #include "class/sistemas/sistema_estados.h"
+#include "class/sistemas/hi_score.h"
 
 //Declaración del log del motor en espacio global.
 DLibH::Log_base LOG;
@@ -98,6 +99,11 @@ int main(int argc, char ** argv)
 				env::make_data_path("data/config/configuracion.dat"),
 				env::usr_path+"/configuracion.dat"
 			);
+
+			dump_file(
+				env::make_data_path("data/config/scores.dat"),
+				env::usr_path+"/scores.dat"
+			);
 		}
 	}
 
@@ -131,12 +137,14 @@ int main(int argc, char ** argv)
 		Controlador controlador(CARG);
 		controlador.inicializar();
 
-		Controlador_title CT(SES, controlador.acc_pantalla());
+		hi_score_manager hi_scores{};
+
+		Controlador_title CT(SES, hi_scores, controlador.acc_pantalla());
 		help CH(SES, controlador.acc_pantalla());
 		Controlador_game_over CG(SES);
 		Controlador_fin_1 F1(SES);
 		Controlador_fin_2 F2(SES);
-		Controlador_juego CJ(CARG, SES);
+		Controlador_juego CJ(CARG, hi_scores, SES);
 		Controlador_interface * CINT=&CT;
 
 		controlador.iniciar_musica();
@@ -147,7 +155,10 @@ int main(int argc, char ** argv)
 				switch(SES.acc_estado_deseado())
 				{
 					case Sistema_estados::estados::E_JUEGO: CINT=&CJ; break;
-					case Sistema_estados::estados::E_TITLE: CINT=&CT; break;
+					case Sistema_estados::estados::E_TITLE: 
+						CINT=&CT; 
+						CT.load_hi_scores();
+					break;
 					case Sistema_estados::estados::E_GAME_OVER: CINT=&CG; break;
 					case Sistema_estados::estados::E_FIN_1: CINT=&F1; break;
 					case Sistema_estados::estados::E_FIN_2: CINT=&F2; break;

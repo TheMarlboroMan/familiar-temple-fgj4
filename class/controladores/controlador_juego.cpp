@@ -8,8 +8,13 @@
 	using namespace std;
 #endif
 
-Controlador_juego::Controlador_juego(const DLibH::Controlador_argumentos& CARG, Sistema_estados& s)
+Controlador_juego::Controlador_juego(
+	const DLibH::Controlador_argumentos& CARG, 
+	hi_score_manager& _hi_score, 
+	Sistema_estados& s
+)
 	:Controlador_interface(s),
+	hi_scores{_hi_score},
 	cargador_mapas(env::make_data_path("data/recursos/niveles.txt")),
 	nivel_actual(1), segundos_restantes(0.0)
 {
@@ -86,16 +91,19 @@ void Controlador_juego::procesar_callback_fade()
 		break;
 
 		case Fade::tcallback::GAME_OVER:
+			hi_scores.submit(hi_score{nivel_actual, sistema_puntuacion.acc_puntuacion(), false});
 			reset();
 			solicitar_cambio_estado(Sistema_estados::estados::E_GAME_OVER);
 		break;
 
 		case Fade::tcallback::FIN_1:
+			hi_scores.submit(hi_score{nivel_actual, sistema_puntuacion.acc_puntuacion(), true});
 			reset();
 			solicitar_cambio_estado(Sistema_estados::estados::E_FIN_1);
 		break;
 
 		case Fade::tcallback::FIN_2:
+			hi_scores.submit(hi_score{nivel_actual, sistema_puntuacion.acc_puntuacion(), true});
 			reset();
 			solicitar_cambio_estado(Sistema_estados::estados::E_FIN_2);
 		break;

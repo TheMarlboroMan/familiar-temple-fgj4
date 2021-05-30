@@ -11,10 +11,10 @@ v1.3: May 2021, found out an old version was 1.2, so I slapped in a new weapon, 
 
 ## Ideas:
 
+- Fix pick up two weapons of the same type in a row.
 - Power effects (coloured overlay???)
 - New hud.
 - Add a few more textures to make the levels just a bit less ugly (all borders types, more types of sand, better kill floors, spruce up the levels)
-- Store hi-scores in some file, display them in the title screen.
 
 ## Level format and mod support
 

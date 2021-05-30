@@ -11,6 +11,7 @@
 #include "../sistemas/sistema_puntuacion.h"
 #include "../sistemas/sistema_vidas.h"
 #include "../sistemas/powers.h"
+#include "../sistemas/hi_score.h"
 
 #include <fstream>
 #include <queue>
@@ -75,6 +76,7 @@ LOG<<"ACTIVANDO FADE"<<std::endl;
 		}
 	};
 
+	hi_score_manager& hi_scores;
 	Fade fade;
 	Sistema_puntuacion sistema_puntuacion;
 	Sistema_vidas sistema_vidas;
@@ -122,7 +124,7 @@ LOG<<"ACTIVANDO FADE"<<std::endl;
 
 	public:
 
-	Controlador_juego(const DLibH::Controlador_argumentos& carg, Sistema_estados& s);
+	Controlador_juego(const DLibH::Controlador_argumentos& carg, hi_score_manager&, Sistema_estados& s);
 
 	virtual void preloop(const Input& input, float delta)
 	{
