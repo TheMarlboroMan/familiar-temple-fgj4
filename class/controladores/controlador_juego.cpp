@@ -464,9 +464,11 @@ void Controlador_juego::procesar_cola_eventos_juego()
 		switch(e.tipo)
 		{
 			case Evento_juego::tipos::SALIDA_NIVEL: 
-				if(sistema_puntuacion.acc_ankh_nivel()==mapa.acc_ankh_nivel())
+				if(sistema_puntuacion.acc_ankh_nivel()!=mapa.acc_ankh_nivel())
 				{
-					sistema_puntuacion.marcar_nivel_como_todos_ankh();
+					sistema_puntuacion.fail_all_ankh();	
+				}
+				else {
 					LOG<<"Finalizado nivel "<<nivel_actual<<" con todos ANKH"<<std::endl;
 				}
 				
@@ -1145,14 +1147,12 @@ void Controlador_juego::herir_jugador()
 }
 
 void Controlador_juego::iniciar_fin_juego()
-{
-	//TODO: This sucks and should be tested.
-	if(sistema_puntuacion.acc_todos_ankh()==14) //No hay en el último nivel...
-	{
+{	
+	if(sistema_puntuacion.is_all_ankh()) {
+	
 		fade.activar(Fade::tcallback::FIN_1, 255, 255, 255);
 	}
-	else
-	{
+	else {
 		fade.activar(Fade::tcallback::FIN_2, 128, 128, 128);
 	}
 }

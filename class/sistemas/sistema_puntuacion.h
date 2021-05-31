@@ -12,7 +12,7 @@ class Sistema_puntuacion
 
 	unsigned int puntuacion;
 	unsigned int siguiente_vida;
-	unsigned int todos_ankh;
+	bool all_ankh{true};
 	unsigned int ankh_nivel;
 
 	bool reclamar_vida;
@@ -23,7 +23,7 @@ class Sistema_puntuacion
 	public:
 
 	Sistema_puntuacion()
-		:puntuacion(0), siguiente_vida(PUNTOS_PARA_VIDA), todos_ankh(0), ankh_nivel(0), reclamar_vida(false)
+		:puntuacion(0), siguiente_vida(PUNTOS_PARA_VIDA), all_ankh(true), ankh_nivel(0), reclamar_vida(false)
 	{}
 	
 	void sumar_puntuacion(unsigned int p)
@@ -48,14 +48,14 @@ class Sistema_puntuacion
 	}
 
 	void recoger_ankh() {++ankh_nivel;}
-	void marcar_nivel_como_todos_ankh() {++todos_ankh;}
+	void fail_all_ankh() {all_ankh=false;}
 	void reset_ankh_nivel() {ankh_nivel=0;}
 
 	void marcar_vida_como_reclamada() {reclamar_vida=false;}
 
 	unsigned int acc_puntuacion() const {return puntuacion;}
 	unsigned int acc_ankh_nivel() const {return ankh_nivel;}
-	unsigned int acc_todos_ankh() const {return todos_ankh;}
+	unsigned int is_all_ankh() const {return all_ankh;}
 	bool es_vida_extra() const {return reclamar_vida;}
 
 	void reset()
