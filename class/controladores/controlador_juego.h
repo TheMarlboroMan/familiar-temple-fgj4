@@ -93,7 +93,8 @@ LOG<<"ACTIVANDO FADE"<<std::endl;
 	unsigned int nivel_actual;
 	float segundos_restantes, level_time;
 	float game_time;
-	bool paused{false};
+	bool paused{false},
+		god_mode{false};
 
 	void cola_sonido(unsigned int sonido, unsigned int vol);
 	void importar_nivel(unsigned int indice_nivel);

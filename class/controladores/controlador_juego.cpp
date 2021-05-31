@@ -26,6 +26,13 @@ Controlador_juego::Controlador_juego(
 	{
 		if(pos_nivel != -1) nivel_actual=std::atoi(CARG.acc_argumento(pos_nivel+1).c_str());
 	}
+	
+	int index_god_mode=CARG.buscar("-god");
+	if(index_god_mode!=-1) {
+		
+		LOG<<"god mode enabled"<<std::endl;
+		god_mode=true;
+	}
 
 	importar_nivel(nivel_actual);
 }
@@ -531,9 +538,12 @@ void Controlador_juego::evaluar_eventos_juego()
 						caja.es_en_colision_con(c->copia_caja());
 					} ) )
 				{
-					LOG<<"Insertando evento perder vida por celda"<<std::endl;
-					cola_eventos.push(Evento_juego(Evento_juego::tipos::PERDER_VIDA_POR_CELDA));
-					return;
+					if(!god_mode) {
+				
+						LOG<<"Insertando evento perder vida por celda"<<std::endl;
+						cola_eventos.push(Evento_juego(Evento_juego::tipos::PERDER_VIDA_POR_CELDA));
+						return;
+					}
 				}
 			}
 		}
@@ -987,6 +997,7 @@ void Controlador_juego::turno_nivel(float delta)
 				{
 					p->marcar_para_borrar();
 					e->restar_salud(p->acc_potencia());
+					
 					add_focus(1); //focus per hit 
 					if(e->es_sin_salud())
 					{
@@ -1135,6 +1146,11 @@ void Controlador_juego::cola_sonido(unsigned int sonido, unsigned int vol)
 
 void Controlador_juego::herir_jugador()
 {
+	if(god_mode) {
+	
+		return;
+	}
+
 	jugador.herir();
 	if(!jugador.acc_energia())
 	{
