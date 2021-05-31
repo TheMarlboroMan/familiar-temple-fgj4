@@ -464,8 +464,10 @@ void Controlador_juego::procesar_cola_eventos_juego()
 		switch(e.tipo)
 		{
 			case Evento_juego::tipos::SALIDA_NIVEL: 
+			
 				if(sistema_puntuacion.acc_ankh_nivel()!=mapa.acc_ankh_nivel())
 				{
+					LOG<<"Failing ANKH in level"<<nivel_actual<<" got "<<sistema_puntuacion.acc_ankh_nivel()<<" vs "<<mapa.acc_ankh_nivel()<<std::endl;
 					sistema_puntuacion.fail_all_ankh();	
 				}
 				else {
