@@ -693,8 +693,7 @@ void Controlador_juego::dibujar_hud(
 {
 	bool show_level_name=segundos_restantes >= (level_time - 4.);
 
-	//TODO: Erase.
-	representador.reload_data();
+	//representador.reload_data();
 
 	//Draw overlay boxes
 	representador.hud_overlay(_screen, show_level_name);
@@ -1147,7 +1146,8 @@ void Controlador_juego::herir_jugador()
 
 void Controlador_juego::iniciar_fin_juego()
 {
-	if(sistema_puntuacion.acc_todos_ankh()==9) //No hay en el último nivel...
+	//TODO: This sucks and should be tested.
+	if(sistema_puntuacion.acc_todos_ankh()==14) //No hay en el último nivel...
 	{
 		fade.activar(Fade::tcallback::FIN_1, 255, 255, 255);
 	}

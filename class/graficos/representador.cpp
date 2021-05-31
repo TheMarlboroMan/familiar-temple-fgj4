@@ -35,10 +35,10 @@ unsigned int Representador::generar_vista(
 
 	return total;
 }
-
+/*
 void Representador::reload_data() {
 
-	std::ifstream file("/home/daniel/Desktop/size.txt");	
+	std::ifstream file("some_file.txt");	
 	file
 >>left_x
 >>left_y
@@ -80,7 +80,7 @@ void Representador::reload_data() {
 >>lives_x
 >>lives_y;
 }
-
+*/
 void Representador::hud_overlay(
 	DLibV::Pantalla& _screen,
 	bool _level_name_box
