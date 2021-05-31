@@ -1,7 +1,7 @@
 [INFO]
 20 20 120
 [NOMBRE]
-LVL12: THE TEMPLE
+THE TEMPLE
 [MAPA]
 ####################
 #3d1    131     1d3#

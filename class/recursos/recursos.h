@@ -11,6 +11,8 @@ class Recursos_graficos
 
 	enum superficies{
 		RS_FUENTE_BASE=1,
+		RS_FONT_RED=2,
+		RS_FONT_LARGE=3
 	};
 
 	enum texturas{

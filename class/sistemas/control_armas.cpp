@@ -1,5 +1,7 @@
 #include "control_armas.h"
 
+#include <iostream>
+
 Control_armas::Control_armas()
 	:arma_actual(t_armas::REVOLVER)
 {
@@ -46,5 +48,28 @@ bool Control_armas::can_discard_current() const {
 
 	return previous_weapon!=t_armas::NONE;
 }
+/*
+std::string weapon_translate(Control_armas::t_armas arma) {
 
+	switch(arma) {
+		case Control_armas::t_armas::NONE: return "NONE";
+		case Control_armas::t_armas::REVOLVER: return "REVOLVER";
+		case Control_armas::t_armas::ESCOPETA: return "SHOTGUN";
+		case Control_armas::t_armas::PISTOLA: return "GUN";
+		case Control_armas::t_armas::SUBFUSIL: return "MACHINEGUN";
+	}
+	
+	return "???";
+}
+*/
+void Control_armas::mut_arma_actual(
+	t_armas arma
+) {
 
+	if(arma!=arma_actual) {
+		
+		previous_weapon=arma_actual;		
+	}
+	
+	arma_actual=arma;
+}

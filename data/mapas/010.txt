@@ -1,7 +1,7 @@
 [INFO]
 15 30 120
 [NOMBRE]
-LVL10: HIPOSTYLE
+HIPOSTYLE
 [MAPA]
  ############# 
  #    c,b    # 

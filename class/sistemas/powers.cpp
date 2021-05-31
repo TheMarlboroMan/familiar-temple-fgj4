@@ -1,5 +1,8 @@
 #include "powers.h"
 
+const float powers::switch_seconds=5.f;
+const float powers::warning_seconds=1.5f;
+
 bool powers::can_be_activated() const {
 
 	return focus==max_focus;
@@ -62,9 +65,9 @@ void powers::step(float _delta) {
 	}
 
 	cycle_time+=_delta;
-	if(cycle_time >= 5.f) {
+	if(cycle_time >= switch_seconds) {
 
-		cycle_time-=5.f;
+		cycle_time-=switch_seconds;
 		cycle();
 	}
 }

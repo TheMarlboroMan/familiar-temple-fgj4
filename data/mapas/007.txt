@@ -1,7 +1,7 @@
 [INFO]
 15 20 80
 [NOMBRE]
-LVL7: THE WELL
+THE WELL
 [MAPA]
 ####### #######
 #xxxxx# #xxxxx#

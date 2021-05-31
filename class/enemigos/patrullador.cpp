@@ -25,8 +25,8 @@ void Patrullador::transformar_bloque(Bloque_transformacion_representable &b) con
 	b.rotar(fmod(tiempo, 360.0));
 
 	Frame_sprites f=TREC.obtener(0);
-	if(f)
-	{
+	if(f) {
+	
 		b.establecer_recorte(f.x, f.y, f.w, f.h);
 
 		/*Cuando el ancho de la caja lógica sea distinto del ancho de la caja

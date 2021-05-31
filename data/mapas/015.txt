@@ -1,7 +1,7 @@
 [INFO]
-18 18 90
+18 18 180
 [NOMBRE]
-LVL15: BURIAL CHAMBER
+BURIAL CHAMBER
 [MAPA]
 ##################
 #31            13#

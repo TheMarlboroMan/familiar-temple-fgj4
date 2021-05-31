@@ -60,20 +60,17 @@ SDL_Surface * Utilidades_graficas_SDL::copiar_superficie(SDL_Surface const * p_o
 
 SDL_Surface * Utilidades_graficas_SDL::cargar_imagen(const char * cadena, const SDL_Window * ventana)
 {
-        SDL_Surface * temporal=IMG_Load(cadena);
-        if (!temporal) 
-        {
-		DLibH::Log_motor::L()<<DLibH::Log_base_n(1)<<DLibH::Log_base_t()<<"Utilidades_graficas_SDL::cargar_imagen() : Imagen no cargada:"<<cadena<<std::endl;
-                return NULL;
-        }
-	else
-	{
-		if(!ventana) 
-		{
+	SDL_Surface * temporal=IMG_Load(cadena);
+	if (!temporal) {
+			DLibH::Log_motor::L()<<DLibH::Log_base_n(1)<<DLibH::Log_base_t()<<"Utilidades_graficas_SDL::cargar_imagen() : Imagen no cargada:"<<cadena<<std::endl;
+			return NULL;
+	}
+	else {
+		
+		if(!ventana) {
 			return temporal;
 		}
-		else
-		{
+		else {
 		
 			Uint32 formato=SDL_GetWindowPixelFormat(const_cast<SDL_Window *>(ventana));
 			SDL_Surface * optimizada=SDL_ConvertSurfaceFormat(temporal, formato, 0);

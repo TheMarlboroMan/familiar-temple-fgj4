@@ -16,7 +16,7 @@ Controlador_juego::Controlador_juego(
 	:Controlador_interface(s),
 	hi_scores{_hi_score},
 	cargador_mapas(env::make_data_path("data/recursos/niveles.txt")),
-	nivel_actual(1), segundos_restantes(0.0)
+	nivel_actual(1), segundos_restantes(0.0), level_time{0.f}, game_time{0.f}
 {
 	camara=DLibV::Camara(0, 0, 800, 600);
 
@@ -42,6 +42,12 @@ bool Controlador_juego::loop(const Input& input, float delta)
 	{
 		if(!fade.es_activo())
 		{
+			Input_usuario iu=recoger_input_usuario(input);
+			if(paused) {
+			
+				return true;
+			}
+		
 			logica_nivel();
 
 			float delta_world=delta,
@@ -53,9 +59,9 @@ bool Controlador_juego::loop(const Input& input, float delta)
 				delta_player*=0.75;
 			}
 
-			//TODO: here we could inject the slow down thing.
+			game_time+=delta;
 			turno_nivel(delta_world);
-			procesar_input_jugador(input, delta_player);
+			procesar_input_jugador(iu, delta_player);
 			logica_jugador(delta_player);
 			evaluar_eventos_juego();
 			procesar_cola_eventos_juego();
@@ -91,19 +97,19 @@ void Controlador_juego::procesar_callback_fade()
 		break;
 
 		case Fade::tcallback::GAME_OVER:
-			hi_scores.submit(hi_score{nivel_actual, sistema_puntuacion.acc_puntuacion(), false});
+			hi_scores.submit(hi_score{nivel_actual, sistema_puntuacion.acc_puntuacion(), false, game_time});
 			reset();
 			solicitar_cambio_estado(Sistema_estados::estados::E_GAME_OVER);
 		break;
 
 		case Fade::tcallback::FIN_1:
-			hi_scores.submit(hi_score{nivel_actual, sistema_puntuacion.acc_puntuacion(), true});
+			hi_scores.submit(hi_score{nivel_actual, sistema_puntuacion.acc_puntuacion(), true, game_time});
 			reset();
 			solicitar_cambio_estado(Sistema_estados::estados::E_FIN_1);
 		break;
 
 		case Fade::tcallback::FIN_2:
-			hi_scores.submit(hi_score{nivel_actual, sistema_puntuacion.acc_puntuacion(), true});
+			hi_scores.submit(hi_score{nivel_actual, sistema_puntuacion.acc_puntuacion(), true, game_time});
 			reset();
 			solicitar_cambio_estado(Sistema_estados::estados::E_FIN_2);
 		break;
@@ -112,9 +118,9 @@ void Controlador_juego::procesar_callback_fade()
 	fade.finalizar();
 }
 
-void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
+void Controlador_juego::procesar_input_jugador(const Input_usuario& iu, float delta)
 {
-	Input_usuario iu=recoger_input_usuario(input);
+	
 	jugador.recibir_input(iu);
 
 	//Esto va justo aquí, porque puede comportar un cambio de estado.
@@ -130,8 +136,7 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 		private:
 
 		const Jugador& jugador;
-		Input_usuario& iu;
-//		Nivel& nivel;
+		const Input_usuario& iu;
 
 		bool intentar_disparar{false},
 			intentar_disparar_auto{false},
@@ -149,7 +154,7 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 		bool is_focus() const {return focus;}
 		bool is_discard() const {return discard;}
 
-		Vis(Jugador& pj, Input_usuario& pi): //, Nivel& pn):
+		Vis(Jugador& pj, const Input_usuario& pi): //, Nivel& pn):
 			jugador(pj), iu(pi)
 		{}
 
@@ -169,7 +174,7 @@ void Controlador_juego::procesar_input_jugador(const Input& input, float delta)
 		virtual void visitar(Estado_jugador_recargar&) {}
 		virtual void visitar(Estado_jugador_aire&) {}
 
-	}vis(jugador, iu); //, mapa.acc_nivel());
+	}vis(jugador, iu);
 
 	jugador.recibir_visitante_estado(vis);
 
@@ -268,7 +273,8 @@ void Controlador_juego::importar_nivel(unsigned int indice_nivel)
 
 		jugador.establecer_posicion(inicio.x * Celda::DIM_CELDA, inicio.y * Celda::DIM_CELDA);
 
-		segundos_restantes=mapa.acc_segundos_finalizar();
+		level_time=mapa.acc_segundos_finalizar();
+		segundos_restantes=level_time;
 
 		int lim_nivel_w=mapa.acc_nivel().acc_w_en_celdas()*Celda::DIM_CELDA;
 		int lim_nivel_h=mapa.acc_nivel().acc_h_en_celdas()*Celda::DIM_CELDA;
@@ -307,6 +313,7 @@ void Controlador_juego::reset()
 	sistema_puntuacion.reset();
 	control_armas.reset();
 	focus_control.reset();
+	game_time=0.f;
 
 	proyectiles.clear();
 	proyectiles_enemigos.clear();
@@ -336,6 +343,16 @@ void Controlador_juego::reiniciar_nivel()
 Input_usuario Controlador_juego::recoger_input_usuario(const Input& input)
 {
 	Input_usuario iu;
+
+	if(input.es_input_down(Input::I_PAUSE)) {
+	
+		paused=!paused;		
+	}
+
+	if(paused) {
+		
+		return iu;
+	}
 
 	if(input.es_input_pulsado(Input::I_DERECHA)) iu.mov_horizontal=1;
 	else if(input.es_input_pulsado(Input::I_IZQUIERDA)) iu.mov_horizontal=-1;
@@ -446,12 +463,16 @@ void Controlador_juego::procesar_cola_eventos_juego()
 
 		switch(e.tipo)
 		{
-			case Evento_juego::tipos::SALIDA_NIVEL:
+			case Evento_juego::tipos::SALIDA_NIVEL: 
 				if(sistema_puntuacion.acc_ankh_nivel()==mapa.acc_ankh_nivel())
 				{
 					sistema_puntuacion.marcar_nivel_como_todos_ankh();
 					LOG<<"Finalizado nivel "<<nivel_actual<<" con todos ANKH"<<std::endl;
 				}
+				
+				//Add 10 points per extra second.
+				sumar_puntuacion(floor(segundos_restantes)*10);
+				
 				importar_nivel(nivel_actual+1);
 				while(cola_eventos.size()) cola_eventos.pop();
 			break;
@@ -666,8 +687,19 @@ void Controlador_juego::dibujar_juego(DLibV::Pantalla& pantalla)
 	representador.generar_vista(pantalla, camara, vr);
 }
 
-void Controlador_juego::dibujar_hud(DLibV::Pantalla& pantalla)
+void Controlador_juego::dibujar_hud(
+	DLibV::Pantalla& _screen
+)
 {
+	bool show_level_name=segundos_restantes >= (level_time - 4.);
+
+	//TODO: Erase.
+	representador.reload_data();
+
+	//Draw overlay boxes
+	representador.hud_overlay(_screen, show_level_name);
+	
+	//Ammo
 	std::vector<Rep_municion> municiones;
 	unsigned int i=0,
 		max_actual=control_armas.obtener_max_actual(),
@@ -684,33 +716,42 @@ void Controlador_juego::dibujar_hud(DLibV::Pantalla& pantalla)
 
 	//Polimorfizar..
 	std::vector<Representable *> reps;
-	for(auto& r : municiones) reps.push_back(&r);
+	for(auto& r : municiones) {
+		reps.push_back(&r);
+	}
 
-	representador.generar_hud_municion(pantalla, reps);
-
-	//Finalmente, al lado, poner la munición restante...
-	std::string cadena_municion=to_string(control_armas.acc_reserva());
-	DLibV::Representacion_texto_auto_estatica txt(pantalla.acc_renderer(), DLibV::Gestor_superficies::obtener(Recursos_graficos::RS_FUENTE_BASE), cadena_municion);
-	txt.establecer_posicion(16, 18);
-	txt.volcar(pantalla);
-
-	//La vida...
-	Frame_sprites fs_energia=Rep_municion::obtener_frame_hud(1);
-	Frame_sprites fs_vidas=Rep_municion::obtener_frame_hud(2);
-	representador.generar_hud_vida(pantalla, jugador.acc_energia(), sistema_vidas.acc_vidas(), fs_energia, fs_vidas);
-
-	//Los ankh
+	representador.hud_ammo(_screen, reps, control_armas.acc_reserva());
+	
+	int index=0;
+	switch(focus_control.get_current()) {
+	
+		case powers::power_type::time: index=70; break;
+		case powers::power_type::fire: index=71; break;
+		case powers::power_type::health: index=72; break;
+		case powers::power_type::ammo: index=73; break;
+		
+	}
+	
+	Frame_sprites fs_current_power=Rep_municion::obtener_frame_hud(index);	
+	representador.hud_focus(_screen, focus_control.get_focus(), fs_current_power, focus_control.will_switch_shortly());
+	
+	auto fs_full_health=Rep_municion::obtener_frame_hud(1),
+		fs_empty_health=Rep_municion::obtener_frame_hud(4);
+		
+	representador.hud_health(_screen, jugador.acc_energia(), fs_full_health, fs_empty_health);
+	representador.hud_timer(_screen, segundos_restantes, segundos_restantes < (level_time / 3.f) );
+	
 	Frame_sprites fs_ankh=Rep_municion::obtener_frame_hud(3);
-	representador.generar_hud_ankh(pantalla, sistema_puntuacion.acc_ankh_nivel(), mapa.acc_ankh_nivel(), sistema_puntuacion.acc_todos_ankh(), fs_ankh);
-
-	representador.focus_hud(pantalla, focus_control.get_focus(), focus_control.get_current());
-
-	//El nivel y tiempo...
-	double dummy;
-	double frac=modf(segundos_restantes,&dummy);
-	int decimas_restantes=round(frac*pow(10, 2)); //Dos decimales.
-	representador.generar_hud_nivel(pantalla, mapa.acc_nombre(), segundos_restantes, decimas_restantes, sistema_puntuacion.acc_puntuacion());
-
+	representador.hud_ankh(_screen, sistema_puntuacion.acc_ankh_nivel(), mapa.acc_ankh_nivel(), fs_ankh);
+	representador.hud_score(_screen, sistema_puntuacion.acc_puntuacion());
+	
+	
+	if(show_level_name) {
+	
+		representador.hud_level_name(_screen, mapa.acc_nombre(), nivel_actual, sistema_vidas.acc_vidas(), Rep_municion::obtener_frame_hud(2));
+	}
+	
+	representador.power_overlay(_screen, focus_control.is_active(), focus_control.get_current(), Rep_municion::obtener_frame_hud(50), Rep_municion::obtener_frame_hud(60));
 }
 
 void Controlador_juego::evaluar_enfoque_camara()

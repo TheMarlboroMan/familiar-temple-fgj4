@@ -97,7 +97,7 @@ void Cargador_recursos_base::procesar_entrada_textura(const std::vector<std::str
 		std::string ruta=env::make_data_path(valores[1]);
 		unsigned int transparencia=std::atoi(valores[2].c_str());
 
-		SDL_Surface * superficie=DLibV::Utilidades_graficas_SDL::cargar_imagen(ruta.c_str(), pantalla.acc_ventana());
+		SDL_Surface * superficie=DLibV::Utilidades_graficas_SDL::cargar_imagen(ruta.c_str(), nullptr); //, pantalla.acc_ventana());
 
 		if(!superficie)
 		{
@@ -105,7 +105,7 @@ void Cargador_recursos_base::procesar_entrada_textura(const std::vector<std::str
 		}
 		else
 		{
-			if(transparencia)
+			if(transparencia==1)
 			{
 				unsigned int r=std::atoi(valores[3].c_str());
 				unsigned int g=std::atoi(valores[4].c_str());

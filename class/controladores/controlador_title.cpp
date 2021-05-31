@@ -76,9 +76,19 @@ void Controlador_title::load_hi_scores() {
 
 	int index=1;
 	for(const auto& item : hi_scores.get()) {
+	
+		double integral;
+						
+		double frac=modf(item.game_time,&integral);
+		int dec=round(frac*pow(10, 2)); //Dos decimales.
+		auto seconds=fmod(integral, 60.f);
+		auto minutes=floor(integral / 60.f);
 
-		ss<<std::setw(2)<<(index++)<<" - LVL "<<std::setw(2)<<item.level<<" "
-			<<std::setw(6)<<item.score<<std::endl<<std::endl;
+		ss<<std::setw(2)<<(index++)
+			<<" - LVL "<<std::setw(2)<<item.level<<" "
+			<<std::setw(6)<<item.score<<" "
+			<<minutes<<":"<<std::setw(2)<<seconds<<"'"<<std::setw(2)<<dec
+			<<std::endl<<std::endl;
 	}
 
 	txt_hi_score.asignar(ss.str());

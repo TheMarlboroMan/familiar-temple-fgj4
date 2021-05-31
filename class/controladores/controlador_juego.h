@@ -91,12 +91,14 @@ LOG<<"ACTIVANDO FADE"<<std::endl;
 	std::vector<std::unique_ptr<Proyectil >> proyectiles;
 	std::vector<std::unique_ptr<Proyectil >> proyectiles_enemigos;
 	unsigned int nivel_actual;
-	float segundos_restantes;
+	float segundos_restantes, level_time;
+	float game_time;
+	bool paused{false};
 
 	void cola_sonido(unsigned int sonido, unsigned int vol);
 	void importar_nivel(unsigned int indice_nivel);
 	Input_usuario recoger_input_usuario(const Input& input);
-	void procesar_input_jugador(const Input& input, float delta);
+	void procesar_input_jugador(const Input_usuario& input, float delta);
 	void logica_jugador(float delta);
 
 	void logica_nivel();

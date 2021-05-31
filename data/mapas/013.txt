@@ -1,7 +1,7 @@
 [INFO]
 23 24 160
 [NOMBRE]
-LVL13: THE CHASM
+THE CHASM
 [MAPA]
 #######################
 # #2#2#xxxe#cexxxx3xxx#

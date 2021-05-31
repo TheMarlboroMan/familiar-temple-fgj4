@@ -1,2 +1,4 @@
 #indice	ruta	transparencia	rtrans	gtrans	btrans
 1	data/graficos/fuente_defecto.png	1	0	0	0
+2	data/graficos/font_red.png	1	0	0	0
+3	data/graficos/font_large.png	1	0	0	0

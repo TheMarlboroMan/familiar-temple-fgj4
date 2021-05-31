@@ -40,7 +40,8 @@ I_RECARGAR,
 I_FOCUS,
 I_DISCARD_WEAPON,
 I_FULLSCREEN,
-I_HELP
+I_HELP,
+I_PAUSE
 };
 
 	const Configuracion& config;

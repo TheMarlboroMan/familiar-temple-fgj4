@@ -1,7 +1,7 @@
 [INFO]
 40 19 120
 [NOMBRE]
-LVL8: TREASURE CHAMBER
+TREASURE CHAMBER
 [MAPA]
 #####   ##############                  
 #   #   #    x a x1 1###   ###########  

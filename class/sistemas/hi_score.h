@@ -5,12 +5,13 @@
 
 struct hi_score {
 
-	               hi_score(unsigned int, unsigned int, bool);
+	               hi_score(unsigned int, unsigned int, bool, double);
 					hi_score() {}
 
 	unsigned int   level{0},
 	               score{0};
 	bool           win_game{false};
+	double         game_time{0.0};
 
 	bool           operator<(const hi_score& _other) const {
 

@@ -147,7 +147,7 @@ class Representacion_grafica:public Representacion
 	void reiniciar_transformacion() {transformacion.reiniciar();}
 	void transformar_invertir_horizontal(bool v) {transformacion.establecer_invertir_horizontal(v);}
 	void transformar_invertir_vertical(bool v) {transformacion.establecer_invertir_vertical(v);}
-	void transformar_rotar(float v) {transformacion.rotar(v);}
+	void  transformar_rotar(float v) {transformacion.rotar(v);}
 	void transformar_cancelar_rotar() {transformacion.cancelar_rotar();}
 	void transformar_centro_rotacion(float x, float y) {transformacion.centro_rotacion(x, y);}
 	void transformar_centro_rotacion_cancelar() {transformacion.cancelar_centro_rotacion();}

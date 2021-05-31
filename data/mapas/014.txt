@@ -1,7 +1,7 @@
 [INFO]
 25 49 160
 [NOMBRE]
-LVL14: THE TRIALS
+THE TRIALS
 [MAPA]
 #########################
 #                       #

@@ -12,7 +12,7 @@ class Control_armas
 	//Definiciones
 	public:
 
-	enum class t_armas {NONE=0, REVOLVER=10, ESCOPETA=20, PISTOLA=30, SUBFUSIL=40};
+	enum class t_armas {NONE, REVOLVER, ESCOPETA, PISTOLA, SUBFUSIL};
 	static const int MAX_ARMAS=4;
 
 	class Info_municion
@@ -120,14 +120,7 @@ class Control_armas
 	void reset();
 
 	t_armas acc_arma_actual() {return arma_actual;}
-	void mut_arma_actual(t_armas arma) {
-
-		if(arma_actual!=previous_weapon) {
-
-			previous_weapon=arma_actual;
-		}
-		arma_actual=arma;
-	}
+	void mut_arma_actual(t_armas arma);
 
 	void discard_current();
 	bool can_discard_current() const;
@@ -180,13 +173,13 @@ class Rep_municion:public Representable
 	{
 		b.establecer_tipo(Bloque_transformacion_representable::TR_BITMAP);
 		b.establecer_alpha(alpha);
+		b.establecer_blend(DLibV::Representacion::BLEND_SUMA);
 		b.establecer_recurso(Recursos_graficos::RT_HUD);
 
 		Frame_sprites f=TREC.obtener(offset);
-		if(f)
-		{
+		if(f) {
 			b.establecer_recorte(f.x, f.y, f.w, f.h);
-			b.establecer_posicion(40+( (x*f.w) + 2)+f.desp_x, 16+f.desp_y, f.w, f.h);
+			b.establecer_posicion(( (x*f.w) + 2)+f.desp_x, f.desp_y, f.w, f.h);
 		}
 	}
 	virtual std::string a_cadena() const {return "";}

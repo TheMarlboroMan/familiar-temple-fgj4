@@ -8,11 +8,13 @@
 hi_score::hi_score(
 	unsigned int _level, 
 	unsigned int _score, 
-	bool _win
+	bool _win,
+	double _time
 ):
 	level{_level},
 	score{_score},
-	win_game{_win} {
+	win_game{_win},
+	game_time{_time}{
 
 }
 
@@ -40,7 +42,7 @@ void hi_score_manager::save() {
 
 	for(const auto& item : current_scores) {
 
-		file<<item.score<<" "<<item.level<<" "<<(item.win_game ? 1 : 0)<<std::endl;
+		file<<item.score<<" "<<item.level<<" "<<(item.win_game ? 1 : 0)<<" "<<item.game_time<<std::endl;
 	}
 }
 
@@ -72,11 +74,12 @@ void hi_score_manager::load() {
 
 		unsigned int score{0}, level{0};
 		bool win{false};
+		double time{0.0};
 
 		std::stringstream ss{buff};
-		ss>>score>>level>>win;
+		ss>>score>>level>>win>>time;
 
-		current_scores.push_back({level, score, win});
+		current_scores.push_back({level, score, win, time});
 	}
 
 	if(current_scores.size() > 10) {

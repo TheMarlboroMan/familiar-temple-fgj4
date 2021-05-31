@@ -1,7 +1,7 @@
 [INFO]
 21 26 60
 [NOMBRE]
-LVL3: THE OCULUS
+THE OCULUS
 [MAPA]
 #####                
 # . # #########      

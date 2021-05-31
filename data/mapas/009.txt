@@ -1,7 +1,7 @@
 [INFO]
 20 21 120
 [NOMBRE]
-LVL9: RELENTLESS
+RELENTLESS
 [MAPA]
          #####      
          #   #      

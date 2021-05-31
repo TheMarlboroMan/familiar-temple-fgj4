@@ -1,7 +1,7 @@
 [INFO]
 20 20 90
 [NOMBRE]
-LVL4: TRAP CHAMBER
+TRAP CHAMBER
 [MAPA]
 ###########         
 #      xx # ########
