@@ -39,12 +39,12 @@ Controlador_title::Controlador_title(
 	game_logo_top.establecer_modo_blend(DLibV::Representacion::BLEND_ALPHA);
 	
 	game_logo_bottom.establecer_textura(DLibV::Gestor_texturas::obtener(Recursos_graficos::RT_GAME_LOGO));
-	game_logo_bottom.establecer_posicion(logo_bottom_x, 900, 551, 133);
+	game_logo_bottom.establecer_posicion(logo_bottom_x, 1500, 551, 133);
 	game_logo_bottom.establecer_recorte(0, 120, 551, 133);
 	game_logo_bottom.establecer_modo_blend(DLibV::Representacion::BLEND_ALPHA);
 	
-	ltf_logo_top.reset(-300.f, 20.f, 300.f);
-	ltf_logo_bottom.reset(900.f, 100.f, -400.f);
+	ltf_logo_top.reset(-300.f, 20.f, 250.f);
+	ltf_logo_bottom.reset(1500.f, 100.f, -600.f);
 	
 	load_hi_scores();
 }

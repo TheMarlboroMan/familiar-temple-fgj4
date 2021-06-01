@@ -37,7 +37,7 @@ void Controlador::inicializar()
 	Cargador_recursos cargador_recursos(pantalla);
 	LOG<<"setting up textures"<<std::endl;
 	cargador_recursos.generar_recursos_texturas();
-	LOG<<"setting up surface"<<std::endl;
+	LOG<<"setting up surfaces"<<std::endl;
 	cargador_recursos.generar_recursos_superficies();
 	LOG<<"setting up audio files"<<std::endl;
 	cargador_recursos.generar_recursos_audio();
@@ -55,8 +55,11 @@ void Controlador::inicializar()
 
 void Controlador::inicializar_entorno_grafico(DLibV::Pantalla& pantalla, unsigned int w, unsigned int h)
 {
+
 	configurar_entorno_grafico(pantalla, w, h);
+LOG<<"setting up window title"<<std::endl;
 	pantalla.establecer_titulo("FAMILIAR TEMPLE");
+LOG<<"setting up window cursor"<<std::endl;
 	DLibV::Utilidades_graficas_SDL::mostrar_ocultar_cursor(false);
 }
 

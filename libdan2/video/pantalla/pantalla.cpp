@@ -95,6 +95,12 @@ void Pantalla::configurar()
 			SDL_WINDOWPOS_CENTERED,
 			SDL_WINDOWPOS_CENTERED,
 			w, h, 0); //SDL_WINDOW_FULLSCREEN_DESKTOP);
+			
+		if(nullptr==ventana) {
+		
+			std::string err{"SDL_CreateWindow failed"};
+			throw std::runtime_error(err+": "+SDL_GetError());
+		}
 	}
 	else
 	{
@@ -102,10 +108,18 @@ void Pantalla::configurar()
 	}
 
 	renderer=SDL_CreateRenderer(ventana, -1, 0);
+	if(nullptr==renderer) {
+	
+		std::string err{"SDL_CreateRenderer failed"};
+		throw std::runtime_error(err+": "+SDL_GetError());
+	}
 
 	establecer_modo_ventana(modo_ventana);
-//	establecer_medidas_logicas();
-	SDL_RenderSetLogicalSize(renderer, w, h);
+	if(0!=SDL_RenderSetLogicalSize(renderer, w, h)) {
+	
+		std::string err{"SDL_RenderSetLogicalSize failed"};
+		throw std::runtime_error(err+": "+SDL_GetError());
+	}
 
 	this->simulacro_caja.w=w;
 	this->simulacro_caja.h=h;
@@ -117,17 +131,29 @@ void Pantalla::establecer_medidas_logicas(int w, int h)
 {
 	w_logico=w;
 	h_logico=h;
-	SDL_RenderSetLogicalSize(renderer, w_logico, h_logico);
+	if(0!=SDL_RenderSetLogicalSize(renderer, w_logico, h_logico)) {
+	
+		std::string err{"SDL_RenderSetLogicalSize failed in establecer_medidas_logicas context"};
+		throw std::runtime_error(err+": "+SDL_GetError());
+	}
 }
 
 void Pantalla::establecer_modo_ventana(unsigned int v)
 {
 	modo_ventana=v;
+	int res=0;
+	
 	switch(modo_ventana)
 	{
-		case M_VENTANA: SDL_SetWindowFullscreen(ventana, 0); break;
-		case M_PANTALLA_COMPLETA_RESOLUCION: SDL_SetWindowFullscreen(ventana, SDL_WINDOW_FULLSCREEN_DESKTOP); break;
-		case M_PANTALLA_COMPLETA_SIMULADA: SDL_SetWindowFullscreen(ventana, SDL_WINDOW_FULLSCREEN); break;
+		case M_VENTANA: res=SDL_SetWindowFullscreen(ventana, 0); break;
+		case M_PANTALLA_COMPLETA_RESOLUCION: res=SDL_SetWindowFullscreen(ventana, SDL_WINDOW_FULLSCREEN_DESKTOP); break;
+		case M_PANTALLA_COMPLETA_SIMULADA: res=SDL_SetWindowFullscreen(ventana, SDL_WINDOW_FULLSCREEN); break;
+	}
+	
+	if(res==-1) {
+	
+		std::string err{"SDL_SetWindowFullscreen failed"};
+		throw std::runtime_error(err+": "+SDL_GetError());
 	}
 }
 
