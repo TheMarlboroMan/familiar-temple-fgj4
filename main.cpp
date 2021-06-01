@@ -169,9 +169,9 @@ void ready_system() {
 	std::string executable_dir=executable_path.substr(0, last_slash)+"\\";
 	
 	env::set_data_path(executable_dir);
-	env::usr_path=executable_dir+"userpreferences";
+	env::usr_path=executable_dir+"user\\";
 	
-	std::string logs_path=env::usr_path+"logs";
+	std::string logs_path=env::usr_path+"\\logs\\";
 	CreateDirectoryA(logs_path.c_str(), nullptr);
 	CreateDirectoryA(env::usr_path.c_str(), nullptr);
 	

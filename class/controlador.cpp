@@ -16,28 +16,40 @@ Controlador::~Controlador()
 
 void Controlador::inicializar()
 {
+
 	//Cargar configuración.
+	LOG<<"reading configuration values"<<std::endl;
 	configuracion.iniciar();
 
 	//Inicializar información y sistemas según configuración.
+	LOG<<"setting up language"<<std::endl;
 	id_idioma=configuracion.acc_idioma();
 
+	LOG<<"setting up display"<<std::endl;
 	inicializar_entorno_grafico(pantalla, 800, 600);
+	
+	LOG<<"setting up audio"<<std::endl;
 	inicializar_entorno_audio();
 
 
 
-	//Inicializar recursos.
+	//Inicializar recursos.	
 	Cargador_recursos cargador_recursos(pantalla);
+	LOG<<"setting up textures"<<std::endl;
 	cargador_recursos.generar_recursos_texturas();
+	LOG<<"setting up surface"<<std::endl;
 	cargador_recursos.generar_recursos_superficies();
+	LOG<<"setting up audio files"<<std::endl;
 	cargador_recursos.generar_recursos_audio();
+	LOG<<"setting up music files"<<std::endl;
 	cargador_recursos.generar_recursos_musica();
 
 	//Inicializar controles.
+	LOG<<"setting up input"<<std::endl;
 	input.configurar();
 
 	//Inicialización controlador tiempo.
+	LOG<<"setting up fps control"<<std::endl;
 	controlador_fps.inicializar();
 }
 
