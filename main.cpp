@@ -169,10 +169,36 @@ void ready_system() {
 	std::string executable_dir=executable_path.substr(0, last_slash)+"\\";
 	
 	env::set_data_path(executable_dir);
-	env::usr_path=executable_dir;
+	env::usr_path=executable_dir+"userpreferences";
 	
 	std::string logs_path=env::usr_path+"logs";
 	CreateDirectoryA(logs_path.c_str(), nullptr);
+	CreateDirectoryA(env::usr_path.c_str(), nullptr);
+	
+	auto dump_file=[](const std::string _in, const std::string _out) {
+
+		std::string res, lin;
+		std::ifstream f{_in};
+		std::ofstream out{_out};
+
+		while(true) {
+			std::getline(f, lin);
+			if(f.eof()) {
+				break;
+			}
+			out<<lin<<std::endl;
+		}
+	};
+	
+	dump_file(
+		env::make_data_path("data/config/configuracion.dat"),
+		env::usr_path+"/configuracion.dat"
+	);
+
+	dump_file(
+		env::make_data_path("data/config/scores.dat"),
+		env::usr_path+"/scores.dat"
+	);
 }
 
 #else 
