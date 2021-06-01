@@ -19,6 +19,7 @@ void Input::configurar()
 	mapa.insert(std::make_pair(I_DISCARD_WEAPON, input_type{0, 0, SDL_SCANCODE_A}));
 	mapa.insert(std::make_pair(I_FULLSCREEN, input_type{0, 0, SDL_SCANCODE_F}));
 	mapa.insert(std::make_pair(I_HELP, input_type{0, 0, SDL_SCANCODE_F1}));
+	mapa.insert(std::make_pair(I_CREDITS, input_type{0, 0, SDL_SCANCODE_F2}));
 	mapa.insert(std::make_pair(I_PAUSE, input_type{0, 0, SDL_SCANCODE_P}));
 
 	mapa.insert(std::make_pair(I_IZQUIERDA, input_type{1, 0, config.get_gamepad_left()}));

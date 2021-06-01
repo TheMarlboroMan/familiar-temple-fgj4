@@ -23,7 +23,9 @@ class Recursos_graficos
 		RT_TITLEPIC=5,
 		RT_GAMEOVERPIC=6,
 		RT_END1PIC=7,
-		RT_END2PIC=8
+		RT_END2PIC=8,
+		RT_EVENT_LOGO=9,
+		RT_GAME_LOGO=10
 	};
 };
 

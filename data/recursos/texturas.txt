@@ -7,3 +7,5 @@
 6	data/graficos/gameoverpic.jpg	0	0	0	0
 7	data/graficos/end1pic.jpg	0	0	0	0
 8	data/graficos/end2pic.jpg	0	0	0	0
+9	data/graficos/familiar_logo.png	0	0	0	0
+10	data/graficos/game_logo.png	0	0	0	0

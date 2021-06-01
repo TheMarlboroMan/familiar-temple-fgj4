@@ -25,6 +25,8 @@
 #include "class/controladores/controlador_fin_1.h"
 #include "class/controladores/controlador_fin_2.h"
 #include "class/controladores/help.h"
+#include "class/controladores/credits.h"
+#include "class/controladores/logos.h"
 
 #include "class/sistemas/sistema_estados.h"
 #include "class/sistemas/hi_score.h"
@@ -141,11 +143,14 @@ int main(int argc, char ** argv)
 
 		Controlador_title CT(SES, hi_scores, controlador.acc_pantalla());
 		help CH(SES, controlador.acc_pantalla());
+		credits CC(SES, controlador.acc_pantalla());
+		logos CL(SES, controlador.acc_pantalla());
 		Controlador_game_over CG(SES);
 		Controlador_fin_1 F1(SES);
 		Controlador_fin_2 F2(SES);
 		Controlador_juego CJ(CARG, hi_scores, SES);
-		Controlador_interface * CINT=&CT;
+		
+		Controlador_interface * CINT=&CL;
 
 		controlador.iniciar_musica();
 		while(controlador.loop(*CINT))
@@ -163,6 +168,8 @@ int main(int argc, char ** argv)
 					case Sistema_estados::estados::E_FIN_1: CINT=&F1; break;
 					case Sistema_estados::estados::E_FIN_2: CINT=&F2; break;
 					case Sistema_estados::estados::E_HELP: CINT=&CH; break;
+					case Sistema_estados::estados::E_CREDITS: CINT=&CC; break;
+					case Sistema_estados::estados::E_LOGOS: CINT=&CL; break;
 				}
 				SES.confirmar_cambio_estado();
 			}

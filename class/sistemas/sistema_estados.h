@@ -4,7 +4,7 @@
 class Sistema_estados
 {
 	public:
-	enum class estados {E_JUEGO, E_TITLE, E_GAME_OVER, E_FIN_1, E_FIN_2, E_HELP};
+	enum class estados {E_JUEGO, E_TITLE, E_GAME_OVER, E_FIN_1, E_FIN_2, E_HELP, E_CREDITS, E_LOGOS};
 
 	private:
 	estados estado;
@@ -13,7 +13,7 @@ class Sistema_estados
 	public:
 
 	Sistema_estados()
-		:estado(estados::E_TITLE), estado_deseado(estados::E_TITLE)
+		:estado(estados::E_LOGOS), estado_deseado(estados::E_LOGOS)
 	{}
 
 	void cambiar_estado(estados e) {estado_deseado=e;}
