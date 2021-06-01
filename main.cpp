@@ -29,9 +29,10 @@
 #include "class/sistemas/sistema_estados.h"
 #include "class/sistemas/hi_score.h"
 
-#ifdef BUILD_WIN
+#ifdef WINCOMPIL
 
 	#include <libloaderapi.h>
+	#include <fileapi.h>
 
 #else 
 	#include <unistd.h>
@@ -138,10 +139,11 @@ int main(int argc, char ** argv)
 	catch(std::exception& e) {
 
 		std::cout<<"interrupting due to exception "<<e.what()<<std::endl;
+		return 1;
 	}
 }
 
-#ifdef BUILD_WIN
+#ifdef WINCOMPIL
 
 void ready_system() {
 
@@ -150,8 +152,14 @@ void ready_system() {
 
 	std::string executable_path=std::string{std::begin(buff), std::begin(buff)+bytes};
 	
-	std::cout<<"read "<<bytes<" for "<<executable_path<<std::endl;
-	throw std::runtime_error("LOL");
+	auto last_slash=executable_path.find_last_of("/");
+	std::string executable_dir=executable_path.substr(0, last_slash)+"/";
+	
+	env::set_data_path(executable_dir+"/");
+	env::usr_path=executable_dir+"/";
+	
+	std::string logs_path=env::usr_path+"logs";
+	CreateDirectoryA(logs_path, nullptr);
 }
 
 #else 
