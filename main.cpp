@@ -159,7 +159,7 @@ void ready_system() {
 	env::usr_path=executable_dir+"/";
 	
 	std::string logs_path=env::usr_path+"logs";
-	CreateDirectoryA(logs_path, nullptr);
+	CreateDirectoryA(logs_path.c_str(), nullptr);
 }
 
 #else 
