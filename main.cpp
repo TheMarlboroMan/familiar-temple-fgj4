@@ -72,9 +72,14 @@ int main(int argc, char ** argv)
 			LOG.inicializar(info_log_path.c_str());
 			LOG.activar();
 	
+			LOG<<"system has been readied, starting engine log"<<std::endl;
+	
+	
+	
 			std::string motor_log_path=env::usr_path+"logs/log_motor.log";
 			DLibH::Log_motor::arrancar(motor_log_path.c_str());
 	
+			LOG<<"starting spritesheet loaders"<<std::endl;
 			Proyectil::TREC.cargar(env::make_data_path("data/recortes/proyectiles.dat"));
 			Boss::TREC.cargar(env::make_data_path("data/recortes/enemigo_boss.dat"));
 			Disparador::TREC.cargar(env::make_data_path("data/recortes/enemigo_disparador.dat"));
@@ -87,15 +92,18 @@ int main(int argc, char ** argv)
 	
 	
 			//Inicializar control de argumentos.
+			LOG<<"starting argument parser"<<std::endl;
 			DLibH::Controlador_argumentos CARG(argc, argv);
 	
+			LOG<<"starting state machine"<<std::endl;
 			Sistema_estados SES;
 	
+			LOG<<"starting state driver"<<std::endl;
 			Controlador controlador(CARG);
 			controlador.inicializar();
 	
+			LOG<<"instantiating states"<<std::endl;
 			hi_score_manager hi_scores{};
-	
 			Controlador_title CT(SES, hi_scores, controlador.acc_pantalla());
 			help CH(SES, controlador.acc_pantalla());
 			credits CC(SES, controlador.acc_pantalla());
@@ -107,7 +115,10 @@ int main(int argc, char ** argv)
 			
 			Controlador_interface * CINT=&CL;
 	
+			LOG<<"starting music"<<std::endl;
 			controlador.iniciar_musica();
+			
+			LOG<<"starting main loop"<<std::endl;
 			while(controlador.loop(*CINT))
 			{
 				if(SES.es_cambiar_estado())
@@ -129,6 +140,8 @@ int main(int argc, char ** argv)
 					SES.confirmar_cambio_estado();
 				}
 			};
+			
+			LOG<<"done"<<std::endl;
 		}
 	
 		DLibH::Log_motor::finalizar();
@@ -152,11 +165,11 @@ void ready_system() {
 
 	std::string executable_path=std::string{std::begin(buff), std::begin(buff)+bytes};
 	
-	auto last_slash=executable_path.find_last_of("/");
-	std::string executable_dir=executable_path.substr(0, last_slash)+"/";
+	auto last_slash=executable_path.find_last_of("\\");
+	std::string executable_dir=executable_path.substr(0, last_slash)+"\\";
 	
-	env::set_data_path(executable_dir+"/");
-	env::usr_path=executable_dir+"/";
+	env::set_data_path(executable_dir);
+	env::usr_path=executable_dir;
 	
 	std::string logs_path=env::usr_path+"logs";
 	CreateDirectoryA(logs_path.c_str(), nullptr);
